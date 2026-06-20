@@ -1,0 +1,1582 @@
+[
+  {
+    "method": "GET",
+    "path": "/redfish/v1",
+    "summary": "The service root for the Redfish service",
+    "resource_type": "ServiceRoot",
+    "tags": [
+      ""
+    ],
+    "parameters": []
+  },
+  {
+    "method": "GET",
+    "path": "/redfish/v1/Systems",
+    "summary": "Collection of computer systems",
+    "resource_type": "ComputerSystemCollection",
+    "tags": [
+      "Systems"
+    ],
+    "parameters": []
+  },
+  {
+    "method": "GET",
+    "path": "/redfish/v1/Systems/{SystemId}",
+    "summary": "A specific computer system instance",
+    "resource_type": "ComputerSystem",
+    "tags": [
+      "Systems"
+    ],
+    "parameters": [
+      "SystemId"
+    ]
+  },
+  {
+    "method": "PATCH",
+    "path": "/redfish/v1/Systems/{SystemId}",
+    "summary": "A specific computer system instance",
+    "resource_type": "ComputerSystem",
+    "tags": [
+      "Systems"
+    ],
+    "parameters": [
+      "SystemId"
+    ]
+  },
+  {
+    "method": "POST",
+    "path": "/redfish/v1/Systems/{SystemId}/Actions/ComputerSystem.Reset",
+    "summary": "Reset (reboot/power off/on) a computer system",
+    "resource_type": "Action",
+    "tags": [
+      "Systems"
+    ],
+    "parameters": [
+      "SystemId"
+    ]
+  },
+  {
+    "method": "GET",
+    "path": "/redfish/v1/Systems/{SystemId}/Processors",
+    "summary": "Collection of processors in a system",
+    "resource_type": "ProcessorCollection",
+    "tags": [
+      "Systems"
+    ],
+    "parameters": [
+      "SystemId"
+    ]
+  },
+  {
+    "method": "GET",
+    "path": "/redfish/v1/Systems/{SystemId}/Processors/{ProcessorId}",
+    "summary": "A specific processor instance",
+    "resource_type": "Processor",
+    "tags": [
+      "Systems"
+    ],
+    "parameters": [
+      "SystemId",
+      "ProcessorId"
+    ]
+  },
+  {
+    "method": "GET",
+    "path": "/redfish/v1/Systems/{SystemId}/Memory",
+    "summary": "Collection of memory modules in a system",
+    "resource_type": "MemoryCollection",
+    "tags": [
+      "Systems"
+    ],
+    "parameters": [
+      "SystemId"
+    ]
+  },
+  {
+    "method": "GET",
+    "path": "/redfish/v1/Systems/{SystemId}/Memory/{MemoryId}",
+    "summary": "A specific memory module instance",
+    "resource_type": "Memory",
+    "tags": [
+      "Systems"
+    ],
+    "parameters": [
+      "SystemId",
+      "MemoryId"
+    ]
+  },
+  {
+    "method": "GET",
+    "path": "/redfish/v1/Systems/{SystemId}/EthernetInterfaces",
+    "summary": "Collection of Ethernet interfaces in a system",
+    "resource_type": "EthernetInterfaceCollection",
+    "tags": [
+      "Systems"
+    ],
+    "parameters": [
+      "SystemId"
+    ]
+  },
+  {
+    "method": "GET",
+    "path": "/redfish/v1/Systems/{SystemId}/EthernetInterfaces/{InterfaceId}",
+    "summary": "A specific Ethernet interface",
+    "resource_type": "EthernetInterface",
+    "tags": [
+      "Systems"
+    ],
+    "parameters": [
+      "SystemId",
+      "InterfaceId"
+    ]
+  },
+  {
+    "method": "PATCH",
+    "path": "/redfish/v1/Systems/{SystemId}/EthernetInterfaces/{InterfaceId}",
+    "summary": "A specific Ethernet interface",
+    "resource_type": "EthernetInterface",
+    "tags": [
+      "Systems"
+    ],
+    "parameters": [
+      "SystemId",
+      "InterfaceId"
+    ]
+  },
+  {
+    "method": "GET",
+    "path": "/redfish/v1/Systems/{SystemId}/Storage",
+    "summary": "Collection of storage subsystems in a system",
+    "resource_type": "StorageCollection",
+    "tags": [
+      "Systems"
+    ],
+    "parameters": [
+      "SystemId"
+    ]
+  },
+  {
+    "method": "GET",
+    "path": "/redfish/v1/Systems/{SystemId}/Storage/{StorageId}",
+    "summary": "A specific storage subsystem",
+    "resource_type": "Storage",
+    "tags": [
+      "Systems"
+    ],
+    "parameters": [
+      "SystemId",
+      "StorageId"
+    ]
+  },
+  {
+    "method": "GET",
+    "path": "/redfish/v1/Systems/{SystemId}/Storage/{StorageId}/Drives/{DriveId}",
+    "summary": "A specific drive in a storage subsystem",
+    "resource_type": "Drive",
+    "tags": [
+      "Systems"
+    ],
+    "parameters": [
+      "SystemId",
+      "StorageId",
+      "DriveId"
+    ]
+  },
+  {
+    "method": "GET",
+    "path": "/redfish/v1/Systems/{SystemId}/Storage/{StorageId}/Volumes",
+    "summary": "Collection of volumes in a storage subsystem",
+    "resource_type": "VolumeCollection",
+    "tags": [
+      "Systems"
+    ],
+    "parameters": [
+      "SystemId",
+      "StorageId"
+    ]
+  },
+  {
+    "method": "POST",
+    "path": "/redfish/v1/Systems/{SystemId}/Storage/{StorageId}/Volumes",
+    "summary": "Collection of volumes in a storage subsystem",
+    "resource_type": "VolumeCollection",
+    "tags": [
+      "Systems"
+    ],
+    "parameters": [
+      "SystemId",
+      "StorageId"
+    ]
+  },
+  {
+    "method": "GET",
+    "path": "/redfish/v1/Systems/{SystemId}/Storage/{StorageId}/Volumes/{VolumeId}",
+    "summary": "A specific volume",
+    "resource_type": "Volume",
+    "tags": [
+      "Systems"
+    ],
+    "parameters": [
+      "SystemId",
+      "StorageId",
+      "VolumeId"
+    ]
+  },
+  {
+    "method": "PATCH",
+    "path": "/redfish/v1/Systems/{SystemId}/Storage/{StorageId}/Volumes/{VolumeId}",
+    "summary": "A specific volume",
+    "resource_type": "Volume",
+    "tags": [
+      "Systems"
+    ],
+    "parameters": [
+      "SystemId",
+      "StorageId",
+      "VolumeId"
+    ]
+  },
+  {
+    "method": "DELETE",
+    "path": "/redfish/v1/Systems/{SystemId}/Storage/{StorageId}/Volumes/{VolumeId}",
+    "summary": "A specific volume",
+    "resource_type": "Volume",
+    "tags": [
+      "Systems"
+    ],
+    "parameters": [
+      "SystemId",
+      "StorageId",
+      "VolumeId"
+    ]
+  },
+  {
+    "method": "GET",
+    "path": "/redfish/v1/Systems/{SystemId}/SimpleStorage",
+    "summary": "Collection of simple storage instances",
+    "resource_type": "SimpleStorageCollection",
+    "tags": [
+      "Systems"
+    ],
+    "parameters": [
+      "SystemId"
+    ]
+  },
+  {
+    "method": "GET",
+    "path": "/redfish/v1/Systems/{SystemId}/SimpleStorage/{SimpleStorageId}",
+    "summary": "A specific simple storage instance",
+    "resource_type": "SimpleStorage",
+    "tags": [
+      "Systems"
+    ],
+    "parameters": [
+      "SystemId",
+      "SimpleStorageId"
+    ]
+  },
+  {
+    "method": "GET",
+    "path": "/redfish/v1/Systems/{SystemId}/NetworkInterfaces",
+    "summary": "Collection of network interfaces",
+    "resource_type": "NetworkAdapterCollection",
+    "tags": [
+      "Systems"
+    ],
+    "parameters": [
+      "SystemId"
+    ]
+  },
+  {
+    "method": "GET",
+    "path": "/redfish/v1/Systems/{SystemId}/Bios",
+    "summary": "BIOS settings for a system",
+    "resource_type": "Bios",
+    "tags": [
+      "Systems"
+    ],
+    "parameters": [
+      "SystemId"
+    ]
+  },
+  {
+    "method": "PATCH",
+    "path": "/redfish/v1/Systems/{SystemId}/Bios",
+    "summary": "BIOS settings for a system",
+    "resource_type": "Bios",
+    "tags": [
+      "Systems"
+    ],
+    "parameters": [
+      "SystemId"
+    ]
+  },
+  {
+    "method": "POST",
+    "path": "/redfish/v1/Systems/{SystemId}/Bios/Actions/Bios.ResetBios",
+    "summary": "Reset BIOS settings to default",
+    "resource_type": "Action",
+    "tags": [
+      "Systems"
+    ],
+    "parameters": [
+      "SystemId"
+    ]
+  },
+  {
+    "method": "POST",
+    "path": "/redfish/v1/Systems/{SystemId}/Bios/Actions/Bios.ChangePassword",
+    "summary": "Change the BIOS password",
+    "resource_type": "Action",
+    "tags": [
+      "Systems"
+    ],
+    "parameters": [
+      "SystemId"
+    ]
+  },
+  {
+    "method": "GET",
+    "path": "/redfish/v1/Systems/{SystemId}/SecureBoot",
+    "summary": "UEFI Secure Boot settings",
+    "resource_type": "SecureBoot",
+    "tags": [
+      "Systems"
+    ],
+    "parameters": [
+      "SystemId"
+    ]
+  },
+  {
+    "method": "PATCH",
+    "path": "/redfish/v1/Systems/{SystemId}/SecureBoot",
+    "summary": "UEFI Secure Boot settings",
+    "resource_type": "SecureBoot",
+    "tags": [
+      "Systems"
+    ],
+    "parameters": [
+      "SystemId"
+    ]
+  },
+  {
+    "method": "POST",
+    "path": "/redfish/v1/Systems/{SystemId}/SecureBoot/Actions/SecureBoot.ResetKeys",
+    "summary": "Reset Secure Boot keys",
+    "resource_type": "Action",
+    "tags": [
+      "Systems"
+    ],
+    "parameters": [
+      "SystemId"
+    ]
+  },
+  {
+    "method": "GET",
+    "path": "/redfish/v1/Systems/{SystemId}/BootOptions",
+    "summary": "Collection of boot options",
+    "resource_type": "BootOptionCollection",
+    "tags": [
+      "Systems"
+    ],
+    "parameters": [
+      "SystemId"
+    ]
+  },
+  {
+    "method": "GET",
+    "path": "/redfish/v1/Systems/{SystemId}/BootOptions/{BootOptionId}",
+    "summary": "A specific boot option",
+    "resource_type": "BootOption",
+    "tags": [
+      "Systems"
+    ],
+    "parameters": [
+      "SystemId",
+      "BootOptionId"
+    ]
+  },
+  {
+    "method": "GET",
+    "path": "/redfish/v1/Systems/{SystemId}/LogServices",
+    "summary": "Collection of log services for a system",
+    "resource_type": "LogServiceCollection",
+    "tags": [
+      "Systems"
+    ],
+    "parameters": [
+      "SystemId"
+    ]
+  },
+  {
+    "method": "GET",
+    "path": "/redfish/v1/Systems/{SystemId}/LogServices/{LogServiceId}",
+    "summary": "A specific log service",
+    "resource_type": "LogService",
+    "tags": [
+      "Systems"
+    ],
+    "parameters": [
+      "SystemId",
+      "LogServiceId"
+    ]
+  },
+  {
+    "method": "GET",
+    "path": "/redfish/v1/Systems/{SystemId}/LogServices/{LogServiceId}/Entries",
+    "summary": "Collection of log entries",
+    "resource_type": "LogEntryCollection",
+    "tags": [
+      "Systems"
+    ],
+    "parameters": [
+      "SystemId",
+      "LogServiceId"
+    ]
+  },
+  {
+    "method": "GET",
+    "path": "/redfish/v1/Systems/{SystemId}/LogServices/{LogServiceId}/Entries/{EntryId}",
+    "summary": "A specific log entry",
+    "resource_type": "LogEntry",
+    "tags": [
+      "Systems"
+    ],
+    "parameters": [
+      "SystemId",
+      "LogServiceId",
+      "EntryId"
+    ]
+  },
+  {
+    "method": "POST",
+    "path": "/redfish/v1/Systems/{SystemId}/LogServices/{LogServiceId}/Actions/LogService.ClearLog",
+    "summary": "Clear all log entries",
+    "resource_type": "Action",
+    "tags": [
+      "Systems"
+    ],
+    "parameters": [
+      "SystemId",
+      "LogServiceId"
+    ]
+  },
+  {
+    "method": "GET",
+    "path": "/redfish/v1/Systems/{SystemId}/VirtualMedia",
+    "summary": "Collection of virtual media",
+    "resource_type": "VirtualMediaCollection",
+    "tags": [
+      "Systems"
+    ],
+    "parameters": [
+      "SystemId"
+    ]
+  },
+  {
+    "method": "GET",
+    "path": "/redfish/v1/Systems/{SystemId}/VirtualMedia/{VirtualMediaId}",
+    "summary": "A specific virtual media device",
+    "resource_type": "VirtualMedia",
+    "tags": [
+      "Systems"
+    ],
+    "parameters": [
+      "SystemId",
+      "VirtualMediaId"
+    ]
+  },
+  {
+    "method": "PATCH",
+    "path": "/redfish/v1/Systems/{SystemId}/VirtualMedia/{VirtualMediaId}",
+    "summary": "A specific virtual media device",
+    "resource_type": "VirtualMedia",
+    "tags": [
+      "Systems"
+    ],
+    "parameters": [
+      "SystemId",
+      "VirtualMediaId"
+    ]
+  },
+  {
+    "method": "POST",
+    "path": "/redfish/v1/Systems/{SystemId}/VirtualMedia/{VirtualMediaId}/Actions/VirtualMedia.InsertMedia",
+    "summary": "Insert (mount) virtual media",
+    "resource_type": "Action",
+    "tags": [
+      "Systems"
+    ],
+    "parameters": [
+      "SystemId",
+      "VirtualMediaId"
+    ]
+  },
+  {
+    "method": "POST",
+    "path": "/redfish/v1/Systems/{SystemId}/VirtualMedia/{VirtualMediaId}/Actions/VirtualMedia.EjectMedia",
+    "summary": "Eject (unmount) virtual media",
+    "resource_type": "Action",
+    "tags": [
+      "Systems"
+    ],
+    "parameters": [
+      "SystemId",
+      "VirtualMediaId"
+    ]
+  },
+  {
+    "method": "GET",
+    "path": "/redfish/v1/Systems/{SystemId}/PCIeDevices",
+    "summary": "Collection of PCIe devices",
+    "resource_type": "PCIeDeviceCollection",
+    "tags": [
+      "Systems"
+    ],
+    "parameters": [
+      "SystemId"
+    ]
+  },
+  {
+    "method": "GET",
+    "path": "/redfish/v1/Systems/{SystemId}/PCIeDevices/{PCIeDeviceId}",
+    "summary": "A specific PCIe device",
+    "resource_type": "PCIeDevice",
+    "tags": [
+      "Systems"
+    ],
+    "parameters": [
+      "SystemId",
+      "PCIeDeviceId"
+    ]
+  },
+  {
+    "method": "GET",
+    "path": "/redfish/v1/Systems/{SystemId}/PCIeDevices/{PCIeDeviceId}/PCIeFunctions",
+    "summary": "Collection of PCIe functions",
+    "resource_type": "PCIeFunctionCollection",
+    "tags": [
+      "Systems"
+    ],
+    "parameters": [
+      "SystemId",
+      "PCIeDeviceId"
+    ]
+  },
+  {
+    "method": "GET",
+    "path": "/redfish/v1/Systems/{SystemId}/PCIeDevices/{PCIeDeviceId}/PCIeFunctions/{FunctionId}",
+    "summary": "A specific PCIe function",
+    "resource_type": "PCIeFunction",
+    "tags": [
+      "Systems"
+    ],
+    "parameters": [
+      "SystemId",
+      "PCIeDeviceId",
+      "FunctionId"
+    ]
+  },
+  {
+    "method": "GET",
+    "path": "/redfish/v1/Chassis",
+    "summary": "Collection of chassis",
+    "resource_type": "ChassisCollection",
+    "tags": [
+      "Chassis"
+    ],
+    "parameters": []
+  },
+  {
+    "method": "GET",
+    "path": "/redfish/v1/Chassis/{ChassisId}",
+    "summary": "A specific chassis instance",
+    "resource_type": "Chassis",
+    "tags": [
+      "Chassis"
+    ],
+    "parameters": [
+      "ChassisId"
+    ]
+  },
+  {
+    "method": "PATCH",
+    "path": "/redfish/v1/Chassis/{ChassisId}",
+    "summary": "A specific chassis instance",
+    "resource_type": "Chassis",
+    "tags": [
+      "Chassis"
+    ],
+    "parameters": [
+      "ChassisId"
+    ]
+  },
+  {
+    "method": "GET",
+    "path": "/redfish/v1/Chassis/{ChassisId}/Power",
+    "summary": "Power information for a chassis",
+    "resource_type": "Power",
+    "tags": [
+      "Chassis"
+    ],
+    "parameters": [
+      "ChassisId"
+    ]
+  },
+  {
+    "method": "PATCH",
+    "path": "/redfish/v1/Chassis/{ChassisId}/Power",
+    "summary": "Power information for a chassis",
+    "resource_type": "Power",
+    "tags": [
+      "Chassis"
+    ],
+    "parameters": [
+      "ChassisId"
+    ]
+  },
+  {
+    "method": "GET",
+    "path": "/redfish/v1/Chassis/{ChassisId}/Thermal",
+    "summary": "Thermal information for a chassis (temperatures, fans)",
+    "resource_type": "Thermal",
+    "tags": [
+      "Chassis"
+    ],
+    "parameters": [
+      "ChassisId"
+    ]
+  },
+  {
+    "method": "PATCH",
+    "path": "/redfish/v1/Chassis/{ChassisId}/Thermal",
+    "summary": "Thermal information for a chassis (temperatures, fans)",
+    "resource_type": "Thermal",
+    "tags": [
+      "Chassis"
+    ],
+    "parameters": [
+      "ChassisId"
+    ]
+  },
+  {
+    "method": "GET",
+    "path": "/redfish/v1/Chassis/{ChassisId}/Sensors",
+    "summary": "Collection of sensors in a chassis",
+    "resource_type": "SensorCollection",
+    "tags": [
+      "Chassis"
+    ],
+    "parameters": [
+      "ChassisId"
+    ]
+  },
+  {
+    "method": "GET",
+    "path": "/redfish/v1/Chassis/{ChassisId}/Sensors/{SensorId}",
+    "summary": "A specific sensor reading",
+    "resource_type": "Sensor",
+    "tags": [
+      "Chassis"
+    ],
+    "parameters": [
+      "ChassisId",
+      "SensorId"
+    ]
+  },
+  {
+    "method": "GET",
+    "path": "/redfish/v1/Chassis/{ChassisId}/EnvironmentMetrics",
+    "summary": "Environmental metrics (power consumption, temperature summary)",
+    "resource_type": "EnvironmentMetrics",
+    "tags": [
+      "Chassis"
+    ],
+    "parameters": [
+      "ChassisId"
+    ]
+  },
+  {
+    "method": "GET",
+    "path": "/redfish/v1/Chassis/{ChassisId}/PowerSubsystem/PowerSupplies",
+    "summary": "Collection of power supplies",
+    "resource_type": "PowerSupplyCollection",
+    "tags": [
+      "Chassis"
+    ],
+    "parameters": [
+      "ChassisId"
+    ]
+  },
+  {
+    "method": "GET",
+    "path": "/redfish/v1/Chassis/{ChassisId}/PowerSubsystem/PowerSupplies/{PowerSupplyId}",
+    "summary": "A specific power supply",
+    "resource_type": "PowerSupply",
+    "tags": [
+      "Chassis"
+    ],
+    "parameters": [
+      "ChassisId",
+      "PowerSupplyId"
+    ]
+  },
+  {
+    "method": "GET",
+    "path": "/redfish/v1/Chassis/{ChassisId}/PowerSubsystem/Batteries",
+    "summary": "Collection of batteries",
+    "resource_type": "BatteryCollection",
+    "tags": [
+      "Chassis"
+    ],
+    "parameters": [
+      "ChassisId"
+    ]
+  },
+  {
+    "method": "GET",
+    "path": "/redfish/v1/Chassis/{ChassisId}/PowerSubsystem/Batteries/{BatteryId}",
+    "summary": "A specific battery",
+    "resource_type": "Battery",
+    "tags": [
+      "Chassis"
+    ],
+    "parameters": [
+      "ChassisId",
+      "BatteryId"
+    ]
+  },
+  {
+    "method": "GET",
+    "path": "/redfish/v1/Chassis/{ChassisId}/ThermalSubsystem/Fans",
+    "summary": "Collection of fans",
+    "resource_type": "FanCollection",
+    "tags": [
+      "Chassis"
+    ],
+    "parameters": [
+      "ChassisId"
+    ]
+  },
+  {
+    "method": "GET",
+    "path": "/redfish/v1/Chassis/{ChassisId}/ThermalSubsystem/Fans/{FanId}",
+    "summary": "A specific fan",
+    "resource_type": "Fan",
+    "tags": [
+      "Chassis"
+    ],
+    "parameters": [
+      "ChassisId",
+      "FanId"
+    ]
+  },
+  {
+    "method": "GET",
+    "path": "/redfish/v1/Chassis/{ChassisId}/Assembly",
+    "summary": "Assembly information (FRU data)",
+    "resource_type": "Assembly",
+    "tags": [
+      "Chassis"
+    ],
+    "parameters": [
+      "ChassisId"
+    ]
+  },
+  {
+    "method": "GET",
+    "path": "/redfish/v1/Chassis/{ChassisId}/NetworkAdapters",
+    "summary": "Collection of network adapters",
+    "resource_type": "NetworkAdapterCollection",
+    "tags": [
+      "Chassis"
+    ],
+    "parameters": [
+      "ChassisId"
+    ]
+  },
+  {
+    "method": "GET",
+    "path": "/redfish/v1/Chassis/{ChassisId}/NetworkAdapters/{NetworkAdapterId}",
+    "summary": "A specific network adapter",
+    "resource_type": "NetworkAdapter",
+    "tags": [
+      "Chassis"
+    ],
+    "parameters": [
+      "ChassisId",
+      "NetworkAdapterId"
+    ]
+  },
+  {
+    "method": "GET",
+    "path": "/redfish/v1/Chassis/{ChassisId}/Drives",
+    "summary": "Collection of drives in a chassis",
+    "resource_type": "DriveCollection",
+    "tags": [
+      "Chassis"
+    ],
+    "parameters": [
+      "ChassisId"
+    ]
+  },
+  {
+    "method": "GET",
+    "path": "/redfish/v1/Chassis/{ChassisId}/Drives/{DriveId}",
+    "summary": "A specific drive in a chassis",
+    "resource_type": "Drive",
+    "tags": [
+      "Chassis"
+    ],
+    "parameters": [
+      "ChassisId",
+      "DriveId"
+    ]
+  },
+  {
+    "method": "GET",
+    "path": "/redfish/v1/Chassis/{ChassisId}/LogServices",
+    "summary": "Collection of log services for a chassis",
+    "resource_type": "LogServiceCollection",
+    "tags": [
+      "Chassis"
+    ],
+    "parameters": [
+      "ChassisId"
+    ]
+  },
+  {
+    "method": "GET",
+    "path": "/redfish/v1/Managers",
+    "summary": "Collection of management controllers (BMC/iDRAC)",
+    "resource_type": "ManagerCollection",
+    "tags": [
+      "Managers"
+    ],
+    "parameters": []
+  },
+  {
+    "method": "GET",
+    "path": "/redfish/v1/Managers/{ManagerId}",
+    "summary": "A specific management controller",
+    "resource_type": "Manager",
+    "tags": [
+      "Managers"
+    ],
+    "parameters": [
+      "ManagerId"
+    ]
+  },
+  {
+    "method": "PATCH",
+    "path": "/redfish/v1/Managers/{ManagerId}",
+    "summary": "A specific management controller",
+    "resource_type": "Manager",
+    "tags": [
+      "Managers"
+    ],
+    "parameters": [
+      "ManagerId"
+    ]
+  },
+  {
+    "method": "POST",
+    "path": "/redfish/v1/Managers/{ManagerId}/Actions/Manager.Reset",
+    "summary": "Reset the management controller (BMC reboot)",
+    "resource_type": "Action",
+    "tags": [
+      "Managers"
+    ],
+    "parameters": [
+      "ManagerId"
+    ]
+  },
+  {
+    "method": "POST",
+    "path": "/redfish/v1/Managers/{ManagerId}/Actions/Manager.ResetToDefaults",
+    "summary": "Reset manager to factory defaults",
+    "resource_type": "Action",
+    "tags": [
+      "Managers"
+    ],
+    "parameters": [
+      "ManagerId"
+    ]
+  },
+  {
+    "method": "GET",
+    "path": "/redfish/v1/Managers/{ManagerId}/EthernetInterfaces",
+    "summary": "Collection of manager network interfaces",
+    "resource_type": "EthernetInterfaceCollection",
+    "tags": [
+      "Managers"
+    ],
+    "parameters": [
+      "ManagerId"
+    ]
+  },
+  {
+    "method": "GET",
+    "path": "/redfish/v1/Managers/{ManagerId}/EthernetInterfaces/{InterfaceId}",
+    "summary": "A specific manager network interface",
+    "resource_type": "EthernetInterface",
+    "tags": [
+      "Managers"
+    ],
+    "parameters": [
+      "ManagerId",
+      "InterfaceId"
+    ]
+  },
+  {
+    "method": "PATCH",
+    "path": "/redfish/v1/Managers/{ManagerId}/EthernetInterfaces/{InterfaceId}",
+    "summary": "A specific manager network interface",
+    "resource_type": "EthernetInterface",
+    "tags": [
+      "Managers"
+    ],
+    "parameters": [
+      "ManagerId",
+      "InterfaceId"
+    ]
+  },
+  {
+    "method": "GET",
+    "path": "/redfish/v1/Managers/{ManagerId}/LogServices",
+    "summary": "Collection of log services for a manager",
+    "resource_type": "LogServiceCollection",
+    "tags": [
+      "Managers"
+    ],
+    "parameters": [
+      "ManagerId"
+    ]
+  },
+  {
+    "method": "GET",
+    "path": "/redfish/v1/Managers/{ManagerId}/LogServices/{LogServiceId}",
+    "summary": "A specific manager log service",
+    "resource_type": "LogService",
+    "tags": [
+      "Managers"
+    ],
+    "parameters": [
+      "ManagerId",
+      "LogServiceId"
+    ]
+  },
+  {
+    "method": "GET",
+    "path": "/redfish/v1/Managers/{ManagerId}/LogServices/{LogServiceId}/Entries",
+    "summary": "Collection of manager log entries",
+    "resource_type": "LogEntryCollection",
+    "tags": [
+      "Managers"
+    ],
+    "parameters": [
+      "ManagerId",
+      "LogServiceId"
+    ]
+  },
+  {
+    "method": "GET",
+    "path": "/redfish/v1/Managers/{ManagerId}/LogServices/{LogServiceId}/Entries/{EntryId}",
+    "summary": "A specific manager log entry",
+    "resource_type": "LogEntry",
+    "tags": [
+      "Managers"
+    ],
+    "parameters": [
+      "ManagerId",
+      "LogServiceId",
+      "EntryId"
+    ]
+  },
+  {
+    "method": "GET",
+    "path": "/redfish/v1/Managers/{ManagerId}/VirtualMedia",
+    "summary": "Collection of virtual media on manager",
+    "resource_type": "VirtualMediaCollection",
+    "tags": [
+      "Managers"
+    ],
+    "parameters": [
+      "ManagerId"
+    ]
+  },
+  {
+    "method": "GET",
+    "path": "/redfish/v1/Managers/{ManagerId}/VirtualMedia/{VirtualMediaId}",
+    "summary": "A specific virtual media instance on manager",
+    "resource_type": "VirtualMedia",
+    "tags": [
+      "Managers"
+    ],
+    "parameters": [
+      "ManagerId",
+      "VirtualMediaId"
+    ]
+  },
+  {
+    "method": "PATCH",
+    "path": "/redfish/v1/Managers/{ManagerId}/VirtualMedia/{VirtualMediaId}",
+    "summary": "A specific virtual media instance on manager",
+    "resource_type": "VirtualMedia",
+    "tags": [
+      "Managers"
+    ],
+    "parameters": [
+      "ManagerId",
+      "VirtualMediaId"
+    ]
+  },
+  {
+    "method": "POST",
+    "path": "/redfish/v1/Managers/{ManagerId}/VirtualMedia/{VirtualMediaId}/Actions/VirtualMedia.InsertMedia",
+    "summary": "Insert virtual media on manager",
+    "resource_type": "Action",
+    "tags": [
+      "Managers"
+    ],
+    "parameters": [
+      "ManagerId",
+      "VirtualMediaId"
+    ]
+  },
+  {
+    "method": "POST",
+    "path": "/redfish/v1/Managers/{ManagerId}/VirtualMedia/{VirtualMediaId}/Actions/VirtualMedia.EjectMedia",
+    "summary": "Eject virtual media on manager",
+    "resource_type": "Action",
+    "tags": [
+      "Managers"
+    ],
+    "parameters": [
+      "ManagerId",
+      "VirtualMediaId"
+    ]
+  },
+  {
+    "method": "GET",
+    "path": "/redfish/v1/Managers/{ManagerId}/NetworkProtocol",
+    "summary": "Network protocol settings (HTTPS, SSH, IPMI, etc.)",
+    "resource_type": "Action",
+    "tags": [
+      "Managers"
+    ],
+    "parameters": [
+      "ManagerId"
+    ]
+  },
+  {
+    "method": "PATCH",
+    "path": "/redfish/v1/Managers/{ManagerId}/NetworkProtocol",
+    "summary": "Network protocol settings (HTTPS, SSH, IPMI, etc.)",
+    "resource_type": "Action",
+    "tags": [
+      "Managers"
+    ],
+    "parameters": [
+      "ManagerId"
+    ]
+  },
+  {
+    "method": "GET",
+    "path": "/redfish/v1/AccountService",
+    "summary": "Account service configuration",
+    "resource_type": "AccountService",
+    "tags": [
+      "AccountService"
+    ],
+    "parameters": []
+  },
+  {
+    "method": "PATCH",
+    "path": "/redfish/v1/AccountService",
+    "summary": "Account service configuration",
+    "resource_type": "AccountService",
+    "tags": [
+      "AccountService"
+    ],
+    "parameters": []
+  },
+  {
+    "method": "GET",
+    "path": "/redfish/v1/AccountService/Accounts",
+    "summary": "Collection of user accounts",
+    "resource_type": "ManagerAccountCollection",
+    "tags": [
+      "AccountService"
+    ],
+    "parameters": []
+  },
+  {
+    "method": "POST",
+    "path": "/redfish/v1/AccountService/Accounts",
+    "summary": "Collection of user accounts",
+    "resource_type": "ManagerAccountCollection",
+    "tags": [
+      "AccountService"
+    ],
+    "parameters": []
+  },
+  {
+    "method": "GET",
+    "path": "/redfish/v1/AccountService/Accounts/{AccountId}",
+    "summary": "A specific user account",
+    "resource_type": "ManagerAccount",
+    "tags": [
+      "AccountService"
+    ],
+    "parameters": [
+      "AccountId"
+    ]
+  },
+  {
+    "method": "PATCH",
+    "path": "/redfish/v1/AccountService/Accounts/{AccountId}",
+    "summary": "A specific user account",
+    "resource_type": "ManagerAccount",
+    "tags": [
+      "AccountService"
+    ],
+    "parameters": [
+      "AccountId"
+    ]
+  },
+  {
+    "method": "DELETE",
+    "path": "/redfish/v1/AccountService/Accounts/{AccountId}",
+    "summary": "A specific user account",
+    "resource_type": "ManagerAccount",
+    "tags": [
+      "AccountService"
+    ],
+    "parameters": [
+      "AccountId"
+    ]
+  },
+  {
+    "method": "GET",
+    "path": "/redfish/v1/AccountService/Roles",
+    "summary": "Collection of roles",
+    "resource_type": "RoleCollection",
+    "tags": [
+      "AccountService"
+    ],
+    "parameters": []
+  },
+  {
+    "method": "GET",
+    "path": "/redfish/v1/AccountService/Roles/{RoleId}",
+    "summary": "A specific role definition",
+    "resource_type": "Role",
+    "tags": [
+      "AccountService"
+    ],
+    "parameters": [
+      "RoleId"
+    ]
+  },
+  {
+    "method": "GET",
+    "path": "/redfish/v1/SessionService",
+    "summary": "Session service configuration",
+    "resource_type": "SessionService",
+    "tags": [
+      "SessionService"
+    ],
+    "parameters": []
+  },
+  {
+    "method": "PATCH",
+    "path": "/redfish/v1/SessionService",
+    "summary": "Session service configuration",
+    "resource_type": "SessionService",
+    "tags": [
+      "SessionService"
+    ],
+    "parameters": []
+  },
+  {
+    "method": "GET",
+    "path": "/redfish/v1/SessionService/Sessions",
+    "summary": "Collection of active sessions",
+    "resource_type": "SessionCollection",
+    "tags": [
+      "SessionService"
+    ],
+    "parameters": []
+  },
+  {
+    "method": "POST",
+    "path": "/redfish/v1/SessionService/Sessions",
+    "summary": "Collection of active sessions",
+    "resource_type": "SessionCollection",
+    "tags": [
+      "SessionService"
+    ],
+    "parameters": []
+  },
+  {
+    "method": "GET",
+    "path": "/redfish/v1/SessionService/Sessions/{SessionId}",
+    "summary": "A specific session",
+    "resource_type": "Session",
+    "tags": [
+      "SessionService"
+    ],
+    "parameters": [
+      "SessionId"
+    ]
+  },
+  {
+    "method": "DELETE",
+    "path": "/redfish/v1/SessionService/Sessions/{SessionId}",
+    "summary": "A specific session",
+    "resource_type": "Session",
+    "tags": [
+      "SessionService"
+    ],
+    "parameters": [
+      "SessionId"
+    ]
+  },
+  {
+    "method": "GET",
+    "path": "/redfish/v1/EventService",
+    "summary": "Event service configuration",
+    "resource_type": "EventService",
+    "tags": [
+      "EventService"
+    ],
+    "parameters": []
+  },
+  {
+    "method": "PATCH",
+    "path": "/redfish/v1/EventService",
+    "summary": "Event service configuration",
+    "resource_type": "EventService",
+    "tags": [
+      "EventService"
+    ],
+    "parameters": []
+  },
+  {
+    "method": "POST",
+    "path": "/redfish/v1/EventService/Actions/EventService.SubmitTestEvent",
+    "summary": "Submit a test event",
+    "resource_type": "Action",
+    "tags": [
+      "EventService"
+    ],
+    "parameters": []
+  },
+  {
+    "method": "GET",
+    "path": "/redfish/v1/EventService/Subscriptions",
+    "summary": "Collection of event subscriptions",
+    "resource_type": "EventDestinationCollection",
+    "tags": [
+      "EventService"
+    ],
+    "parameters": []
+  },
+  {
+    "method": "POST",
+    "path": "/redfish/v1/EventService/Subscriptions",
+    "summary": "Collection of event subscriptions",
+    "resource_type": "EventDestinationCollection",
+    "tags": [
+      "EventService"
+    ],
+    "parameters": []
+  },
+  {
+    "method": "GET",
+    "path": "/redfish/v1/EventService/Subscriptions/{SubscriptionId}",
+    "summary": "A specific event subscription",
+    "resource_type": "EventDestination",
+    "tags": [
+      "EventService"
+    ],
+    "parameters": [
+      "SubscriptionId"
+    ]
+  },
+  {
+    "method": "PATCH",
+    "path": "/redfish/v1/EventService/Subscriptions/{SubscriptionId}",
+    "summary": "A specific event subscription",
+    "resource_type": "EventDestination",
+    "tags": [
+      "EventService"
+    ],
+    "parameters": [
+      "SubscriptionId"
+    ]
+  },
+  {
+    "method": "DELETE",
+    "path": "/redfish/v1/EventService/Subscriptions/{SubscriptionId}",
+    "summary": "A specific event subscription",
+    "resource_type": "EventDestination",
+    "tags": [
+      "EventService"
+    ],
+    "parameters": [
+      "SubscriptionId"
+    ]
+  },
+  {
+    "method": "GET",
+    "path": "/redfish/v1/UpdateService",
+    "summary": "Firmware update service",
+    "resource_type": "UpdateService",
+    "tags": [
+      "UpdateService"
+    ],
+    "parameters": []
+  },
+  {
+    "method": "PATCH",
+    "path": "/redfish/v1/UpdateService",
+    "summary": "Firmware update service",
+    "resource_type": "UpdateService",
+    "tags": [
+      "UpdateService"
+    ],
+    "parameters": []
+  },
+  {
+    "method": "POST",
+    "path": "/redfish/v1/UpdateService/Actions/UpdateService.SimpleUpdate",
+    "summary": "Trigger a simple firmware update from a URI",
+    "resource_type": "Action",
+    "tags": [
+      "UpdateService"
+    ],
+    "parameters": []
+  },
+  {
+    "method": "GET",
+    "path": "/redfish/v1/UpdateService/FirmwareInventory",
+    "summary": "Collection of installed firmware",
+    "resource_type": "SoftwareInventoryCollection",
+    "tags": [
+      "UpdateService"
+    ],
+    "parameters": []
+  },
+  {
+    "method": "GET",
+    "path": "/redfish/v1/UpdateService/FirmwareInventory/{SoftwareId}",
+    "summary": "A specific firmware inventory entry",
+    "resource_type": "SoftwareInventory",
+    "tags": [
+      "UpdateService"
+    ],
+    "parameters": [
+      "SoftwareId"
+    ]
+  },
+  {
+    "method": "GET",
+    "path": "/redfish/v1/UpdateService/SoftwareInventory",
+    "summary": "Collection of installed software",
+    "resource_type": "SoftwareInventoryCollection",
+    "tags": [
+      "UpdateService"
+    ],
+    "parameters": []
+  },
+  {
+    "method": "GET",
+    "path": "/redfish/v1/UpdateService/SoftwareInventory/{SoftwareId}",
+    "summary": "A specific software inventory entry",
+    "resource_type": "SoftwareInventory",
+    "tags": [
+      "UpdateService"
+    ],
+    "parameters": [
+      "SoftwareId"
+    ]
+  },
+  {
+    "method": "GET",
+    "path": "/redfish/v1/TaskService",
+    "summary": "Task service for monitoring long-running operations",
+    "resource_type": "TaskService",
+    "tags": [
+      "TaskService"
+    ],
+    "parameters": []
+  },
+  {
+    "method": "GET",
+    "path": "/redfish/v1/TaskService/Tasks",
+    "summary": "Collection of tasks",
+    "resource_type": "TaskCollection",
+    "tags": [
+      "TaskService"
+    ],
+    "parameters": []
+  },
+  {
+    "method": "GET",
+    "path": "/redfish/v1/TaskService/Tasks/{TaskId}",
+    "summary": "A specific task (firmware update progress, etc.)",
+    "resource_type": "Task",
+    "tags": [
+      "TaskService"
+    ],
+    "parameters": [
+      "TaskId"
+    ]
+  },
+  {
+    "method": "DELETE",
+    "path": "/redfish/v1/TaskService/Tasks/{TaskId}",
+    "summary": "A specific task (firmware update progress, etc.)",
+    "resource_type": "Task",
+    "tags": [
+      "TaskService"
+    ],
+    "parameters": [
+      "TaskId"
+    ]
+  },
+  {
+    "method": "GET",
+    "path": "/redfish/v1/CertificateService",
+    "summary": "Certificate management service",
+    "resource_type": "CertificateService",
+    "tags": [
+      "CertificateService"
+    ],
+    "parameters": []
+  },
+  {
+    "method": "POST",
+    "path": "/redfish/v1/CertificateService/Actions/CertificateService.GenerateCSR",
+    "summary": "Generate a Certificate Signing Request",
+    "resource_type": "Action",
+    "tags": [
+      "CertificateService"
+    ],
+    "parameters": []
+  },
+  {
+    "method": "POST",
+    "path": "/redfish/v1/CertificateService/Actions/CertificateService.ReplaceCertificate",
+    "summary": "Replace an existing certificate",
+    "resource_type": "Action",
+    "tags": [
+      "CertificateService"
+    ],
+    "parameters": []
+  },
+  {
+    "method": "GET",
+    "path": "/redfish/v1/Managers/{ManagerId}/Certificates",
+    "summary": "Collection of certificates on a manager",
+    "resource_type": "CertificateCollection",
+    "tags": [
+      "Managers"
+    ],
+    "parameters": [
+      "ManagerId"
+    ]
+  },
+  {
+    "method": "GET",
+    "path": "/redfish/v1/Managers/{ManagerId}/Certificates/{CertificateId}",
+    "summary": "A specific certificate",
+    "resource_type": "Certificate",
+    "tags": [
+      "Managers"
+    ],
+    "parameters": [
+      "ManagerId",
+      "CertificateId"
+    ]
+  },
+  {
+    "method": "DELETE",
+    "path": "/redfish/v1/Managers/{ManagerId}/Certificates/{CertificateId}",
+    "summary": "A specific certificate",
+    "resource_type": "Certificate",
+    "tags": [
+      "Managers"
+    ],
+    "parameters": [
+      "ManagerId",
+      "CertificateId"
+    ]
+  },
+  {
+    "method": "GET",
+    "path": "/redfish/v1/TelemetryService",
+    "summary": "Telemetry service for metrics collection",
+    "resource_type": "TelemetryService",
+    "tags": [
+      "TelemetryService"
+    ],
+    "parameters": []
+  },
+  {
+    "method": "PATCH",
+    "path": "/redfish/v1/TelemetryService",
+    "summary": "Telemetry service for metrics collection",
+    "resource_type": "TelemetryService",
+    "tags": [
+      "TelemetryService"
+    ],
+    "parameters": []
+  },
+  {
+    "method": "GET",
+    "path": "/redfish/v1/TelemetryService/MetricDefinitions",
+    "summary": "Collection of metric definitions",
+    "resource_type": "MetricDefinitionCollection",
+    "tags": [
+      "TelemetryService"
+    ],
+    "parameters": []
+  },
+  {
+    "method": "GET",
+    "path": "/redfish/v1/TelemetryService/MetricDefinitions/{MetricDefinitionId}",
+    "summary": "A specific metric definition",
+    "resource_type": "MetricDefinition",
+    "tags": [
+      "TelemetryService"
+    ],
+    "parameters": [
+      "MetricDefinitionId"
+    ]
+  },
+  {
+    "method": "GET",
+    "path": "/redfish/v1/TelemetryService/MetricReports",
+    "summary": "Collection of metric reports",
+    "resource_type": "MetricReportCollection",
+    "tags": [
+      "TelemetryService"
+    ],
+    "parameters": []
+  },
+  {
+    "method": "GET",
+    "path": "/redfish/v1/TelemetryService/MetricReports/{MetricReportId}",
+    "summary": "A specific metric report",
+    "resource_type": "MetricReport",
+    "tags": [
+      "TelemetryService"
+    ],
+    "parameters": [
+      "MetricReportId"
+    ]
+  }
+]

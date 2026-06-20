@@ -1,0 +1,162 @@
+{
+  "person5_calculated": true,
+  "tool_counts": {
+    "before_tools": 133,
+    "after_tools": 22,
+    "workflow_tools": 19,
+    "meta_tools": 3,
+    "tool_reduction_count": 111,
+    "tool_reduction_pct": 83.5,
+    "meets_80pct_threshold": true
+  },
+  "token_counts": {
+    "full_spec_before_tokens": 410562,
+    "mcp_tool_descriptions_tokens": 3374,
+    "raw_as_tools_tokens": 12595,
+    "vs_raw_as_tools_reduction_pct": 73.2,
+    "vs_full_spec_reduction_pct": 99.2
+  },
+  "workflow_breakdown": [
+    {
+      "name": "discover_service_root",
+      "category": "monitoring",
+      "step_count": 1,
+      "raw_endpoints_covered": 1,
+      "parameters": 0
+    },
+    {
+      "name": "server_health_check",
+      "category": "monitoring",
+      "step_count": 8,
+      "raw_endpoints_covered": 7,
+      "parameters": 2
+    },
+    {
+      "name": "hardware_inventory_report",
+      "category": "monitoring",
+      "step_count": 11,
+      "raw_endpoints_covered": 11,
+      "parameters": 2
+    },
+    {
+      "name": "thermal_and_power_monitoring",
+      "category": "monitoring",
+      "step_count": 17,
+      "raw_endpoints_covered": 16,
+      "parameters": 2
+    },
+    {
+      "name": "storage_management",
+      "category": "configuration",
+      "step_count": 10,
+      "raw_endpoints_covered": 10,
+      "parameters": 4
+    },
+    {
+      "name": "server_power_operations",
+      "category": "lifecycle",
+      "step_count": 3,
+      "raw_endpoints_covered": 3,
+      "parameters": 2
+    },
+    {
+      "name": "bios_configuration",
+      "category": "configuration",
+      "step_count": 6,
+      "raw_endpoints_covered": 6,
+      "parameters": 2
+    },
+    {
+      "name": "secure_boot_management",
+      "category": "security",
+      "step_count": 3,
+      "raw_endpoints_covered": 3,
+      "parameters": 1
+    },
+    {
+      "name": "firmware_update",
+      "category": "maintenance",
+      "step_count": 9,
+      "raw_endpoints_covered": 8,
+      "parameters": 4
+    },
+    {
+      "name": "network_configuration",
+      "category": "configuration",
+      "step_count": 8,
+      "raw_endpoints_covered": 8,
+      "parameters": 3
+    },
+    {
+      "name": "bmc_manager_operations",
+      "category": "maintenance",
+      "step_count": 5,
+      "raw_endpoints_covered": 5,
+      "parameters": 2
+    },
+    {
+      "name": "user_account_management",
+      "category": "security",
+      "step_count": 9,
+      "raw_endpoints_covered": 9,
+      "parameters": 2
+    },
+    {
+      "name": "session_management",
+      "category": "security",
+      "step_count": 6,
+      "raw_endpoints_covered": 6,
+      "parameters": 1
+    },
+    {
+      "name": "event_subscription_management",
+      "category": "configuration",
+      "step_count": 8,
+      "raw_endpoints_covered": 8,
+      "parameters": 1
+    },
+    {
+      "name": "log_collection",
+      "category": "diagnostics",
+      "step_count": 10,
+      "raw_endpoints_covered": 10,
+      "parameters": 5
+    },
+    {
+      "name": "certificate_management",
+      "category": "security",
+      "step_count": 6,
+      "raw_endpoints_covered": 6,
+      "parameters": 2
+    },
+    {
+      "name": "virtual_media_operations",
+      "category": "lifecycle",
+      "step_count": 10,
+      "raw_endpoints_covered": 10,
+      "parameters": 4
+    },
+    {
+      "name": "telemetry_metrics_collection",
+      "category": "monitoring",
+      "step_count": 6,
+      "raw_endpoints_covered": 6,
+      "parameters": 2
+    },
+    {
+      "name": "task_management",
+      "category": "diagnostics",
+      "step_count": 4,
+      "raw_endpoints_covered": 4,
+      "parameters": 1
+    }
+  ],
+  "categories": {
+    "monitoring": 5,
+    "configuration": 4,
+    "lifecycle": 2,
+    "security": 4,
+    "maintenance": 2,
+    "diagnostics": 2
+  }
+}

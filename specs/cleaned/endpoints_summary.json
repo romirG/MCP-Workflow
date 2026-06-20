@@ -1,0 +1,5469 @@
+{
+  "metadata": {
+    "title": "Redfish API Endpoint Summary for Workflow Discovery",
+    "description": "This is a cleaned listing of all Redfish API endpoints for a server infrastructure management system (e.g., Dell iDRAC). Each endpoint is a low-level CRUD operation. Your task is to group these into 10-30 higher-level workflow tools.",
+    "total_endpoints": 133,
+    "total_resource_groups": 11,
+    "resource_groups_list": [
+      "",
+      "AccountService",
+      "CertificateService",
+      "Chassis",
+      "EventService",
+      "Managers",
+      "SessionService",
+      "Systems",
+      "TaskService",
+      "TelemetryService",
+      "UpdateService"
+    ]
+  },
+  "endpoints_by_resource_group": {
+    "": [
+      {
+        "method": "GET",
+        "path": "/redfish/v1",
+        "summary": "The service root for the Redfish service"
+      }
+    ],
+    "Systems": [
+      {
+        "method": "GET",
+        "path": "/redfish/v1/Systems",
+        "summary": "Collection of computer systems"
+      },
+      {
+        "method": "GET",
+        "path": "/redfish/v1/Systems/{SystemId}",
+        "summary": "A specific computer system instance"
+      },
+      {
+        "method": "PATCH",
+        "path": "/redfish/v1/Systems/{SystemId}",
+        "summary": "A specific computer system instance"
+      },
+      {
+        "method": "POST",
+        "path": "/redfish/v1/Systems/{SystemId}/Actions/ComputerSystem.Reset",
+        "summary": "Reset (reboot/power off/on) a computer system"
+      },
+      {
+        "method": "GET",
+        "path": "/redfish/v1/Systems/{SystemId}/Processors",
+        "summary": "Collection of processors in a system"
+      },
+      {
+        "method": "GET",
+        "path": "/redfish/v1/Systems/{SystemId}/Processors/{ProcessorId}",
+        "summary": "A specific processor instance"
+      },
+      {
+        "method": "GET",
+        "path": "/redfish/v1/Systems/{SystemId}/Memory",
+        "summary": "Collection of memory modules in a system"
+      },
+      {
+        "method": "GET",
+        "path": "/redfish/v1/Systems/{SystemId}/Memory/{MemoryId}",
+        "summary": "A specific memory module instance"
+      },
+      {
+        "method": "GET",
+        "path": "/redfish/v1/Systems/{SystemId}/EthernetInterfaces",
+        "summary": "Collection of Ethernet interfaces in a system"
+      },
+      {
+        "method": "GET",
+        "path": "/redfish/v1/Systems/{SystemId}/EthernetInterfaces/{InterfaceId}",
+        "summary": "A specific Ethernet interface"
+      },
+      {
+        "method": "PATCH",
+        "path": "/redfish/v1/Systems/{SystemId}/EthernetInterfaces/{InterfaceId}",
+        "summary": "A specific Ethernet interface"
+      },
+      {
+        "method": "GET",
+        "path": "/redfish/v1/Systems/{SystemId}/Storage",
+        "summary": "Collection of storage subsystems in a system"
+      },
+      {
+        "method": "GET",
+        "path": "/redfish/v1/Systems/{SystemId}/Storage/{StorageId}",
+        "summary": "A specific storage subsystem"
+      },
+      {
+        "method": "GET",
+        "path": "/redfish/v1/Systems/{SystemId}/Storage/{StorageId}/Drives/{DriveId}",
+        "summary": "A specific drive in a storage subsystem"
+      },
+      {
+        "method": "GET",
+        "path": "/redfish/v1/Systems/{SystemId}/Storage/{StorageId}/Volumes",
+        "summary": "Collection of volumes in a storage subsystem"
+      },
+      {
+        "method": "POST",
+        "path": "/redfish/v1/Systems/{SystemId}/Storage/{StorageId}/Volumes",
+        "summary": "Collection of volumes in a storage subsystem"
+      },
+      {
+        "method": "GET",
+        "path": "/redfish/v1/Systems/{SystemId}/Storage/{StorageId}/Volumes/{VolumeId}",
+        "summary": "A specific volume"
+      },
+      {
+        "method": "PATCH",
+        "path": "/redfish/v1/Systems/{SystemId}/Storage/{StorageId}/Volumes/{VolumeId}",
+        "summary": "A specific volume"
+      },
+      {
+        "method": "DELETE",
+        "path": "/redfish/v1/Systems/{SystemId}/Storage/{StorageId}/Volumes/{VolumeId}",
+        "summary": "A specific volume"
+      },
+      {
+        "method": "GET",
+        "path": "/redfish/v1/Systems/{SystemId}/SimpleStorage",
+        "summary": "Collection of simple storage instances"
+      },
+      {
+        "method": "GET",
+        "path": "/redfish/v1/Systems/{SystemId}/SimpleStorage/{SimpleStorageId}",
+        "summary": "A specific simple storage instance"
+      },
+      {
+        "method": "GET",
+        "path": "/redfish/v1/Systems/{SystemId}/NetworkInterfaces",
+        "summary": "Collection of network interfaces"
+      },
+      {
+        "method": "GET",
+        "path": "/redfish/v1/Systems/{SystemId}/Bios",
+        "summary": "BIOS settings for a system"
+      },
+      {
+        "method": "PATCH",
+        "path": "/redfish/v1/Systems/{SystemId}/Bios",
+        "summary": "BIOS settings for a system"
+      },
+      {
+        "method": "POST",
+        "path": "/redfish/v1/Systems/{SystemId}/Bios/Actions/Bios.ResetBios",
+        "summary": "Reset BIOS settings to default"
+      },
+      {
+        "method": "POST",
+        "path": "/redfish/v1/Systems/{SystemId}/Bios/Actions/Bios.ChangePassword",
+        "summary": "Change the BIOS password"
+      },
+      {
+        "method": "GET",
+        "path": "/redfish/v1/Systems/{SystemId}/SecureBoot",
+        "summary": "UEFI Secure Boot settings"
+      },
+      {
+        "method": "PATCH",
+        "path": "/redfish/v1/Systems/{SystemId}/SecureBoot",
+        "summary": "UEFI Secure Boot settings"
+      },
+      {
+        "method": "POST",
+        "path": "/redfish/v1/Systems/{SystemId}/SecureBoot/Actions/SecureBoot.ResetKeys",
+        "summary": "Reset Secure Boot keys"
+      },
+      {
+        "method": "GET",
+        "path": "/redfish/v1/Systems/{SystemId}/BootOptions",
+        "summary": "Collection of boot options"
+      },
+      {
+        "method": "GET",
+        "path": "/redfish/v1/Systems/{SystemId}/BootOptions/{BootOptionId}",
+        "summary": "A specific boot option"
+      },
+      {
+        "method": "GET",
+        "path": "/redfish/v1/Systems/{SystemId}/LogServices",
+        "summary": "Collection of log services for a system"
+      },
+      {
+        "method": "GET",
+        "path": "/redfish/v1/Systems/{SystemId}/LogServices/{LogServiceId}",
+        "summary": "A specific log service"
+      },
+      {
+        "method": "GET",
+        "path": "/redfish/v1/Systems/{SystemId}/LogServices/{LogServiceId}/Entries",
+        "summary": "Collection of log entries"
+      },
+      {
+        "method": "GET",
+        "path": "/redfish/v1/Systems/{SystemId}/LogServices/{LogServiceId}/Entries/{EntryId}",
+        "summary": "A specific log entry"
+      },
+      {
+        "method": "POST",
+        "path": "/redfish/v1/Systems/{SystemId}/LogServices/{LogServiceId}/Actions/LogService.ClearLog",
+        "summary": "Clear all log entries"
+      },
+      {
+        "method": "GET",
+        "path": "/redfish/v1/Systems/{SystemId}/VirtualMedia",
+        "summary": "Collection of virtual media"
+      },
+      {
+        "method": "GET",
+        "path": "/redfish/v1/Systems/{SystemId}/VirtualMedia/{VirtualMediaId}",
+        "summary": "A specific virtual media device"
+      },
+      {
+        "method": "PATCH",
+        "path": "/redfish/v1/Systems/{SystemId}/VirtualMedia/{VirtualMediaId}",
+        "summary": "A specific virtual media device"
+      },
+      {
+        "method": "POST",
+        "path": "/redfish/v1/Systems/{SystemId}/VirtualMedia/{VirtualMediaId}/Actions/VirtualMedia.InsertMedia",
+        "summary": "Insert (mount) virtual media"
+      },
+      {
+        "method": "POST",
+        "path": "/redfish/v1/Systems/{SystemId}/VirtualMedia/{VirtualMediaId}/Actions/VirtualMedia.EjectMedia",
+        "summary": "Eject (unmount) virtual media"
+      },
+      {
+        "method": "GET",
+        "path": "/redfish/v1/Systems/{SystemId}/PCIeDevices",
+        "summary": "Collection of PCIe devices"
+      },
+      {
+        "method": "GET",
+        "path": "/redfish/v1/Systems/{SystemId}/PCIeDevices/{PCIeDeviceId}",
+        "summary": "A specific PCIe device"
+      },
+      {
+        "method": "GET",
+        "path": "/redfish/v1/Systems/{SystemId}/PCIeDevices/{PCIeDeviceId}/PCIeFunctions",
+        "summary": "Collection of PCIe functions"
+      },
+      {
+        "method": "GET",
+        "path": "/redfish/v1/Systems/{SystemId}/PCIeDevices/{PCIeDeviceId}/PCIeFunctions/{FunctionId}",
+        "summary": "A specific PCIe function"
+      }
+    ],
+    "Chassis": [
+      {
+        "method": "GET",
+        "path": "/redfish/v1/Chassis",
+        "summary": "Collection of chassis"
+      },
+      {
+        "method": "GET",
+        "path": "/redfish/v1/Chassis/{ChassisId}",
+        "summary": "A specific chassis instance"
+      },
+      {
+        "method": "PATCH",
+        "path": "/redfish/v1/Chassis/{ChassisId}",
+        "summary": "A specific chassis instance"
+      },
+      {
+        "method": "GET",
+        "path": "/redfish/v1/Chassis/{ChassisId}/Power",
+        "summary": "Power information for a chassis"
+      },
+      {
+        "method": "PATCH",
+        "path": "/redfish/v1/Chassis/{ChassisId}/Power",
+        "summary": "Power information for a chassis"
+      },
+      {
+        "method": "GET",
+        "path": "/redfish/v1/Chassis/{ChassisId}/Thermal",
+        "summary": "Thermal information for a chassis (temperatures, fans)"
+      },
+      {
+        "method": "PATCH",
+        "path": "/redfish/v1/Chassis/{ChassisId}/Thermal",
+        "summary": "Thermal information for a chassis (temperatures, fans)"
+      },
+      {
+        "method": "GET",
+        "path": "/redfish/v1/Chassis/{ChassisId}/Sensors",
+        "summary": "Collection of sensors in a chassis"
+      },
+      {
+        "method": "GET",
+        "path": "/redfish/v1/Chassis/{ChassisId}/Sensors/{SensorId}",
+        "summary": "A specific sensor reading"
+      },
+      {
+        "method": "GET",
+        "path": "/redfish/v1/Chassis/{ChassisId}/EnvironmentMetrics",
+        "summary": "Environmental metrics (power consumption, temperature summary)"
+      },
+      {
+        "method": "GET",
+        "path": "/redfish/v1/Chassis/{ChassisId}/PowerSubsystem/PowerSupplies",
+        "summary": "Collection of power supplies"
+      },
+      {
+        "method": "GET",
+        "path": "/redfish/v1/Chassis/{ChassisId}/PowerSubsystem/PowerSupplies/{PowerSupplyId}",
+        "summary": "A specific power supply"
+      },
+      {
+        "method": "GET",
+        "path": "/redfish/v1/Chassis/{ChassisId}/PowerSubsystem/Batteries",
+        "summary": "Collection of batteries"
+      },
+      {
+        "method": "GET",
+        "path": "/redfish/v1/Chassis/{ChassisId}/PowerSubsystem/Batteries/{BatteryId}",
+        "summary": "A specific battery"
+      },
+      {
+        "method": "GET",
+        "path": "/redfish/v1/Chassis/{ChassisId}/ThermalSubsystem/Fans",
+        "summary": "Collection of fans"
+      },
+      {
+        "method": "GET",
+        "path": "/redfish/v1/Chassis/{ChassisId}/ThermalSubsystem/Fans/{FanId}",
+        "summary": "A specific fan"
+      },
+      {
+        "method": "GET",
+        "path": "/redfish/v1/Chassis/{ChassisId}/Assembly",
+        "summary": "Assembly information (FRU data)"
+      },
+      {
+        "method": "GET",
+        "path": "/redfish/v1/Chassis/{ChassisId}/NetworkAdapters",
+        "summary": "Collection of network adapters"
+      },
+      {
+        "method": "GET",
+        "path": "/redfish/v1/Chassis/{ChassisId}/NetworkAdapters/{NetworkAdapterId}",
+        "summary": "A specific network adapter"
+      },
+      {
+        "method": "GET",
+        "path": "/redfish/v1/Chassis/{ChassisId}/Drives",
+        "summary": "Collection of drives in a chassis"
+      },
+      {
+        "method": "GET",
+        "path": "/redfish/v1/Chassis/{ChassisId}/Drives/{DriveId}",
+        "summary": "A specific drive in a chassis"
+      },
+      {
+        "method": "GET",
+        "path": "/redfish/v1/Chassis/{ChassisId}/LogServices",
+        "summary": "Collection of log services for a chassis"
+      }
+    ],
+    "Managers": [
+      {
+        "method": "GET",
+        "path": "/redfish/v1/Managers",
+        "summary": "Collection of management controllers (BMC/iDRAC)"
+      },
+      {
+        "method": "GET",
+        "path": "/redfish/v1/Managers/{ManagerId}",
+        "summary": "A specific management controller"
+      },
+      {
+        "method": "PATCH",
+        "path": "/redfish/v1/Managers/{ManagerId}",
+        "summary": "A specific management controller"
+      },
+      {
+        "method": "POST",
+        "path": "/redfish/v1/Managers/{ManagerId}/Actions/Manager.Reset",
+        "summary": "Reset the management controller (BMC reboot)"
+      },
+      {
+        "method": "POST",
+        "path": "/redfish/v1/Managers/{ManagerId}/Actions/Manager.ResetToDefaults",
+        "summary": "Reset manager to factory defaults"
+      },
+      {
+        "method": "GET",
+        "path": "/redfish/v1/Managers/{ManagerId}/EthernetInterfaces",
+        "summary": "Collection of manager network interfaces"
+      },
+      {
+        "method": "GET",
+        "path": "/redfish/v1/Managers/{ManagerId}/EthernetInterfaces/{InterfaceId}",
+        "summary": "A specific manager network interface"
+      },
+      {
+        "method": "PATCH",
+        "path": "/redfish/v1/Managers/{ManagerId}/EthernetInterfaces/{InterfaceId}",
+        "summary": "A specific manager network interface"
+      },
+      {
+        "method": "GET",
+        "path": "/redfish/v1/Managers/{ManagerId}/LogServices",
+        "summary": "Collection of log services for a manager"
+      },
+      {
+        "method": "GET",
+        "path": "/redfish/v1/Managers/{ManagerId}/LogServices/{LogServiceId}",
+        "summary": "A specific manager log service"
+      },
+      {
+        "method": "GET",
+        "path": "/redfish/v1/Managers/{ManagerId}/LogServices/{LogServiceId}/Entries",
+        "summary": "Collection of manager log entries"
+      },
+      {
+        "method": "GET",
+        "path": "/redfish/v1/Managers/{ManagerId}/LogServices/{LogServiceId}/Entries/{EntryId}",
+        "summary": "A specific manager log entry"
+      },
+      {
+        "method": "GET",
+        "path": "/redfish/v1/Managers/{ManagerId}/VirtualMedia",
+        "summary": "Collection of virtual media on manager"
+      },
+      {
+        "method": "GET",
+        "path": "/redfish/v1/Managers/{ManagerId}/VirtualMedia/{VirtualMediaId}",
+        "summary": "A specific virtual media instance on manager"
+      },
+      {
+        "method": "PATCH",
+        "path": "/redfish/v1/Managers/{ManagerId}/VirtualMedia/{VirtualMediaId}",
+        "summary": "A specific virtual media instance on manager"
+      },
+      {
+        "method": "POST",
+        "path": "/redfish/v1/Managers/{ManagerId}/VirtualMedia/{VirtualMediaId}/Actions/VirtualMedia.InsertMedia",
+        "summary": "Insert virtual media on manager"
+      },
+      {
+        "method": "POST",
+        "path": "/redfish/v1/Managers/{ManagerId}/VirtualMedia/{VirtualMediaId}/Actions/VirtualMedia.EjectMedia",
+        "summary": "Eject virtual media on manager"
+      },
+      {
+        "method": "GET",
+        "path": "/redfish/v1/Managers/{ManagerId}/NetworkProtocol",
+        "summary": "Network protocol settings (HTTPS, SSH, IPMI, etc.)"
+      },
+      {
+        "method": "PATCH",
+        "path": "/redfish/v1/Managers/{ManagerId}/NetworkProtocol",
+        "summary": "Network protocol settings (HTTPS, SSH, IPMI, etc.)"
+      },
+      {
+        "method": "GET",
+        "path": "/redfish/v1/Managers/{ManagerId}/Certificates",
+        "summary": "Collection of certificates on a manager"
+      },
+      {
+        "method": "GET",
+        "path": "/redfish/v1/Managers/{ManagerId}/Certificates/{CertificateId}",
+        "summary": "A specific certificate"
+      },
+      {
+        "method": "DELETE",
+        "path": "/redfish/v1/Managers/{ManagerId}/Certificates/{CertificateId}",
+        "summary": "A specific certificate"
+      }
+    ],
+    "AccountService": [
+      {
+        "method": "GET",
+        "path": "/redfish/v1/AccountService",
+        "summary": "Account service configuration"
+      },
+      {
+        "method": "PATCH",
+        "path": "/redfish/v1/AccountService",
+        "summary": "Account service configuration"
+      },
+      {
+        "method": "GET",
+        "path": "/redfish/v1/AccountService/Accounts",
+        "summary": "Collection of user accounts"
+      },
+      {
+        "method": "POST",
+        "path": "/redfish/v1/AccountService/Accounts",
+        "summary": "Collection of user accounts"
+      },
+      {
+        "method": "GET",
+        "path": "/redfish/v1/AccountService/Accounts/{AccountId}",
+        "summary": "A specific user account"
+      },
+      {
+        "method": "PATCH",
+        "path": "/redfish/v1/AccountService/Accounts/{AccountId}",
+        "summary": "A specific user account"
+      },
+      {
+        "method": "DELETE",
+        "path": "/redfish/v1/AccountService/Accounts/{AccountId}",
+        "summary": "A specific user account"
+      },
+      {
+        "method": "GET",
+        "path": "/redfish/v1/AccountService/Roles",
+        "summary": "Collection of roles"
+      },
+      {
+        "method": "GET",
+        "path": "/redfish/v1/AccountService/Roles/{RoleId}",
+        "summary": "A specific role definition"
+      }
+    ],
+    "SessionService": [
+      {
+        "method": "GET",
+        "path": "/redfish/v1/SessionService",
+        "summary": "Session service configuration"
+      },
+      {
+        "method": "PATCH",
+        "path": "/redfish/v1/SessionService",
+        "summary": "Session service configuration"
+      },
+      {
+        "method": "GET",
+        "path": "/redfish/v1/SessionService/Sessions",
+        "summary": "Collection of active sessions"
+      },
+      {
+        "method": "POST",
+        "path": "/redfish/v1/SessionService/Sessions",
+        "summary": "Collection of active sessions"
+      },
+      {
+        "method": "GET",
+        "path": "/redfish/v1/SessionService/Sessions/{SessionId}",
+        "summary": "A specific session"
+      },
+      {
+        "method": "DELETE",
+        "path": "/redfish/v1/SessionService/Sessions/{SessionId}",
+        "summary": "A specific session"
+      }
+    ],
+    "EventService": [
+      {
+        "method": "GET",
+        "path": "/redfish/v1/EventService",
+        "summary": "Event service configuration"
+      },
+      {
+        "method": "PATCH",
+        "path": "/redfish/v1/EventService",
+        "summary": "Event service configuration"
+      },
+      {
+        "method": "POST",
+        "path": "/redfish/v1/EventService/Actions/EventService.SubmitTestEvent",
+        "summary": "Submit a test event"
+      },
+      {
+        "method": "GET",
+        "path": "/redfish/v1/EventService/Subscriptions",
+        "summary": "Collection of event subscriptions"
+      },
+      {
+        "method": "POST",
+        "path": "/redfish/v1/EventService/Subscriptions",
+        "summary": "Collection of event subscriptions"
+      },
+      {
+        "method": "GET",
+        "path": "/redfish/v1/EventService/Subscriptions/{SubscriptionId}",
+        "summary": "A specific event subscription"
+      },
+      {
+        "method": "PATCH",
+        "path": "/redfish/v1/EventService/Subscriptions/{SubscriptionId}",
+        "summary": "A specific event subscription"
+      },
+      {
+        "method": "DELETE",
+        "path": "/redfish/v1/EventService/Subscriptions/{SubscriptionId}",
+        "summary": "A specific event subscription"
+      }
+    ],
+    "UpdateService": [
+      {
+        "method": "GET",
+        "path": "/redfish/v1/UpdateService",
+        "summary": "Firmware update service"
+      },
+      {
+        "method": "PATCH",
+        "path": "/redfish/v1/UpdateService",
+        "summary": "Firmware update service"
+      },
+      {
+        "method": "POST",
+        "path": "/redfish/v1/UpdateService/Actions/UpdateService.SimpleUpdate",
+        "summary": "Trigger a simple firmware update from a URI"
+      },
+      {
+        "method": "GET",
+        "path": "/redfish/v1/UpdateService/FirmwareInventory",
+        "summary": "Collection of installed firmware"
+      },
+      {
+        "method": "GET",
+        "path": "/redfish/v1/UpdateService/FirmwareInventory/{SoftwareId}",
+        "summary": "A specific firmware inventory entry"
+      },
+      {
+        "method": "GET",
+        "path": "/redfish/v1/UpdateService/SoftwareInventory",
+        "summary": "Collection of installed software"
+      },
+      {
+        "method": "GET",
+        "path": "/redfish/v1/UpdateService/SoftwareInventory/{SoftwareId}",
+        "summary": "A specific software inventory entry"
+      }
+    ],
+    "TaskService": [
+      {
+        "method": "GET",
+        "path": "/redfish/v1/TaskService",
+        "summary": "Task service for monitoring long-running operations"
+      },
+      {
+        "method": "GET",
+        "path": "/redfish/v1/TaskService/Tasks",
+        "summary": "Collection of tasks"
+      },
+      {
+        "method": "GET",
+        "path": "/redfish/v1/TaskService/Tasks/{TaskId}",
+        "summary": "A specific task (firmware update progress, etc.)"
+      },
+      {
+        "method": "DELETE",
+        "path": "/redfish/v1/TaskService/Tasks/{TaskId}",
+        "summary": "A specific task (firmware update progress, etc.)"
+      }
+    ],
+    "CertificateService": [
+      {
+        "method": "GET",
+        "path": "/redfish/v1/CertificateService",
+        "summary": "Certificate management service"
+      },
+      {
+        "method": "POST",
+        "path": "/redfish/v1/CertificateService/Actions/CertificateService.GenerateCSR",
+        "summary": "Generate a Certificate Signing Request"
+      },
+      {
+        "method": "POST",
+        "path": "/redfish/v1/CertificateService/Actions/CertificateService.ReplaceCertificate",
+        "summary": "Replace an existing certificate"
+      }
+    ],
+    "TelemetryService": [
+      {
+        "method": "GET",
+        "path": "/redfish/v1/TelemetryService",
+        "summary": "Telemetry service for metrics collection"
+      },
+      {
+        "method": "PATCH",
+        "path": "/redfish/v1/TelemetryService",
+        "summary": "Telemetry service for metrics collection"
+      },
+      {
+        "method": "GET",
+        "path": "/redfish/v1/TelemetryService/MetricDefinitions",
+        "summary": "Collection of metric definitions"
+      },
+      {
+        "method": "GET",
+        "path": "/redfish/v1/TelemetryService/MetricDefinitions/{MetricDefinitionId}",
+        "summary": "A specific metric definition"
+      },
+      {
+        "method": "GET",
+        "path": "/redfish/v1/TelemetryService/MetricReports",
+        "summary": "Collection of metric reports"
+      },
+      {
+        "method": "GET",
+        "path": "/redfish/v1/TelemetryService/MetricReports/{MetricReportId}",
+        "summary": "A specific metric report"
+      }
+    ]
+  },
+  "key_schemas": {
+    "ComputerSystem": {
+      "description": "The `ComputerSystem` schema represents a computer or system instance and the software-visible resources, or items within the data plane, such as me...",
+      "properties": {
+        "Actions": {
+          "type": "ComputerSystem_v1_22_2_Actions",
+          "description": "The available actions for this resource.",
+          "readOnly": false
+        },
+        "AssetTag": {
+          "type": "string",
+          "description": "The user-definable tag that can track this computer system for inventory or othe",
+          "readOnly": false
+        },
+        "Bios": {
+          "type": "odata-v4_idRef",
+          "description": "The link to the BIOS settings associated with this system.",
+          "readOnly": true
+        },
+        "BiosVersion": {
+          "type": "string",
+          "description": "The version of the system BIOS or primary system firmware.",
+          "readOnly": true
+        },
+        "Boot": {
+          "type": "ComputerSystem_v1_22_2_Boot",
+          "description": "The boot settings for this system.",
+          "readOnly": false
+        },
+        "BootProgress": {
+          "type": "",
+          "description": "This object describes the last boot progress state.",
+          "readOnly": false
+        },
+        "Certificates": {
+          "type": "odata-v4_idRef",
+          "description": "The link to a collection of certificates for device identity and attestation.",
+          "readOnly": true
+        },
+        "Composition": {
+          "type": "",
+          "description": "Information about the composition capabilities and state of the computer system.",
+          "readOnly": false
+        },
+        "Description": {
+          "type": "",
+          "description": "",
+          "readOnly": true
+        },
+        "EthernetInterfaces": {
+          "type": "odata-v4_idRef",
+          "description": "The link to the collection of Ethernet interfaces associated with this system.",
+          "readOnly": true
+        },
+        "FabricAdapters": {
+          "type": "odata-v4_idRef",
+          "description": "The link to the collection of fabric adapters associated with this system.",
+          "readOnly": true
+        },
+        "GraphicalConsole": {
+          "type": "ComputerSystem_v1_22_2_HostGraphicalConsole",
+          "description": "The information about the graphical console (KVM-IP) service of this system.",
+          "readOnly": false
+        },
+        "GraphicsControllers": {
+          "type": "odata-v4_idRef",
+          "description": "The link to a collection of graphics controllers that can output video for this ",
+          "readOnly": true
+        },
+        "HostName": {
+          "type": "string",
+          "description": "The DNS host name, without any domain information.",
+          "readOnly": false
+        },
+        "HostWatchdogTimer": {
+          "type": "ComputerSystem_v1_22_2_WatchdogTimer",
+          "description": "The host watchdog timer functionality for this system.",
+          "readOnly": false
+        },
+        "HostedServices": {
+          "type": "ComputerSystem_v1_22_2_HostedServices",
+          "description": "The services that this computer system supports.",
+          "readOnly": false
+        },
+        "HostingRoles": {
+          "type": "array",
+          "description": "The hosting roles that this computer system supports.",
+          "readOnly": true
+        },
+        "Id": {
+          "type": "Resource_Id",
+          "description": "",
+          "readOnly": true
+        },
+        "IdlePowerSaver": {
+          "type": "",
+          "description": "The idle power saver settings of the computer system.",
+          "readOnly": false
+        },
+        "IndicatorLED": {
+          "type": "",
+          "description": "The state of the indicator LED, which identifies the system.",
+          "readOnly": false
+        },
+        "KeyManagement": {
+          "type": "",
+          "description": "The key management settings of the computer system.",
+          "readOnly": false
+        },
+        "LastResetTime": {
+          "type": "string",
+          "description": "The date and time when the system was last reset or rebooted.",
+          "readOnly": true
+        },
+        "Links": {
+          "type": "ComputerSystem_v1_22_2_Links",
+          "description": "The links to other resources that are related to this resource.",
+          "readOnly": false
+        },
+        "LocationIndicatorActive": {
+          "type": "boolean",
+          "description": "An indicator allowing an operator to physically locate this resource.",
+          "readOnly": false
+        },
+        "LogServices": {
+          "type": "odata-v4_idRef",
+          "description": "The link to the collection of log services associated with this system.",
+          "readOnly": true
+        },
+        "Manufacturer": {
+          "type": "string",
+          "description": "The manufacturer or OEM of this system.",
+          "readOnly": true
+        },
+        "ManufacturingMode": {
+          "type": "boolean",
+          "description": "An indication of whether the system is in manufacturing mode.  Manufacturing mod",
+          "readOnly": true
+        },
+        "Measurements": {
+          "type": "array",
+          "description": "An array of DSP0274-defined measurement blocks.",
+          "readOnly": false
+        },
+        "Memory": {
+          "type": "odata-v4_idRef",
+          "description": "The link to the collection of memory associated with this system.",
+          "readOnly": true
+        },
+        "MemoryDomains": {
+          "type": "odata-v4_idRef",
+          "description": "The link to the collection of memory domains associated with this system.",
+          "readOnly": true
+        },
+        "MemorySummary": {
+          "type": "ComputerSystem_v1_22_2_MemorySummary",
+          "description": "The central memory of the system in general detail.",
+          "readOnly": false
+        },
+        "Model": {
+          "type": "string",
+          "description": "The product name for this system, without the manufacturer name.",
+          "readOnly": true
+        },
+        "Name": {
+          "type": "Resource_Name",
+          "description": "",
+          "readOnly": true
+        },
+        "NetworkInterfaces": {
+          "type": "odata-v4_idRef",
+          "description": "The link to the collection of Network Interfaces associated with this system.",
+          "readOnly": true
+        },
+        "Oem": {
+          "type": "Resource_Oem",
+          "description": "The OEM extension property.",
+          "readOnly": false
+        },
+        "OperatingSystem": {
+          "type": "odata-v4_idRef",
+          "description": "The link to the operating system information associated with this system.",
+          "readOnly": true
+        },
+        "PCIeDevices": {
+          "type": "array",
+          "description": "The link to a collection of PCIe devices that this computer system uses.",
+          "readOnly": true
+        },
+        "PCIeDevices@odata.count": {
+          "type": "odata-v4_count",
+          "description": "",
+          "readOnly": false
+        },
+        "PCIeFunctions": {
+          "type": "array",
+          "description": "The link to a collection of PCIe functions that this computer system uses.",
+          "readOnly": true
+        },
+        "PCIeFunctions@odata.count": {
+          "type": "odata-v4_count",
+          "description": "",
+          "readOnly": false
+        },
+        "PartNumber": {
+          "type": "string",
+          "description": "The part number for this system.",
+          "readOnly": true
+        },
+        "PowerCycleDelaySeconds": {
+          "type": "number",
+          "description": "The number of seconds to delay power on after a `Reset` action requesting `Power",
+          "readOnly": false
+        },
+        "PowerMode": {
+          "type": "",
+          "description": "The power mode setting of the computer system.",
+          "readOnly": false
+        },
+        "PowerOffDelaySeconds": {
+          "type": "number",
+          "description": "The number of seconds to delay power off during a reset.  Zero seconds indicates",
+          "readOnly": false
+        },
+        "PowerOnDelaySeconds": {
+          "type": "number",
+          "description": "The number of seconds to delay power on after a power cycle or during a reset.  ",
+          "readOnly": false
+        },
+        "PowerRestorePolicy": {
+          "type": "ComputerSystem_v1_22_2_PowerRestorePolicyTypes",
+          "description": "The desired power state of the system when power is restored after a power loss.",
+          "readOnly": false
+        },
+        "PowerState": {
+          "type": "",
+          "description": "The current power state of the system.",
+          "readOnly": true
+        },
+        "ProcessorSummary": {
+          "type": "ComputerSystem_v1_22_2_ProcessorSummary",
+          "description": "The central processors of the system in general detail.",
+          "readOnly": false
+        },
+        "Processors": {
+          "type": "odata-v4_idRef",
+          "description": "The link to the collection of processors associated with this system.",
+          "readOnly": true
+        },
+        "Redundancy": {
+          "type": "array",
+          "description": "The link to a collection of redundancy entities.  Each entity specifies a kind a",
+          "readOnly": true
+        },
+        "Redundancy@odata.count": {
+          "type": "odata-v4_count",
+          "description": "",
+          "readOnly": false
+        },
+        "SKU": {
+          "type": "string",
+          "description": "The manufacturer SKU for this system.",
+          "readOnly": true
+        },
+        "SecureBoot": {
+          "type": "odata-v4_idRef",
+          "description": "The link to the UEFI Secure Boot associated with this system.",
+          "readOnly": true
+        },
+        "SerialConsole": {
+          "type": "ComputerSystem_v1_22_2_HostSerialConsole",
+          "description": "The serial console services that this system provides.",
+          "readOnly": false
+        },
+        "SerialNumber": {
+          "type": "string",
+          "description": "The serial number for this system.",
+          "readOnly": true
+        },
+        "SimpleStorage": {
+          "type": "odata-v4_idRef",
+          "description": "The link to the collection of storage devices associated with this system.",
+          "readOnly": true
+        },
+        "Status": {
+          "type": "Resource_Status",
+          "description": "The status and health of the resource and its subordinate or dependent resources",
+          "readOnly": false
+        },
+        "Storage": {
+          "type": "odata-v4_idRef",
+          "description": "The link to the collection of storage devices associated with this system.",
+          "readOnly": true
+        },
+        "SubModel": {
+          "type": "string",
+          "description": "The sub-model for this system.",
+          "readOnly": true
+        },
+        "SystemType": {
+          "type": "ComputerSystem_v1_22_2_SystemType",
+          "description": "The type of computer system that this resource represents.",
+          "readOnly": true
+        },
+        "TrustedModules": {
+          "type": "array",
+          "description": "An array of trusted modules in the system.",
+          "readOnly": false
+        },
+        "USBControllers": {
+          "type": "odata-v4_idRef",
+          "description": "The link to a collection of USB controllers for this system.",
+          "readOnly": true
+        },
+        "UUID": {
+          "type": "",
+          "description": "The UUID for this system.",
+          "readOnly": true
+        },
+        "VirtualMedia": {
+          "type": "odata-v4_idRef",
+          "description": "The link to the virtual media services for this system.",
+          "readOnly": true
+        },
+        "VirtualMediaConfig": {
+          "type": "ComputerSystem_v1_22_2_VirtualMediaConfig",
+          "description": "The information about the virtual media service of this system.",
+          "readOnly": false
+        }
+      }
+    },
+    "Chassis": {
+      "description": "The `Chassis` schema represents the physical components of a system. This resource represents the sheet-metal confined spaces and logical zones suc...",
+      "properties": {
+        "Actions": {
+          "type": "Chassis_v1_25_1_Actions",
+          "description": "The available actions for this resource.",
+          "readOnly": false
+        },
+        "Assembly": {
+          "type": "odata-v4_idRef",
+          "description": "The link to the assembly associated with this chassis.",
+          "readOnly": true
+        },
+        "AssetTag": {
+          "type": "string",
+          "description": "The user-assigned asset tag of this chassis.",
+          "readOnly": false
+        },
+        "Certificates": {
+          "type": "odata-v4_idRef",
+          "description": "The link to a collection of certificates for device identity and attestation.",
+          "readOnly": true
+        },
+        "ChassisType": {
+          "type": "Chassis_v1_25_1_ChassisType",
+          "description": "The type of physical form factor of the chassis.",
+          "readOnly": true
+        },
+        "Controls": {
+          "type": "odata-v4_idRef",
+          "description": "The link to the collection of controls located in this chassis.",
+          "readOnly": true
+        },
+        "DepthMm": {
+          "type": "number",
+          "description": "The depth of the chassis.",
+          "readOnly": true
+        },
+        "Description": {
+          "type": "",
+          "description": "",
+          "readOnly": true
+        },
+        "Doors": {
+          "type": "Chassis_v1_25_1_Doors",
+          "description": "The doors or access panels of the chassis.",
+          "readOnly": false
+        },
+        "Drives": {
+          "type": "odata-v4_idRef",
+          "description": "The link to the collection of drives within this chassis.",
+          "readOnly": false
+        },
+        "ElectricalSourceManagerURIs": {
+          "type": "array",
+          "description": "The URIs of the management interfaces for the external electrical source connect",
+          "readOnly": false
+        },
+        "ElectricalSourceNames": {
+          "type": "array",
+          "description": "The names of the external electrical sources, such as circuits or outlets, conne",
+          "readOnly": false
+        },
+        "EnvironmentMetrics": {
+          "type": "odata-v4_idRef",
+          "description": "The link to the environment metrics for this chassis.",
+          "readOnly": true
+        },
+        "EnvironmentalClass": {
+          "type": "",
+          "description": "The ASHRAE Environmental Class for this chassis.",
+          "readOnly": false
+        },
+        "FabricAdapters": {
+          "type": "odata-v4_idRef",
+          "description": "The link to the collection of fabric adapters located in this chassis that provi",
+          "readOnly": true
+        },
+        "HeatingCoolingEquipmentNames": {
+          "type": "array",
+          "description": "The names of the external heating or cooling equipment, such as coolant distribu",
+          "readOnly": false
+        },
+        "HeatingCoolingManagerURIs": {
+          "type": "array",
+          "description": "The URIs of the management interfaces for the external heating or cooling equipm",
+          "readOnly": false
+        },
+        "HeightMm": {
+          "type": "number",
+          "description": "The height of the chassis.",
+          "readOnly": true
+        },
+        "HotPluggable": {
+          "type": "boolean",
+          "description": "An indication of whether this component can be inserted or removed while the equ",
+          "readOnly": true
+        },
+        "Id": {
+          "type": "Resource_Id",
+          "description": "",
+          "readOnly": true
+        },
+        "IndicatorLED": {
+          "type": "",
+          "description": "The state of the indicator LED, which identifies the chassis.",
+          "readOnly": false
+        },
+        "Links": {
+          "type": "Chassis_v1_25_1_Links",
+          "description": "The links to other resources that are related to this resource.",
+          "readOnly": false
+        },
+        "Location": {
+          "type": "Resource_Location",
+          "description": "The location of the chassis.",
+          "readOnly": false
+        },
+        "LocationIndicatorActive": {
+          "type": "boolean",
+          "description": "An indicator allowing an operator to physically locate this resource.",
+          "readOnly": false
+        },
+        "LogServices": {
+          "type": "odata-v4_idRef",
+          "description": "The link to the logs for this chassis.",
+          "readOnly": true
+        },
+        "Manufacturer": {
+          "type": "string",
+          "description": "The manufacturer of this chassis.",
+          "readOnly": true
+        },
+        "MaxPowerWatts": {
+          "type": "number",
+          "description": "The upper bound of the total power consumed by the chassis.",
+          "readOnly": true
+        },
+        "Measurements": {
+          "type": "array",
+          "description": "An array of DSP0274-defined measurement blocks.",
+          "readOnly": false
+        },
+        "MediaControllers": {
+          "type": "odata-v4_idRef",
+          "description": "The link to the collection of media controllers located in this chassis.",
+          "readOnly": true
+        },
+        "Memory": {
+          "type": "odata-v4_idRef",
+          "description": "The link to the collection of memory located in this chassis that belong to fabr",
+          "readOnly": true
+        },
+        "MemoryDomains": {
+          "type": "odata-v4_idRef",
+          "description": "The link to the collection of memory domains located in this chassis that belong",
+          "readOnly": true
+        },
+        "MinPowerWatts": {
+          "type": "number",
+          "description": "The lower bound of the total power consumed by the chassis.",
+          "readOnly": true
+        },
+        "Model": {
+          "type": "string",
+          "description": "The model number of the chassis.",
+          "readOnly": true
+        },
+        "Name": {
+          "type": "Resource_Name",
+          "description": "",
+          "readOnly": true
+        },
+        "NetworkAdapters": {
+          "type": "odata-v4_idRef",
+          "description": "The link to the collection of network adapters associated with this chassis.",
+          "readOnly": true
+        },
+        "Oem": {
+          "type": "Resource_Oem",
+          "description": "The OEM extension property.",
+          "readOnly": false
+        },
+        "PCIeDevices": {
+          "type": "odata-v4_idRef",
+          "description": "The link to the collection of PCIe devices located in this chassis.",
+          "readOnly": true
+        },
+        "PCIeSlots": {
+          "type": "odata-v4_idRef",
+          "description": "The link to the PCIe slot properties for this chassis.",
+          "readOnly": true
+        },
+        "PartNumber": {
+          "type": "string",
+          "description": "The part number of the chassis.",
+          "readOnly": true
+        },
+        "PhysicalSecurity": {
+          "type": "Chassis_v1_25_1_PhysicalSecurity",
+          "description": "The physical security state of the chassis.",
+          "readOnly": false
+        },
+        "Power": {
+          "type": "odata-v4_idRef",
+          "description": "The link to the power properties, or power supplies, power policies, and sensors",
+          "readOnly": true
+        },
+        "PowerState": {
+          "type": "",
+          "description": "The current power state of the chassis.",
+          "readOnly": true
+        },
+        "PowerSubsystem": {
+          "type": "odata-v4_idRef",
+          "description": "The link to the power subsystem properties for this chassis.",
+          "readOnly": true
+        },
+        "PoweredByParent": {
+          "type": "boolean",
+          "description": "Indicates that the chassis receives power from the containing chassis.",
+          "readOnly": true
+        },
+        "Processors": {
+          "type": "odata-v4_idRef",
+          "description": "The link to the collection of processors located in this chassis that belong to ",
+          "readOnly": true
+        },
+        "Replaceable": {
+          "type": "boolean",
+          "description": "An indication of whether this component can be independently replaced as allowed",
+          "readOnly": true
+        },
+        "SKU": {
+          "type": "string",
+          "description": "The SKU of the chassis.",
+          "readOnly": true
+        },
+        "Sensors": {
+          "type": "odata-v4_idRef",
+          "description": "The link to the collection of sensors located in the equipment and sub-component",
+          "readOnly": true
+        },
+        "SerialNumber": {
+          "type": "string",
+          "description": "The serial number of the chassis.",
+          "readOnly": true
+        },
+        "SparePartNumber": {
+          "type": "string",
+          "description": "The spare part number of the chassis.",
+          "readOnly": true
+        },
+        "Status": {
+          "type": "Resource_Status",
+          "description": "The status and health of the resource and its subordinate or dependent resources",
+          "readOnly": false
+        },
+        "Thermal": {
+          "type": "odata-v4_idRef",
+          "description": "The link to the thermal properties, such as fans, cooling, and sensors, for this",
+          "readOnly": true
+        },
+        "ThermalDirection": {
+          "type": "",
+          "description": "Indicates the thermal management path through the chassis.",
+          "readOnly": true
+        },
+        "ThermalManagedByParent": {
+          "type": "boolean",
+          "description": "Indicates that the chassis is thermally managed by the parent chassis.",
+          "readOnly": true
+        },
+        "ThermalSubsystem": {
+          "type": "odata-v4_idRef",
+          "description": "The link to the thermal subsystem properties for this chassis.",
+          "readOnly": true
+        },
+        "TrustedComponents": {
+          "type": "odata-v4_idRef",
+          "description": "The link to the trusted components in this chassis.",
+          "readOnly": true
+        },
+        "UUID": {
+          "type": "",
+          "description": "The UUID for this chassis.",
+          "readOnly": true
+        },
+        "Version": {
+          "type": "string",
+          "description": "The hardware version of this chassis.",
+          "readOnly": true
+        },
+        "WeightKg": {
+          "type": "number",
+          "description": "The weight of the chassis.",
+          "readOnly": true
+        },
+        "WidthMm": {
+          "type": "number",
+          "description": "The width of the chassis.",
+          "readOnly": true
+        }
+      }
+    },
+    "Manager": {
+      "description": "In Redfish, a manager is a systems management entity that can implement or provide access to a Redfish service. Examples of managers are BMCs (base...",
+      "properties": {
+        "Actions": {
+          "type": "Manager_v1_19_1_Actions",
+          "description": "The available actions for this resource.",
+          "readOnly": false
+        },
+        "AdditionalFirmwareVersions": {
+          "type": "SoftwareInventory_AdditionalVersions",
+          "description": "The additional firmware versions of the manager.",
+          "readOnly": false
+        },
+        "AutoDSTEnabled": {
+          "type": "boolean",
+          "description": "An indication of whether the manager is configured for automatic Daylight Saving",
+          "readOnly": false
+        },
+        "Certificates": {
+          "type": "odata-v4_idRef",
+          "description": "The link to a collection of certificates for device identity and attestation.",
+          "readOnly": true
+        },
+        "CommandShell": {
+          "type": "Manager_v1_19_1_CommandShell",
+          "description": "The command shell service that this manager provides.",
+          "readOnly": false
+        },
+        "DateTime": {
+          "type": "string",
+          "description": "The current date and time with UTC offset of the manager.",
+          "readOnly": false
+        },
+        "DateTimeLocalOffset": {
+          "type": "string",
+          "description": "The time offset from UTC that the `DateTime` property is in `+HH:MM` format.",
+          "readOnly": false
+        },
+        "DaylightSavingTime": {
+          "type": "Manager_v1_19_1_DaylightSavingTime",
+          "description": "The daylight saving time settings for this manager.",
+          "readOnly": false
+        },
+        "DedicatedNetworkPorts": {
+          "type": "odata-v4_idRef",
+          "description": "The dedicated network ports of the manager.",
+          "readOnly": false
+        },
+        "Description": {
+          "type": "",
+          "description": "",
+          "readOnly": true
+        },
+        "EthernetInterfaces": {
+          "type": "odata-v4_idRef",
+          "description": "The link to a collection of NICs that this manager uses for network communicatio",
+          "readOnly": true
+        },
+        "FirmwareVersion": {
+          "type": "string",
+          "description": "The firmware version of this manager.",
+          "readOnly": true
+        },
+        "GraphicalConsole": {
+          "type": "Manager_v1_19_1_GraphicalConsole",
+          "description": "The information about the graphical console service of this manager.",
+          "readOnly": false
+        },
+        "HostInterfaces": {
+          "type": "odata-v4_idRef",
+          "description": "The link to a collection of host interfaces that this manager uses for local hos",
+          "readOnly": true
+        },
+        "Id": {
+          "type": "Resource_Id",
+          "description": "",
+          "readOnly": true
+        },
+        "LastResetTime": {
+          "type": "string",
+          "description": "The date and time when the manager was last reset or rebooted.",
+          "readOnly": true
+        },
+        "Links": {
+          "type": "Manager_v1_19_1_Links",
+          "description": "The links to other resources that are related to this resource.",
+          "readOnly": false
+        },
+        "Location": {
+          "type": "Resource_Location",
+          "description": "The location of the manager.",
+          "readOnly": false
+        },
+        "LocationIndicatorActive": {
+          "type": "boolean",
+          "description": "An indicator allowing an operator to physically locate this resource.",
+          "readOnly": false
+        },
+        "LogServices": {
+          "type": "odata-v4_idRef",
+          "description": "The link to a collection of logs that the manager uses.",
+          "readOnly": true
+        },
+        "ManagerDiagnosticData": {
+          "type": "",
+          "description": "The diagnostic data for this manager.",
+          "readOnly": true
+        },
+        "ManagerType": {
+          "type": "Manager_v1_19_1_ManagerType",
+          "description": "The type of manager that this resource represents.",
+          "readOnly": true
+        },
+        "Manufacturer": {
+          "type": "string",
+          "description": "The manufacturer of this manager.",
+          "readOnly": true
+        },
+        "Measurements": {
+          "type": "array",
+          "description": "An array of DSP0274-defined measurement blocks.",
+          "readOnly": false
+        },
+        "Model": {
+          "type": "string",
+          "description": "The model information of this manager, as defined by the manufacturer.",
+          "readOnly": true
+        },
+        "Name": {
+          "type": "Resource_Name",
+          "description": "",
+          "readOnly": true
+        },
+        "NetworkProtocol": {
+          "type": "odata-v4_idRef",
+          "description": "The link to the network services and their settings that the manager controls.",
+          "readOnly": true
+        },
+        "Oem": {
+          "type": "Resource_Oem",
+          "description": "The OEM extension property.",
+          "readOnly": false
+        },
+        "PartNumber": {
+          "type": "string",
+          "description": "The part number of the manager.",
+          "readOnly": true
+        },
+        "PowerState": {
+          "type": "",
+          "description": "The current power state of the manager.",
+          "readOnly": true
+        },
+        "Redundancy": {
+          "type": "array",
+          "description": "The redundancy information for the managers of this system.",
+          "readOnly": false
+        },
+        "Redundancy@odata.count": {
+          "type": "odata-v4_count",
+          "description": "",
+          "readOnly": false
+        },
+        "RemoteAccountService": {
+          "type": "odata-v4_idRef",
+          "description": "The link to the account service resource for the remote manager that this resour",
+          "readOnly": true
+        },
+        "RemoteRedfishServiceUri": {
+          "type": "string",
+          "description": "The URI of the Redfish service root for the remote manager that this resource re",
+          "readOnly": true
+        },
+        "SecurityPolicy": {
+          "type": "",
+          "description": "The security policy settings for this manager.",
+          "readOnly": true
+        },
+        "SerialConsole": {
+          "type": "Manager_v1_19_1_SerialConsole",
+          "description": "The serial console service that this manager provides.",
+          "readOnly": false
+        },
+        "SerialInterfaces": {
+          "type": "odata-v4_idRef",
+          "description": "The link to a collection of serial interfaces that this manager uses for serial ",
+          "readOnly": true
+        },
+        "SerialNumber": {
+          "type": "string",
+          "description": "The serial number of the manager.",
+          "readOnly": true
+        },
+        "ServiceEntryPointUUID": {
+          "type": "",
+          "description": "The UUID of the Redfish service that is hosted by this manager.",
+          "readOnly": true
+        },
+        "ServiceIdentification": {
+          "type": "string",
+          "description": "A product instance identifier displayed in the Redfish service root.",
+          "readOnly": false
+        },
+        "SharedNetworkPorts": {
+          "type": "odata-v4_idRef",
+          "description": "The shared network ports of the manager.",
+          "readOnly": false
+        },
+        "SparePartNumber": {
+          "type": "string",
+          "description": "The spare part number of the manager.",
+          "readOnly": true
+        },
+        "Status": {
+          "type": "Resource_Status",
+          "description": "The status and health of the resource and its subordinate or dependent resources",
+          "readOnly": false
+        },
+        "TimeZoneName": {
+          "type": "string",
+          "description": "The time zone of the manager.",
+          "readOnly": false
+        },
+        "USBPorts": {
+          "type": "odata-v4_idRef",
+          "description": "The USB ports of the manager.",
+          "readOnly": false
+        },
+        "UUID": {
+          "type": "",
+          "description": "The UUID for this manager.",
+          "readOnly": true
+        },
+        "Version": {
+          "type": "string",
+          "description": "The hardware version of this manager.",
+          "readOnly": true
+        },
+        "VirtualMedia": {
+          "type": "odata-v4_idRef",
+          "description": "The link to the virtual media services for this particular manager.",
+          "readOnly": true
+        }
+      }
+    },
+    "Processor": {
+      "description": "The `Processor` schema describes the information about a single processor that a system contains. A processor includes both performance characteris...",
+      "properties": {
+        "AccelerationFunctions": {
+          "type": "odata-v4_idRef",
+          "description": "The link to the collection of acceleration functions associated with this proces",
+          "readOnly": true
+        },
+        "Actions": {
+          "type": "Processor_v1_20_1_Actions",
+          "description": "The available actions for this resource.",
+          "readOnly": false
+        },
+        "AdditionalFirmwareVersions": {
+          "type": "SoftwareInventory_AdditionalVersions",
+          "description": "The additional firmware versions of the processor.",
+          "readOnly": false
+        },
+        "AppliedOperatingConfig": {
+          "type": "odata-v4_idRef",
+          "description": "The link to the operating configuration that is applied to this processor.",
+          "readOnly": false
+        },
+        "Assembly": {
+          "type": "odata-v4_idRef",
+          "description": "The link to an assembly associated with this processor.",
+          "readOnly": true
+        },
+        "BaseSpeedMHz": {
+          "type": "integer",
+          "description": "The base (nominal) clock speed of the processor in MHz.",
+          "readOnly": true
+        },
+        "BaseSpeedPriorityState": {
+          "type": "",
+          "description": "The state of the base frequency settings of the operation configuration applied ",
+          "readOnly": true
+        },
+        "CacheMemory": {
+          "type": "odata-v4_idRef",
+          "description": "The link to the collection of cache memory associated with this processor.",
+          "readOnly": true
+        },
+        "Certificates": {
+          "type": "odata-v4_idRef",
+          "description": "The link to a collection of certificates for device identity and attestation.",
+          "readOnly": true
+        },
+        "Description": {
+          "type": "",
+          "description": "",
+          "readOnly": true
+        },
+        "Enabled": {
+          "type": "boolean",
+          "description": "An indication of whether this processor is enabled.",
+          "readOnly": false
+        },
+        "EnvironmentMetrics": {
+          "type": "odata-v4_idRef",
+          "description": "The link to the environment metrics for this processor.",
+          "readOnly": true
+        },
+        "FPGA": {
+          "type": "Processor_v1_20_1_FPGA",
+          "description": "The properties for processors of the FPGA type.",
+          "readOnly": false
+        },
+        "Family": {
+          "type": "string",
+          "description": "The processor family.",
+          "readOnly": true
+        },
+        "FirmwareVersion": {
+          "type": "string",
+          "description": "The firmware version of the processor.",
+          "readOnly": true
+        },
+        "HighSpeedCoreIDs": {
+          "type": "array",
+          "description": "The list of core identifiers corresponding to the cores that have been configure",
+          "readOnly": true
+        },
+        "Id": {
+          "type": "Resource_Id",
+          "description": "",
+          "readOnly": true
+        },
+        "InstructionSet": {
+          "type": "",
+          "description": "The instruction set of the processor.",
+          "readOnly": true
+        },
+        "Links": {
+          "type": "Processor_v1_20_1_Links",
+          "description": "The links to other resources that are related to this resource.",
+          "readOnly": false
+        },
+        "Location": {
+          "type": "Resource_Location",
+          "description": "The location of the processor.",
+          "readOnly": false
+        },
+        "LocationIndicatorActive": {
+          "type": "boolean",
+          "description": "An indicator allowing an operator to physically locate this resource.",
+          "readOnly": false
+        },
+        "Manufacturer": {
+          "type": "string",
+          "description": "The processor manufacturer.",
+          "readOnly": true
+        },
+        "MaxSpeedMHz": {
+          "type": "integer",
+          "description": "The maximum clock speed of the processor.",
+          "readOnly": true
+        },
+        "MaxTDPWatts": {
+          "type": "integer",
+          "description": "The maximum Thermal Design Power (TDP) in watt units.",
+          "readOnly": true
+        },
+        "Measurements": {
+          "type": "array",
+          "description": "An array of DSP0274-defined measurement blocks.",
+          "readOnly": false
+        },
+        "MemorySummary": {
+          "type": "Processor_v1_20_1_MemorySummary",
+          "description": "The summary of all memory associated with this processor.",
+          "readOnly": false
+        },
+        "Metrics": {
+          "type": "odata-v4_idRef",
+          "description": "The link to the metrics associated with this processor.",
+          "readOnly": true
+        },
+        "MinSpeedMHz": {
+          "type": "integer",
+          "description": "The minimum clock speed of the processor in MHz.",
+          "readOnly": true
+        },
+        "Model": {
+          "type": "string",
+          "description": "The product model number of this device.",
+          "readOnly": true
+        },
+        "Name": {
+          "type": "Resource_Name",
+          "description": "",
+          "readOnly": true
+        },
+        "Oem": {
+          "type": "Resource_Oem",
+          "description": "The OEM extension property.",
+          "readOnly": false
+        },
+        "OperatingConfigs": {
+          "type": "odata-v4_idRef",
+          "description": "The link to the collection of operating configurations that can be applied to th",
+          "readOnly": true
+        },
+        "OperatingSpeedMHz": {
+          "type": "integer",
+          "description": "Operating speed of the processor in MHz.",
+          "readOnly": true
+        },
+        "OperatingSpeedRangeMHz": {
+          "type": "",
+          "description": "Range of allowed operating speeds (MHz).",
+          "readOnly": false
+        },
+        "PartNumber": {
+          "type": "string",
+          "description": "The part number of the processor.",
+          "readOnly": true
+        },
+        "Ports": {
+          "type": "odata-v4_idRef",
+          "description": "The link to the collection of ports for this processor.",
+          "readOnly": true
+        },
+        "PowerState": {
+          "type": "",
+          "description": "The current power state of the processor.",
+          "readOnly": true
+        },
+        "ProcessorArchitecture": {
+          "type": "",
+          "description": "The architecture of the processor.",
+          "readOnly": true
+        },
+        "ProcessorId": {
+          "type": "Processor_v1_20_1_ProcessorId",
+          "description": "The identification information for this processor.",
+          "readOnly": false
+        },
+        "ProcessorIndex": {
+          "type": "integer",
+          "description": "The logical index of this processor within the system.",
+          "readOnly": true
+        },
+        "ProcessorMemory": {
+          "type": "array",
+          "description": "The memory directly attached or integrated within this processor.  Examples incl",
+          "readOnly": false
+        },
+        "ProcessorType": {
+          "type": "",
+          "description": "The type of processor.",
+          "readOnly": true
+        },
+        "Replaceable": {
+          "type": "boolean",
+          "description": "An indication of whether this component can be independently replaced as allowed",
+          "readOnly": true
+        },
+        "SerialNumber": {
+          "type": "string",
+          "description": "The serial number of the processor.",
+          "readOnly": true
+        },
+        "Socket": {
+          "type": "string",
+          "description": "The socket or location of the processor.",
+          "readOnly": true
+        },
+        "SparePartNumber": {
+          "type": "string",
+          "description": "The spare part number of the processor.",
+          "readOnly": true
+        },
+        "SpeedLimitMHz": {
+          "type": "integer",
+          "description": "The clock limit of the processor in MHz.",
+          "readOnly": false
+        },
+        "SpeedLocked": {
+          "type": "boolean",
+          "description": "Indicates whether the clock speed of the processor is fixed at the value specifi",
+          "readOnly": false
+        },
+        "Status": {
+          "type": "Resource_Status",
+          "description": "The status and health of the resource and its subordinate or dependent resources",
+          "readOnly": false
+        },
+        "SubProcessors": {
+          "type": "odata-v4_idRef",
+          "description": "The link to the collection of sub-processors associated with this processor, suc",
+          "readOnly": true
+        },
+        "SystemInterface": {
+          "type": "Processor_v1_20_1_ProcessorInterface",
+          "description": "The interface between the system and the processor.",
+          "readOnly": false
+        },
+        "TDPWatts": {
+          "type": "integer",
+          "description": "The nominal Thermal Design Power (TDP) in watt units.",
+          "readOnly": true
+        },
+        "ThrottleCauses": {
+          "type": "array",
+          "description": "The causes of the processor being throttled.",
+          "readOnly": true
+        },
+        "Throttled": {
+          "type": "boolean",
+          "description": "An indication of whether the processor is throttled.",
+          "readOnly": true
+        },
+        "TotalCores": {
+          "type": "integer",
+          "description": "The total number of cores that this processor contains.",
+          "readOnly": true
+        },
+        "TotalEnabledCores": {
+          "type": "integer",
+          "description": "The total number of enabled cores that this processor contains.",
+          "readOnly": true
+        },
+        "TotalThreads": {
+          "type": "integer",
+          "description": "The total number of execution threads that this processor supports.",
+          "readOnly": true
+        },
+        "TurboState": {
+          "type": "",
+          "description": "The state of turbo for this processor.",
+          "readOnly": true
+        },
+        "UUID": {
+          "type": "",
+          "description": "The UUID for this processor.",
+          "readOnly": true
+        },
+        "Version": {
+          "type": "string",
+          "description": "The hardware version of the processor.",
+          "readOnly": true
+        }
+      }
+    },
+    "Memory": {
+      "description": "The `Memory` schema represents a memory device, such as a DIMM, and its configuration. It also describes the location, such as a slot, socket, or b...",
+      "properties": {
+        "Actions": {
+          "type": "Memory_v1_19_1_Actions",
+          "description": "The available actions for this resource.",
+          "readOnly": false
+        },
+        "AllocationAlignmentMiB": {
+          "type": "integer",
+          "description": "The boundary that memory regions are allocated on, measured in mebibytes (MiB).",
+          "readOnly": true
+        },
+        "AllocationIncrementMiB": {
+          "type": "integer",
+          "description": "The size of the smallest unit of allocation for a memory region in mebibytes (Mi",
+          "readOnly": true
+        },
+        "AllowedSpeedsMHz": {
+          "type": "array",
+          "description": "Speeds supported by this memory device.",
+          "readOnly": true
+        },
+        "Assembly": {
+          "type": "odata-v4_idRef",
+          "description": "The link to the assembly resource associated with this memory device.",
+          "readOnly": true
+        },
+        "BaseModuleType": {
+          "type": "",
+          "description": "The base module type of the memory device.",
+          "readOnly": true
+        },
+        "BusWidthBits": {
+          "type": "integer",
+          "description": "The bus width, in bits.",
+          "readOnly": true
+        },
+        "CXL": {
+          "type": "Memory_v1_19_1_CXL",
+          "description": "CXL properties for this memory device.",
+          "readOnly": false
+        },
+        "CacheSizeMiB": {
+          "type": "integer",
+          "description": "Total size of the cache portion memory in MiB.",
+          "readOnly": true
+        },
+        "CapacityMiB": {
+          "type": "integer",
+          "description": "Memory capacity in mebibytes (MiB).",
+          "readOnly": true
+        },
+        "Certificates": {
+          "type": "odata-v4_idRef",
+          "description": "The link to a collection of certificates for device identity and attestation.",
+          "readOnly": true
+        },
+        "ConfigurationLocked": {
+          "type": "boolean",
+          "description": "An indication of whether the configuration of this memory device is locked and c",
+          "readOnly": true
+        },
+        "DataWidthBits": {
+          "type": "integer",
+          "description": "Data width in bits.",
+          "readOnly": true
+        },
+        "Description": {
+          "type": "",
+          "description": "",
+          "readOnly": true
+        },
+        "DeviceID": {
+          "type": "string",
+          "description": "Device ID.",
+          "readOnly": true
+        },
+        "DeviceLocator": {
+          "type": "string",
+          "description": "Location of the memory device in the platform.",
+          "readOnly": true
+        },
+        "Enabled": {
+          "type": "boolean",
+          "description": "An indication of whether this memory is enabled.",
+          "readOnly": false
+        },
+        "EnvironmentMetrics": {
+          "type": "odata-v4_idRef",
+          "description": "The link to the environment metrics for this memory.",
+          "readOnly": true
+        },
+        "ErrorCorrection": {
+          "type": "",
+          "description": "Error correction scheme supported for this memory device.",
+          "readOnly": true
+        },
+        "FirmwareApiVersion": {
+          "type": "string",
+          "description": "Version of API supported by the firmware.",
+          "readOnly": true
+        },
+        "FirmwareRevision": {
+          "type": "string",
+          "description": "Revision of firmware on the memory controller.",
+          "readOnly": true
+        },
+        "FunctionClasses": {
+          "type": "array",
+          "description": "Function classes by the memory device.",
+          "readOnly": true
+        },
+        "HealthData": {
+          "type": "Memory_v1_19_1_HealthData",
+          "description": "The health data of this memory device.",
+          "readOnly": false
+        },
+        "Id": {
+          "type": "Resource_Id",
+          "description": "",
+          "readOnly": true
+        },
+        "IsRankSpareEnabled": {
+          "type": "boolean",
+          "description": "An indication of whether rank spare is enabled for this memory device.",
+          "readOnly": true
+        },
+        "IsSpareDeviceEnabled": {
+          "type": "boolean",
+          "description": "An indication of whether a spare device is enabled for this memory device.",
+          "readOnly": true
+        },
+        "Links": {
+          "type": "Memory_v1_19_1_Links",
+          "description": "The links to other resources that are related to this resource.",
+          "readOnly": false
+        },
+        "Location": {
+          "type": "Resource_Location",
+          "description": "The location of the memory device.",
+          "readOnly": false
+        },
+        "LocationIndicatorActive": {
+          "type": "boolean",
+          "description": "An indicator allowing an operator to physically locate this resource.",
+          "readOnly": false
+        },
+        "Log": {
+          "type": "odata-v4_idRef",
+          "description": "The link to the log service associated with this memory.",
+          "readOnly": true
+        },
+        "LogicalSizeMiB": {
+          "type": "integer",
+          "description": "Total size of the logical memory in MiB.",
+          "readOnly": true
+        },
+        "Manufacturer": {
+          "type": "string",
+          "description": "The memory device manufacturer.",
+          "readOnly": true
+        },
+        "MaxTDPMilliWatts": {
+          "type": "array",
+          "description": "Set of maximum power budgets supported by the memory device in milliwatt units.",
+          "readOnly": true
+        },
+        "Measurements": {
+          "type": "array",
+          "description": "An array of DSP0274-defined measurement blocks.",
+          "readOnly": false
+        },
+        "MemoryDeviceType": {
+          "type": "",
+          "description": "Type details of the memory device.",
+          "readOnly": true
+        },
+        "MemoryLocation": {
+          "type": "Memory_v1_19_1_MemoryLocation",
+          "description": "Memory connection information to sockets and memory controllers.",
+          "readOnly": false
+        },
+        "MemoryMedia": {
+          "type": "array",
+          "description": "Media of this memory device.",
+          "readOnly": true
+        },
+        "MemorySubsystemControllerManufacturerID": {
+          "type": "string",
+          "description": "The manufacturer ID of the memory subsystem controller of this memory device.",
+          "readOnly": true
+        },
+        "MemorySubsystemControllerProductID": {
+          "type": "string",
+          "description": "The product ID of the memory subsystem controller of this memory device.",
+          "readOnly": true
+        },
+        "MemoryType": {
+          "type": "",
+          "description": "The type of memory device.",
+          "readOnly": true
+        },
+        "Metrics": {
+          "type": "odata-v4_idRef",
+          "description": "The link to the metrics associated with this memory device.",
+          "readOnly": true
+        },
+        "Model": {
+          "type": "string",
+          "description": "The product model number of this device.",
+          "readOnly": true
+        },
+        "ModuleManufacturerID": {
+          "type": "string",
+          "description": "The manufacturer ID of this memory device.",
+          "readOnly": true
+        },
+        "ModuleProductID": {
+          "type": "string",
+          "description": "The product ID of this memory device.",
+          "readOnly": true
+        },
+        "Name": {
+          "type": "Resource_Name",
+          "description": "",
+          "readOnly": true
+        },
+        "NonVolatileSizeLimitMiB": {
+          "type": "integer",
+          "description": "The total non-volatile memory capacity in mebibytes (MiB).",
+          "readOnly": false
+        },
+        "NonVolatileSizeMiB": {
+          "type": "integer",
+          "description": "Total size of the non-volatile portion memory in MiB.",
+          "readOnly": true
+        },
+        "Oem": {
+          "type": "Resource_Oem",
+          "description": "The OEM extension property.",
+          "readOnly": false
+        },
+        "OperatingMemoryModes": {
+          "type": "array",
+          "description": "Memory modes supported by the memory device.",
+          "readOnly": true
+        },
+        "OperatingSpeedMhz": {
+          "type": "integer",
+          "description": "Operating speed of the memory device in MHz or MT/s as appropriate.",
+          "readOnly": true
+        },
+        "OperatingSpeedRangeMHz": {
+          "type": "",
+          "description": "Range of allowed operating speeds (MHz).",
+          "readOnly": false
+        },
+        "PartNumber": {
+          "type": "string",
+          "description": "The product part number of this device.",
+          "readOnly": true
+        },
+        "PersistentRegionNumberLimit": {
+          "type": "integer",
+          "description": "Total number of persistent regions this memory device can support.",
+          "readOnly": true
+        },
+        "PersistentRegionSizeLimitMiB": {
+          "type": "integer",
+          "description": "Total size of persistent regions in mebibytes (MiB).",
+          "readOnly": true
+        },
+        "PersistentRegionSizeMaxMiB": {
+          "type": "integer",
+          "description": "Maximum size of a single persistent region in mebibytes (MiB).",
+          "readOnly": true
+        },
+        "PoisonListMaxMediaErrorRecords": {
+          "type": "integer",
+          "description": "The maximum number of media error records this device can track in its poison li",
+          "readOnly": false
+        },
+        "PowerManagementPolicy": {
+          "type": "Memory_v1_19_1_PowerManagementPolicy",
+          "description": "Power management policy information.",
+          "readOnly": false
+        },
+        "RankCount": {
+          "type": "integer",
+          "description": "Number of ranks available in the memory device.",
+          "readOnly": true
+        },
+        "Regions": {
+          "type": "array",
+          "description": "Memory regions information within the memory device.",
+          "readOnly": false
+        },
+        "SecurityCapabilities": {
+          "type": "Memory_v1_19_1_SecurityCapabilities",
+          "description": "Security capabilities of the memory device.",
+          "readOnly": false
+        },
+        "SecurityState": {
+          "type": "",
+          "description": "The current security state of this memory device.",
+          "readOnly": false
+        },
+        "SecurityStates": {
+          "type": "Memory_v1_19_1_SecurityStateInfo",
+          "description": "The security states of this memory device.",
+          "readOnly": false
+        },
+        "SerialNumber": {
+          "type": "string",
+          "description": "The product serial number of this device.",
+          "readOnly": true
+        },
+        "SpareDeviceCount": {
+          "type": "integer",
+          "description": "Number of unused spare devices available in the memory device.",
+          "readOnly": true
+        },
+        "SparePartNumber": {
+          "type": "string",
+          "description": "The spare part number of the memory.",
+          "readOnly": true
+        },
+        "Status": {
+          "type": "Resource_Status",
+          "description": "The status and health of the resource and its subordinate or dependent resources",
+          "readOnly": false
+        },
+        "SubsystemDeviceID": {
+          "type": "string",
+          "description": "Subsystem device ID.",
+          "readOnly": true
+        },
+        "SubsystemVendorID": {
+          "type": "string",
+          "description": "SubSystem vendor ID.",
+          "readOnly": true
+        },
+        "VendorID": {
+          "type": "string",
+          "description": "Vendor ID.",
+          "readOnly": true
+        },
+        "VolatileRegionNumberLimit": {
+          "type": "integer",
+          "description": "Total number of volatile regions this memory device can support.",
+          "readOnly": true
+        },
+        "VolatileRegionSizeLimitMiB": {
+          "type": "integer",
+          "description": "Total size of volatile regions in mebibytes (MiB).",
+          "readOnly": true
+        },
+        "VolatileRegionSizeMaxMiB": {
+          "type": "integer",
+          "description": "Maximum size of a single volatile region in mebibytes (MiB).",
+          "readOnly": true
+        },
+        "VolatileSizeLimitMiB": {
+          "type": "integer",
+          "description": "The total volatile memory capacity in mebibytes (MiB).",
+          "readOnly": false
+        },
+        "VolatileSizeMiB": {
+          "type": "integer",
+          "description": "Total size of the volatile portion memory in MiB.",
+          "readOnly": true
+        }
+      }
+    },
+    "Storage": {
+      "description": "The `Storage` schema defines a storage subsystem and its respective properties. A storage subsystem represents a set of physical or virtual storage...",
+      "properties": {
+        "Actions": {
+          "type": "Storage_v1_17_0_Actions",
+          "description": "The available actions for this resource.",
+          "readOnly": false
+        },
+        "AutoVolumeCreate": {
+          "type": "",
+          "description": "Indicates if this storage subsystem automatically creates new volumes for unassi",
+          "readOnly": false
+        },
+        "ConfigurationLock": {
+          "type": "",
+          "description": "Indicates whether in-band configuration requests to the storage subsystem are lo",
+          "readOnly": false
+        },
+        "Connections": {
+          "type": "odata-v4_idRef",
+          "description": "The collection of links to the connections that this storage subsystem contains.",
+          "readOnly": true
+        },
+        "ConsistencyGroups": {
+          "type": "odata-v4_idRef",
+          "description": "The consistency groups, each of which contains a set of volumes that are treated",
+          "readOnly": true
+        },
+        "Controllers": {
+          "type": "odata-v4_idRef",
+          "description": "The set of controllers instantiated by this storage subsystem.",
+          "readOnly": true
+        },
+        "Description": {
+          "type": "",
+          "description": "",
+          "readOnly": true
+        },
+        "Drives": {
+          "type": "array",
+          "description": "The set of drives attached to the storage controllers that this resource represe",
+          "readOnly": true
+        },
+        "Drives@odata.count": {
+          "type": "odata-v4_count",
+          "description": "",
+          "readOnly": false
+        },
+        "EncryptionMode": {
+          "type": "",
+          "description": "The encryption mode of this storage subsystem.",
+          "readOnly": false
+        },
+        "EndpointGroups": {
+          "type": "odata-v4_idRef",
+          "description": "All of the endpoint groups, each of which contains a set of endpoints that are u",
+          "readOnly": true
+        },
+        "FileSystems": {
+          "type": "odata-v4_idRef",
+          "description": "All file systems that are allocated by this storage subsystem.",
+          "readOnly": true
+        },
+        "HotspareActivationPolicy": {
+          "type": "",
+          "description": "The policy under which hot spare drives in this storage domain will activate.",
+          "readOnly": false
+        },
+        "Id": {
+          "type": "Resource_Id",
+          "description": "",
+          "readOnly": true
+        },
+        "Identifiers": {
+          "type": "array",
+          "description": "The durable names for the storage subsystem.",
+          "readOnly": false
+        },
+        "Links": {
+          "type": "Storage_v1_17_0_Links",
+          "description": "The links to other resources that are related to this resource.",
+          "readOnly": false
+        },
+        "LocalEncryptionKeyIdentifier": {
+          "type": "string",
+          "description": "The local encryption key identifier used by the storage subsystem.",
+          "readOnly": true
+        },
+        "NVMeSubsystemProperties": {
+          "type": "",
+          "description": "Information specific to NVMe Subsystems.",
+          "readOnly": false
+        },
+        "Name": {
+          "type": "Resource_Name",
+          "description": "",
+          "readOnly": true
+        },
+        "Oem": {
+          "type": "Resource_Oem",
+          "description": "The OEM extension property.",
+          "readOnly": false
+        },
+        "Redundancy": {
+          "type": "array",
+          "description": "Redundancy information for the storage subsystem.",
+          "readOnly": false
+        },
+        "Redundancy@odata.count": {
+          "type": "odata-v4_count",
+          "description": "",
+          "readOnly": false
+        },
+        "Status": {
+          "type": "Resource_Status",
+          "description": "The status and health of the resource and its subordinate or dependent resources",
+          "readOnly": false
+        },
+        "StorageControllers": {
+          "type": "array",
+          "description": "The set of storage controllers that this resource represents.",
+          "readOnly": true
+        },
+        "StorageControllers@odata.count": {
+          "type": "odata-v4_count",
+          "description": "",
+          "readOnly": false
+        },
+        "StorageGroups": {
+          "type": "odata-v4_idRef",
+          "description": "All of the storage groups, each of which contains a set of volumes and endpoints",
+          "readOnly": true
+        },
+        "StoragePools": {
+          "type": "odata-v4_idRef",
+          "description": "The set of all storage pools that are allocated by this storage subsystem.  A st",
+          "readOnly": true
+        },
+        "TargetConfigurationLockLevel": {
+          "type": "",
+          "description": "Indicates the target configuration lock level for the drive based upon the state",
+          "readOnly": false
+        },
+        "Volumes": {
+          "type": "odata-v4_idRef",
+          "description": "The set of volumes that the storage controllers produce.",
+          "readOnly": true
+        }
+      }
+    },
+    "Drive": {
+      "description": "The Drive schema represents a single physical drive for a system, including links to associated volumes. It also describes the location, such as a ...",
+      "properties": {
+        "Actions": {
+          "type": "Drive_v1_18_0_Actions",
+          "description": "The available actions for this resource.",
+          "readOnly": false
+        },
+        "Assembly": {
+          "type": "odata-v4_idRef",
+          "description": "The link to the assembly associated with this drive.",
+          "readOnly": true
+        },
+        "AssetTag": {
+          "type": "string",
+          "description": "The user-assigned asset tag for this drive.",
+          "readOnly": false
+        },
+        "BlockSizeBytes": {
+          "type": "integer",
+          "description": "The size, in bytes, of the smallest addressable unit, or block.",
+          "readOnly": true
+        },
+        "CapableSpeedGbs": {
+          "type": "number",
+          "description": "The speed, in gigabits per second (Gbit/s) units, at which this drive can commun",
+          "readOnly": true
+        },
+        "CapacityBytes": {
+          "type": "integer",
+          "description": "The size, in bytes, of this drive.",
+          "readOnly": true
+        },
+        "Certificates": {
+          "type": "odata-v4_idRef",
+          "description": "The link to a collection of certificates for device identity and attestation.",
+          "readOnly": true
+        },
+        "Description": {
+          "type": "Resource_Description",
+          "description": "",
+          "readOnly": true
+        },
+        "DriveFormFactor": {
+          "type": "Drive_v1_18_0_FormFactor",
+          "description": "The form factor of the drive inserted in this slot.",
+          "readOnly": true
+        },
+        "EncryptionAbility": {
+          "type": "Drive_v1_18_0_EncryptionAbility",
+          "description": "The encryption ability of this drive.",
+          "readOnly": true
+        },
+        "EncryptionStatus": {
+          "type": "Drive_v1_18_0_EncryptionStatus",
+          "description": "The status of the encryption of this drive.",
+          "readOnly": true
+        },
+        "EnvironmentMetrics": {
+          "type": "odata-v4_idRef",
+          "description": "The link to the environment metrics for this drive.",
+          "readOnly": true
+        },
+        "FailurePredicted": {
+          "type": "boolean",
+          "description": "An indication of whether this drive currently predicts a failure in the near fut",
+          "readOnly": true
+        },
+        "FirmwareVersion": {
+          "type": "string",
+          "description": "The firmware version for this drive.",
+          "readOnly": true
+        },
+        "HotspareReplacementMode": {
+          "type": "Drive_v1_18_0_HotspareReplacementModeType",
+          "description": "The replacement mode for the hot spare drive.",
+          "readOnly": false
+        },
+        "HotspareType": {
+          "type": "Drive_v1_18_0_HotspareType",
+          "description": "The type of hot spare that this drive serves as.",
+          "readOnly": false
+        },
+        "Id": {
+          "type": "Resource_Id",
+          "description": "",
+          "readOnly": true
+        },
+        "Identifiers": {
+          "type": "array",
+          "description": "The durable names for the drive.",
+          "readOnly": false
+        },
+        "IndicatorLED": {
+          "type": "Resource_IndicatorLED",
+          "description": "The state of the indicator LED, that identifies the drive.",
+          "readOnly": false
+        },
+        "Links": {
+          "type": "Drive_v1_18_0_Links",
+          "description": "The links to other resources that are related to this resource.",
+          "readOnly": false
+        },
+        "Location": {
+          "type": "array",
+          "description": "The location of the drive.",
+          "readOnly": false
+        },
+        "LocationIndicatorActive": {
+          "type": "boolean",
+          "description": "An indicator allowing an operator to physically locate this resource.",
+          "readOnly": false
+        },
+        "Manufacturer": {
+          "type": "string",
+          "description": "The manufacturer of this drive.",
+          "readOnly": true
+        },
+        "Measurements": {
+          "type": "array",
+          "description": "An array of DSP0274-defined measurement blocks.",
+          "readOnly": false
+        },
+        "MediaType": {
+          "type": "Drive_v1_18_0_MediaType",
+          "description": "The type of media contained in this drive.",
+          "readOnly": true
+        },
+        "Metrics": {
+          "type": "odata-v4_idRef",
+          "description": "The link to the metrics associated with this drive.",
+          "readOnly": true
+        },
+        "Model": {
+          "type": "string",
+          "description": "The model number for the drive.",
+          "readOnly": true
+        },
+        "Multipath": {
+          "type": "boolean",
+          "description": "An indication of whether the drive is accessible from multiple paths.",
+          "readOnly": true
+        },
+        "Name": {
+          "type": "Resource_Name",
+          "description": "",
+          "readOnly": true
+        },
+        "NegotiatedSpeedGbs": {
+          "type": "number",
+          "description": "The speed, in gigabits per second (Gbit/s) units, at which this drive currently ",
+          "readOnly": true
+        },
+        "Oem": {
+          "type": "Resource_Oem",
+          "description": "The OEM extension property.",
+          "readOnly": false
+        },
+        "Operations": {
+          "type": "array",
+          "description": "The operations currently running on the Drive.",
+          "readOnly": false
+        },
+        "PartNumber": {
+          "type": "string",
+          "description": "The part number for this drive.",
+          "readOnly": true
+        },
+        "PhysicalLocation": {
+          "type": "Resource_Location",
+          "description": "The location of the drive.",
+          "readOnly": false
+        },
+        "PredictedMediaLifeLeftPercent": {
+          "type": "number",
+          "description": "The percentage of reads and writes that are predicted to be available for the me",
+          "readOnly": true
+        },
+        "Protocol": {
+          "type": "Protocol_Protocol",
+          "description": "The protocol that this drive currently uses to communicate to the storage contro",
+          "readOnly": true
+        },
+        "ReadyToRemove": {
+          "type": "boolean",
+          "description": "An indication of whether the drive is prepared by the system for removal.",
+          "readOnly": false
+        },
+        "Revision": {
+          "type": "string",
+          "description": "The revision of this drive.  For SCSI-based drives, this is the version of the d",
+          "readOnly": true
+        },
+        "RotationSpeedRPM": {
+          "type": "number",
+          "description": "The rotation speed of this drive, in revolutions per minute (RPM) units.",
+          "readOnly": true
+        },
+        "SKU": {
+          "type": "string",
+          "description": "The SKU for this drive.",
+          "readOnly": true
+        },
+        "SerialNumber": {
+          "type": "string",
+          "description": "The serial number for this drive.",
+          "readOnly": true
+        },
+        "SlotCapableProtocols": {
+          "type": "array",
+          "description": "The drive protocols capable in this slot.",
+          "readOnly": true
+        },
+        "SlotFormFactor": {
+          "type": "Drive_v1_18_0_FormFactor",
+          "description": "The form factor of the slot.",
+          "readOnly": true
+        },
+        "Status": {
+          "type": "Resource_Status",
+          "description": "The status and health of the resource and its subordinate or dependent resources",
+          "readOnly": false
+        },
+        "StatusIndicator": {
+          "type": "Drive_v1_18_0_StatusIndicator",
+          "description": "The state of the status indicator, which communicates status information about t",
+          "readOnly": false
+        },
+        "WriteCacheEnabled": {
+          "type": "boolean",
+          "description": "An indication of whether the drive write cache is enabled.",
+          "readOnly": false
+        }
+      }
+    },
+    "Volume": {
+      "description": "Volume contains properties used to describe a volume, virtual disk, LUN, or other logical storage entity for any system.",
+      "properties": {
+        "ALUA": {
+          "type": "",
+          "description": "ALUA properties for this volume.",
+          "readOnly": false
+        },
+        "AccessCapabilities": {
+          "type": "array",
+          "description": "Supported IO access capabilities.",
+          "readOnly": false
+        },
+        "Actions": {
+          "type": "Volume_v1_10_1_Actions",
+          "description": "The available actions for this resource.",
+          "readOnly": false
+        },
+        "AllocatedPools": {
+          "type": "odata-v4_idRef",
+          "description": "An array of references to StoragePools allocated from this Volume.",
+          "readOnly": true
+        },
+        "BlockSizeBytes": {
+          "type": "integer",
+          "description": "The size of the smallest addressable unit (Block) of this volume in bytes.",
+          "readOnly": true
+        },
+        "Capacity": {
+          "type": "Capacity_Capacity",
+          "description": "Capacity utilization.",
+          "readOnly": false
+        },
+        "CapacityBytes": {
+          "type": "integer",
+          "description": "The size in bytes of this Volume.",
+          "readOnly": false
+        },
+        "CapacitySources": {
+          "type": "array",
+          "description": "An array of space allocations to this volume.",
+          "readOnly": false
+        },
+        "CapacitySources@odata.count": {
+          "type": "odata-v4_count",
+          "description": "",
+          "readOnly": false
+        },
+        "Compressed": {
+          "type": "boolean",
+          "description": "Indicator of whether or not the Volume has compression enabled.",
+          "readOnly": false
+        },
+        "Connections": {
+          "type": "array",
+          "description": "An array of references to Connections that includes this volume.",
+          "readOnly": true
+        },
+        "Connections@odata.count": {
+          "type": "odata-v4_count",
+          "description": "",
+          "readOnly": false
+        },
+        "Deduplicated": {
+          "type": "boolean",
+          "description": "Indicator of whether or not the Volume has deduplication enabled.",
+          "readOnly": false
+        },
+        "Description": {
+          "type": "",
+          "description": "",
+          "readOnly": true
+        },
+        "DisplayName": {
+          "type": "string",
+          "description": "A user-configurable string to name the volume.",
+          "readOnly": false
+        },
+        "Encrypted": {
+          "type": "boolean",
+          "description": "Is this Volume encrypted.",
+          "readOnly": false
+        },
+        "EncryptionTypes": {
+          "type": "array",
+          "description": "The types of encryption used by this Volume.",
+          "readOnly": false
+        },
+        "IOPerfModeEnabled": {
+          "type": "boolean",
+          "description": "Indicates the IO performance mode setting for the volume.",
+          "readOnly": false
+        },
+        "IOStatistics": {
+          "type": "IOStatistics_IOStatistics",
+          "description": "Statistics for this volume.",
+          "readOnly": false
+        },
+        "Id": {
+          "type": "Resource_Id",
+          "description": "",
+          "readOnly": true
+        },
+        "Identifiers": {
+          "type": "array",
+          "description": "The Durable names for the volume.",
+          "readOnly": false
+        },
+        "InitializeMethod": {
+          "type": "",
+          "description": "Indicates the Initialization Method used for this volume. If InitializeMethod is",
+          "readOnly": true
+        },
+        "IsBootCapable": {
+          "type": "boolean",
+          "description": "This property indicates whether or not the Volume contains a boot image and is c",
+          "readOnly": false
+        },
+        "Links": {
+          "type": "Volume_v1_10_1_Links",
+          "description": "Contains references to other resources that are related to this resource.",
+          "readOnly": false
+        },
+        "LogicalUnitNumber": {
+          "type": "integer",
+          "description": "Indicates the host-visible LogicalUnitNumber assigned to this Volume.",
+          "readOnly": true
+        },
+        "LowSpaceWarningThresholdPercents": {
+          "type": "array",
+          "description": "Low space warning.",
+          "readOnly": false
+        },
+        "Manufacturer": {
+          "type": "string",
+          "description": "The manufacturer or OEM of this storage volume.",
+          "readOnly": true
+        },
+        "MaxBlockSizeBytes": {
+          "type": "integer",
+          "description": "Max Block size in bytes.",
+          "readOnly": true
+        },
+        "MediaSpanCount": {
+          "type": "integer",
+          "description": "Indicates the number of media elements used per span in the secondary RAID for a",
+          "readOnly": true
+        },
+        "Metrics": {
+          "type": "odata-v4_idRef",
+          "description": "The link to the metrics for this volume.",
+          "readOnly": true
+        },
+        "Model": {
+          "type": "string",
+          "description": "The model number for this storage volume.",
+          "readOnly": true
+        },
+        "NVMeNamespaceProperties": {
+          "type": "",
+          "description": "This property contains properties to use when Volume is used to describe an NVMe",
+          "readOnly": false
+        },
+        "Name": {
+          "type": "Resource_Name",
+          "description": "",
+          "readOnly": true
+        },
+        "Oem": {
+          "type": "Resource_Oem",
+          "description": "The OEM extension property.",
+          "readOnly": false
+        },
+        "Operations": {
+          "type": "array",
+          "description": "The operations currently running on the Volume.",
+          "readOnly": false
+        },
+        "OptimumIOSizeBytes": {
+          "type": "integer",
+          "description": "The size in bytes of this Volume's optimum IO size.",
+          "readOnly": true
+        },
+        "ProvisioningPolicy": {
+          "type": "",
+          "description": "This property specifies the volume's storage allocation, or provisioning policy.",
+          "readOnly": false
+        },
+        "RAIDType": {
+          "type": "",
+          "description": "The RAID type of this volume.",
+          "readOnly": true
+        },
+        "ReadCachePolicy": {
+          "type": "",
+          "description": "Indicates the read cache policy setting for the Volume.",
+          "readOnly": false
+        },
+        "RecoverableCapacitySourceCount": {
+          "type": "integer",
+          "description": "Current number of capacity source resources that are available as replacements.",
+          "readOnly": false
+        },
+        "RemainingCapacityPercent": {
+          "type": "integer",
+          "description": "The percentage of the capacity remaining in the Volume.",
+          "readOnly": true
+        },
+        "RemoteReplicaTargets": {
+          "type": "array",
+          "description": "URIs to the resources that are remote target replicas of this source.",
+          "readOnly": true
+        },
+        "ReplicaInfo": {
+          "type": "StorageReplicaInfo_v1_4_0_ReplicaInfo",
+          "description": "Describes this storage volume in its role as a target replica.",
+          "readOnly": false
+        },
+        "ReplicaTargets": {
+          "type": "array",
+          "description": "The resources that are target replicas of this source.",
+          "readOnly": true
+        },
+        "ReplicaTargets@odata.count": {
+          "type": "odata-v4_count",
+          "description": "",
+          "readOnly": false
+        },
+        "ReplicationEnabled": {
+          "type": "boolean",
+          "description": "Indicates whether or not replication is enabled on the volume.",
+          "readOnly": false
+        },
+        "Status": {
+          "type": "Resource_Status",
+          "description": "The property contains the status of the Volume.",
+          "readOnly": false
+        },
+        "StorageGroups": {
+          "type": "odata-v4_idRef",
+          "description": "An array of references to Storage Groups that includes this volume.",
+          "readOnly": true
+        },
+        "StripSizeBytes": {
+          "type": "integer",
+          "description": "The number of blocks (bytes) in a strip in a disk array that uses striped data m",
+          "readOnly": false
+        },
+        "VolumeType": {
+          "type": "",
+          "description": "The type of this volume.",
+          "readOnly": true
+        },
+        "VolumeUsage": {
+          "type": "",
+          "description": "Indicates the Volume usage type setting for the Volume.",
+          "readOnly": true
+        },
+        "WriteCachePolicy": {
+          "type": "",
+          "description": "Indicates the write cache policy setting for the Volume.",
+          "readOnly": false
+        },
+        "WriteCacheState": {
+          "type": "",
+          "description": "Indicates the WriteCacheState policy setting for the Volume.",
+          "readOnly": true
+        },
+        "WriteHoleProtectionPolicy": {
+          "type": "Volume_WriteHoleProtectionPolicyType",
+          "description": "The policy that the RAID volume is using to address the write hole issue.",
+          "readOnly": false
+        }
+      }
+    },
+    "EthernetInterface": {
+      "description": "The `EthernetInterface` schema represents a single, logical Ethernet interface or network interface controller (NIC).",
+      "properties": {
+        "Actions": {
+          "type": "EthernetInterface_v1_12_2_Actions",
+          "description": "The available actions for this resource.",
+          "readOnly": false
+        },
+        "AutoNeg": {
+          "type": "boolean",
+          "description": "An indication of whether the speed and duplex are automatically negotiated and c",
+          "readOnly": false
+        },
+        "DHCPv4": {
+          "type": "EthernetInterface_v1_12_2_DHCPv4Configuration",
+          "description": "DHCPv4 configuration for this interface.",
+          "readOnly": false
+        },
+        "DHCPv6": {
+          "type": "EthernetInterface_v1_12_2_DHCPv6Configuration",
+          "description": "DHCPv6 configuration for this interface.",
+          "readOnly": false
+        },
+        "Description": {
+          "type": "",
+          "description": "",
+          "readOnly": true
+        },
+        "EthernetInterfaceType": {
+          "type": "",
+          "description": "The type of interface.",
+          "readOnly": true
+        },
+        "FQDN": {
+          "type": "string",
+          "description": "The complete, fully qualified domain name that DNS obtains for this interface.",
+          "readOnly": false
+        },
+        "FullDuplex": {
+          "type": "boolean",
+          "description": "An indication of whether full-duplex mode is enabled on the Ethernet connection ",
+          "readOnly": false
+        },
+        "HostName": {
+          "type": "string",
+          "description": "The DNS host name, without any domain information.",
+          "readOnly": false
+        },
+        "IPv4Addresses": {
+          "type": "array",
+          "description": "The IPv4 addresses currently in use by this interface.",
+          "readOnly": false
+        },
+        "IPv4StaticAddresses": {
+          "type": "array",
+          "description": "The IPv4 static addresses assigned to this interface.  See `IPv4Addresses` for t",
+          "readOnly": false
+        },
+        "IPv6AddressPolicyTable": {
+          "type": "array",
+          "description": "An array that represents the RFC6724-defined address selection policy table.",
+          "readOnly": false
+        },
+        "IPv6Addresses": {
+          "type": "array",
+          "description": "The IPv6 addresses currently in use by this interface.",
+          "readOnly": false
+        },
+        "IPv6DefaultGateway": {
+          "type": "string",
+          "description": "The IPv6 default gateway address in use on this interface.",
+          "readOnly": true
+        },
+        "IPv6Enabled": {
+          "type": "boolean",
+          "description": "An indication of whether IPv6 is enabled on this interface.",
+          "readOnly": false
+        },
+        "IPv6StaticAddresses": {
+          "type": "array",
+          "description": "The IPv6 static addresses assigned to this interface.  See `IPv6Addresses` for t",
+          "readOnly": false
+        },
+        "IPv6StaticDefaultGateways": {
+          "type": "array",
+          "description": "The IPv6 static default gateways for this interface.",
+          "readOnly": false
+        },
+        "Id": {
+          "type": "Resource_Id",
+          "description": "",
+          "readOnly": true
+        },
+        "InterfaceEnabled": {
+          "type": "boolean",
+          "description": "An indication of whether this interface is enabled.",
+          "readOnly": false
+        },
+        "LinkStatus": {
+          "type": "",
+          "description": "The link status of this interface, or port.",
+          "readOnly": true
+        },
+        "Links": {
+          "type": "EthernetInterface_v1_12_2_Links",
+          "description": "The links to other resources that are related to this resource.",
+          "readOnly": false
+        },
+        "MACAddress": {
+          "type": "",
+          "description": "The currently configured MAC address of the interface, or logical port.",
+          "readOnly": false
+        },
+        "MTUSize": {
+          "type": "integer",
+          "description": "The currently configured maximum transmission unit (MTU), in bytes, on this inte",
+          "readOnly": false
+        },
+        "MaxIPv6StaticAddresses": {
+          "type": "integer",
+          "description": "The maximum number of static IPv6 addresses that can be configured on this inter",
+          "readOnly": true
+        },
+        "Name": {
+          "type": "Resource_Name",
+          "description": "",
+          "readOnly": true
+        },
+        "NameServers": {
+          "type": "array",
+          "description": "The DNS servers in use on this interface.",
+          "readOnly": true
+        },
+        "Oem": {
+          "type": "Resource_Oem",
+          "description": "The OEM extension property.",
+          "readOnly": false
+        },
+        "PermanentMACAddress": {
+          "type": "",
+          "description": "The permanent MAC address assigned to this interface, or port.",
+          "readOnly": true
+        },
+        "RoutingScope": {
+          "type": "",
+          "description": "The routing scope for this interface.",
+          "readOnly": true
+        },
+        "SpeedMbps": {
+          "type": "integer",
+          "description": "The current speed, in Mbit/s, of this interface.",
+          "readOnly": false
+        },
+        "StatelessAddressAutoConfig": {
+          "type": "EthernetInterface_v1_12_2_StatelessAddressAutoConfiguration",
+          "description": "Stateless address autoconfiguration (SLAAC) parameters for this interface.",
+          "readOnly": false
+        },
+        "StaticNameServers": {
+          "type": "array",
+          "description": "The statically-defined set of DNS server IPv4 and IPv6 addresses.",
+          "readOnly": false
+        },
+        "Status": {
+          "type": "Resource_Status",
+          "description": "The status and health of the resource and its subordinate or dependent resources",
+          "readOnly": false
+        },
+        "TeamMode": {
+          "type": "",
+          "description": "The team mode for this interface.",
+          "readOnly": false
+        },
+        "UefiDevicePath": {
+          "type": "string",
+          "description": "The UEFI device path for this interface.",
+          "readOnly": true
+        },
+        "VLAN": {
+          "type": "VLanNetworkInterface_VLAN",
+          "description": "If this network interface supports more than one VLAN, this property is absent. ",
+          "readOnly": false
+        },
+        "VLANs": {
+          "type": "odata-v4_idRef",
+          "description": "The link to a collection of VLANs, which applies only if the interface supports ",
+          "readOnly": true
+        }
+      }
+    },
+    "Power": {
+      "description": "The Power schema describes power metrics and represents the properties for power consumption and power limiting.",
+      "properties": {
+        "Actions": {
+          "type": "Power_v1_7_2_Actions",
+          "description": "The available actions for this resource.",
+          "readOnly": false
+        },
+        "Description": {
+          "type": "Resource_Description",
+          "description": "",
+          "readOnly": true
+        },
+        "Id": {
+          "type": "Resource_Id",
+          "description": "",
+          "readOnly": true
+        },
+        "Name": {
+          "type": "Resource_Name",
+          "description": "",
+          "readOnly": true
+        },
+        "Oem": {
+          "type": "Resource_Oem",
+          "description": "The OEM extension property.",
+          "readOnly": false
+        },
+        "PowerControl": {
+          "type": "array",
+          "description": "The set of power control functions, including power reading and limiting.",
+          "readOnly": false
+        },
+        "PowerControl@odata.count": {
+          "type": "odata-v4_count",
+          "description": "",
+          "readOnly": false
+        },
+        "PowerSupplies": {
+          "type": "array",
+          "description": "The set of power supplies associated with this system or device.",
+          "readOnly": false
+        },
+        "PowerSupplies@odata.count": {
+          "type": "odata-v4_count",
+          "description": "",
+          "readOnly": false
+        },
+        "Redundancy": {
+          "type": "array",
+          "description": "The redundancy information for the set of power supplies in this chassis.",
+          "readOnly": false
+        },
+        "Redundancy@odata.count": {
+          "type": "odata-v4_count",
+          "description": "",
+          "readOnly": false
+        },
+        "Voltages": {
+          "type": "array",
+          "description": "The set of voltage sensors for this chassis.",
+          "readOnly": false
+        },
+        "Voltages@odata.count": {
+          "type": "odata-v4_count",
+          "description": "",
+          "readOnly": false
+        }
+      }
+    },
+    "Thermal": {
+      "description": "The Thermal schema describes temperature monitoring and thermal management subsystems, such as cooling fans, for a computer system or similar devic...",
+      "properties": {
+        "Actions": {
+          "type": "Thermal_v1_7_2_ThermalActions",
+          "description": "The available actions for this resource.",
+          "readOnly": false
+        },
+        "Description": {
+          "type": "Resource_Description",
+          "description": "",
+          "readOnly": true
+        },
+        "Fans": {
+          "type": "array",
+          "description": "The set of fans for this chassis.",
+          "readOnly": false
+        },
+        "Fans@odata.count": {
+          "type": "odata-v4_count",
+          "description": "",
+          "readOnly": false
+        },
+        "Id": {
+          "type": "Resource_Id",
+          "description": "",
+          "readOnly": true
+        },
+        "Name": {
+          "type": "Resource_Name",
+          "description": "",
+          "readOnly": true
+        },
+        "Oem": {
+          "type": "Resource_Oem",
+          "description": "The OEM extension property.",
+          "readOnly": false
+        },
+        "Redundancy": {
+          "type": "array",
+          "description": "The redundancy information for the set of fans in this chassis.",
+          "readOnly": false
+        },
+        "Redundancy@odata.count": {
+          "type": "odata-v4_count",
+          "description": "",
+          "readOnly": false
+        },
+        "Status": {
+          "type": "Resource_Status",
+          "description": "The status and health of the resource and its subordinate or dependent resources",
+          "readOnly": false
+        },
+        "Temperatures": {
+          "type": "array",
+          "description": "The set of temperature sensors for this chassis.",
+          "readOnly": false
+        },
+        "Temperatures@odata.count": {
+          "type": "odata-v4_count",
+          "description": "",
+          "readOnly": false
+        }
+      }
+    },
+    "Sensor": {
+      "description": "The `Sensor` schema describes a sensor and its properties.",
+      "properties": {
+        "Accuracy": {
+          "type": "number",
+          "description": "The estimated percent error of measured versus actual values.",
+          "readOnly": true
+        },
+        "Actions": {
+          "type": "Sensor_v1_9_1_Actions",
+          "description": "The available actions for this resource.",
+          "readOnly": false
+        },
+        "AdjustedMaxAllowableOperatingValue": {
+          "type": "number",
+          "description": "The adjusted maximum allowable operating value for this equipment based on the e",
+          "readOnly": true
+        },
+        "AdjustedMinAllowableOperatingValue": {
+          "type": "number",
+          "description": "The adjusted minimum allowable operating value for this equipment based on the e",
+          "readOnly": true
+        },
+        "ApparentVA": {
+          "type": "number",
+          "description": "The product of voltage and current for an AC circuit, in volt-ampere units.",
+          "readOnly": true
+        },
+        "ApparentkVAh": {
+          "type": "number",
+          "description": "Apparent energy (kVAh).",
+          "readOnly": true
+        },
+        "AverageReading": {
+          "type": "number",
+          "description": "The average sensor value.",
+          "readOnly": true
+        },
+        "AveragingInterval": {
+          "type": "string",
+          "description": "The interval over which the average sensor value is calculated.",
+          "readOnly": false
+        },
+        "AveragingIntervalAchieved": {
+          "type": "boolean",
+          "description": "Indicates that enough readings were collected to calculate the average sensor re",
+          "readOnly": true
+        },
+        "Calibration": {
+          "type": "number",
+          "description": "The calibration offset applied to the Reading.",
+          "readOnly": false
+        },
+        "CalibrationTime": {
+          "type": "string",
+          "description": "The date and time that the sensor was last calibrated.",
+          "readOnly": false
+        },
+        "CrestFactor": {
+          "type": "number",
+          "description": "The crest factor for this sensor.",
+          "readOnly": true
+        },
+        "Description": {
+          "type": "",
+          "description": "",
+          "readOnly": true
+        },
+        "ElectricalContext": {
+          "type": "",
+          "description": "The combination of current-carrying conductors.",
+          "readOnly": true
+        },
+        "Id": {
+          "type": "Resource_Id",
+          "description": "",
+          "readOnly": true
+        },
+        "Implementation": {
+          "type": "",
+          "description": "The implementation of the sensor.",
+          "readOnly": true
+        },
+        "LifetimeReading": {
+          "type": "number",
+          "description": "The total accumulation value for this sensor.",
+          "readOnly": true
+        },
+        "LifetimeStartDateTime": {
+          "type": "string",
+          "description": "The date and time when the sensor started accumulating readings for the `Lifetim",
+          "readOnly": true
+        },
+        "Links": {
+          "type": "Sensor_v1_9_1_Links",
+          "description": "The links to other resources that are related to this resource.",
+          "readOnly": false
+        },
+        "LoadPercent": {
+          "type": "number",
+          "description": "The power load utilization for this sensor.",
+          "readOnly": true
+        },
+        "Location": {
+          "type": "Resource_Location",
+          "description": "The location information for this sensor.",
+          "readOnly": false
+        },
+        "LowestReading": {
+          "type": "number",
+          "description": "The lowest sensor value.",
+          "readOnly": true
+        },
+        "LowestReadingTime": {
+          "type": "string",
+          "description": "The time when the lowest sensor value occurred.",
+          "readOnly": true
+        },
+        "Manufacturer": {
+          "type": "string",
+          "description": "The manufacturer of this sensor.",
+          "readOnly": true
+        },
+        "MaxAllowableOperatingValue": {
+          "type": "number",
+          "description": "The maximum allowable operating value for this equipment.",
+          "readOnly": true
+        },
+        "MinAllowableOperatingValue": {
+          "type": "number",
+          "description": "The minimum allowable operating value for this equipment.",
+          "readOnly": true
+        },
+        "Model": {
+          "type": "string",
+          "description": "The model number of the sensor.",
+          "readOnly": true
+        },
+        "Name": {
+          "type": "Resource_Name",
+          "description": "",
+          "readOnly": true
+        },
+        "Oem": {
+          "type": "Resource_Oem",
+          "description": "The OEM extension property.",
+          "readOnly": false
+        },
+        "PartNumber": {
+          "type": "string",
+          "description": "The part number of the sensor.",
+          "readOnly": true
+        },
+        "PeakReading": {
+          "type": "number",
+          "description": "The peak sensor value.",
+          "readOnly": true
+        },
+        "PeakReadingTime": {
+          "type": "string",
+          "description": "The time when the peak sensor value occurred.",
+          "readOnly": true
+        },
+        "PhaseAngleDegrees": {
+          "type": "number",
+          "description": "The phase angle (degrees) between the current and voltage waveforms.",
+          "readOnly": true
+        },
+        "PhysicalContext": {
+          "type": "",
+          "description": "The area or device to which this sensor measurement applies.",
+          "readOnly": true
+        },
+        "PhysicalSubContext": {
+          "type": "",
+          "description": "The usage or location within a device to which this sensor measurement applies.",
+          "readOnly": true
+        },
+        "PowerFactor": {
+          "type": "number",
+          "description": "The power factor for this sensor.",
+          "readOnly": true
+        },
+        "Precision": {
+          "type": "number",
+          "description": "The number of significant digits in the reading.",
+          "readOnly": true
+        },
+        "ReactiveVAR": {
+          "type": "number",
+          "description": "The square root of the difference term of squared apparent VA and squared power ",
+          "readOnly": true
+        },
+        "ReactivekVARh": {
+          "type": "number",
+          "description": "Reactive energy (kVARh).",
+          "readOnly": true
+        },
+        "Reading": {
+          "type": "number",
+          "description": "The sensor value.",
+          "readOnly": true
+        },
+        "ReadingAccuracy": {
+          "type": "number",
+          "description": "Accuracy (+/-) of the reading.",
+          "readOnly": true
+        },
+        "ReadingBasis": {
+          "type": "",
+          "description": "The basis for the reading of this sensor.",
+          "readOnly": true
+        },
+        "ReadingRangeMax": {
+          "type": "number",
+          "description": "The maximum possible value for this sensor.",
+          "readOnly": true
+        },
+        "ReadingRangeMin": {
+          "type": "number",
+          "description": "The minimum possible value for this sensor.",
+          "readOnly": true
+        },
+        "ReadingTime": {
+          "type": "string",
+          "description": "The date and time that the reading was acquired from the sensor.",
+          "readOnly": true
+        },
+        "ReadingType": {
+          "type": "",
+          "description": "The type of sensor.",
+          "readOnly": true
+        },
+        "ReadingUnits": {
+          "type": "string",
+          "description": "The units of the reading, thresholds, and other reading-related properties in UC",
+          "readOnly": true
+        },
+        "RelatedItem": {
+          "type": "array",
+          "description": "An array of links to resources or objects that this sensor services.",
+          "readOnly": true
+        },
+        "RelatedItem@odata.count": {
+          "type": "odata-v4_count",
+          "description": "",
+          "readOnly": false
+        },
+        "SKU": {
+          "type": "string",
+          "description": "The SKU of the sensor.",
+          "readOnly": true
+        },
+        "SensingFrequency": {
+          "type": "number",
+          "description": "The time interval between readings of the physical sensor.",
+          "readOnly": true
+        },
+        "SensingInterval": {
+          "type": "string",
+          "description": "The time interval between readings of the sensor.",
+          "readOnly": true
+        },
+        "SensorGroup": {
+          "type": "Redundancy_RedundantGroup",
+          "description": "The group of sensors that provide readings for this sensor.",
+          "readOnly": false
+        },
+        "SensorResetTime": {
+          "type": "string",
+          "description": "The date and time when the time-based properties were last reset.",
+          "readOnly": true
+        },
+        "SerialNumber": {
+          "type": "string",
+          "description": "The serial number of the sensor.",
+          "readOnly": true
+        },
+        "SparePartNumber": {
+          "type": "string",
+          "description": "The spare part number of the sensor.",
+          "readOnly": true
+        },
+        "SpeedRPM": {
+          "type": "number",
+          "description": "The rotational speed.",
+          "readOnly": true
+        },
+        "Status": {
+          "type": "Resource_Status",
+          "description": "The status and health of the resource and its subordinate or dependent resources",
+          "readOnly": false
+        },
+        "THDPercent": {
+          "type": "number",
+          "description": "The total harmonic distortion percent (% THD).",
+          "readOnly": true
+        },
+        "Thresholds": {
+          "type": "Sensor_v1_9_1_Thresholds",
+          "description": "The set of thresholds defined for this sensor.",
+          "readOnly": false
+        },
+        "UserLabel": {
+          "type": "string",
+          "description": "A user-assigned label.",
+          "readOnly": false
+        },
+        "VoltageType": {
+          "type": "",
+          "description": "The voltage type for this sensor.",
+          "readOnly": true
+        }
+      }
+    },
+    "UpdateService": {
+      "description": "The `UpdateService` schema describes the update service and the properties for the service itself with links to collections of firmware and softwar...",
+      "properties": {
+        "Actions": {
+          "type": "UpdateService_v1_14_0_Actions",
+          "description": "The available actions for this resource.",
+          "readOnly": false
+        },
+        "ClientCertificates": {
+          "type": "odata-v4_idRef",
+          "description": "The link to a collection of client identity certificates provided to the server ",
+          "readOnly": true
+        },
+        "Description": {
+          "type": "",
+          "description": "",
+          "readOnly": true
+        },
+        "FirmwareInventory": {
+          "type": "odata-v4_idRef",
+          "description": "An inventory of firmware.",
+          "readOnly": true
+        },
+        "HttpPushUri": {
+          "type": "string",
+          "description": "The URI used to perform an HTTP or HTTPS push update to the update service.  The",
+          "readOnly": true
+        },
+        "HttpPushUriOptions": {
+          "type": "UpdateService_v1_14_0_HttpPushUriOptions",
+          "description": "The options for `HttpPushUri`-provided software updates.",
+          "readOnly": false
+        },
+        "HttpPushUriOptionsBusy": {
+          "type": "boolean",
+          "description": "An indication of whether a client has reserved the `HttpPushUriOptions` properti",
+          "readOnly": false
+        },
+        "HttpPushUriTargets": {
+          "type": "array",
+          "description": "An array of URIs that indicate where to apply the update image.",
+          "readOnly": false
+        },
+        "HttpPushUriTargetsBusy": {
+          "type": "boolean",
+          "description": "An indication of whether any client has reserved the `HttpPushUriTargets` proper",
+          "readOnly": false
+        },
+        "Id": {
+          "type": "Resource_Id",
+          "description": "",
+          "readOnly": true
+        },
+        "MaxImageSizeBytes": {
+          "type": "integer",
+          "description": "The maximum size in bytes of the software update image that this service support",
+          "readOnly": true
+        },
+        "MultipartHttpPushUri": {
+          "type": "string",
+          "description": "The URI used to perform a Redfish Specification-defined multipart HTTP or HTTPS ",
+          "readOnly": true
+        },
+        "Name": {
+          "type": "Resource_Name",
+          "description": "",
+          "readOnly": true
+        },
+        "Oem": {
+          "type": "Resource_Oem",
+          "description": "The OEM extension property.",
+          "readOnly": false
+        },
+        "PublicIdentitySSHKey": {
+          "type": "odata-v4_idRef",
+          "description": "A link to the public key that is used with the `SimpleUpdate` action for the key",
+          "readOnly": true
+        },
+        "RemoteServerCertificates": {
+          "type": "odata-v4_idRef",
+          "description": "The link to a collection of server certificates for the server referenced by the",
+          "readOnly": true
+        },
+        "RemoteServerSSHKeys": {
+          "type": "odata-v4_idRef",
+          "description": "The link to a collection of keys that can be used to authenticate the server ref",
+          "readOnly": true
+        },
+        "ServiceEnabled": {
+          "type": "boolean",
+          "description": "An indication of whether this service is enabled.",
+          "readOnly": false
+        },
+        "SoftwareInventory": {
+          "type": "odata-v4_idRef",
+          "description": "An inventory of software.",
+          "readOnly": true
+        },
+        "Status": {
+          "type": "Resource_Status",
+          "description": "The status and health of the resource and its subordinate or dependent resources",
+          "readOnly": false
+        },
+        "SupportedUpdateImageFormats": {
+          "type": "array",
+          "description": "The image format types supported by the service.",
+          "readOnly": true
+        },
+        "VerifyRemoteServerCertificate": {
+          "type": "boolean",
+          "description": "An indication of whether the service will verify the certificate of the server r",
+          "readOnly": false
+        },
+        "VerifyRemoteServerSSHKey": {
+          "type": "boolean",
+          "description": "An indication of whether the service will verify the SSH key of the server refer",
+          "readOnly": false
+        }
+      }
+    },
+    "EventService": {
+      "description": "The `EventService` schema contains properties for managing event subscriptions and generates the events sent to subscribers. The resource has links...",
+      "properties": {
+        "Actions": {
+          "type": "EventService_v1_10_2_Actions",
+          "description": "The available actions for this resource.",
+          "readOnly": false
+        },
+        "DeliveryRetryAttempts": {
+          "type": "integer",
+          "description": "The number of times that the `POST` of an event is retried before the subscripti",
+          "readOnly": false
+        },
+        "DeliveryRetryIntervalSeconds": {
+          "type": "integer",
+          "description": "The interval, in seconds, between retry attempts for sending any event.",
+          "readOnly": false
+        },
+        "Description": {
+          "type": "",
+          "description": "",
+          "readOnly": true
+        },
+        "EventFormatTypes": {
+          "type": "array",
+          "description": "The content types of the message that this service can send to the event destina",
+          "readOnly": true
+        },
+        "EventTypesForSubscription": {
+          "type": "array",
+          "description": "The types of events to which a client can subscribe.",
+          "readOnly": true
+        },
+        "ExcludeMessageId": {
+          "type": "boolean",
+          "description": "An indication of whether the service supports filtering by the `ExcludeMessageId",
+          "readOnly": true
+        },
+        "ExcludeRegistryPrefix": {
+          "type": "boolean",
+          "description": "An indication of whether the service supports filtering by the `ExcludeRegistryP",
+          "readOnly": true
+        },
+        "Id": {
+          "type": "Resource_Id",
+          "description": "",
+          "readOnly": true
+        },
+        "IncludeOriginOfConditionSupported": {
+          "type": "boolean",
+          "description": "An indication of whether the service supports including the resource payload of ",
+          "readOnly": true
+        },
+        "Name": {
+          "type": "Resource_Name",
+          "description": "",
+          "readOnly": true
+        },
+        "Oem": {
+          "type": "Resource_Oem",
+          "description": "The OEM extension property.",
+          "readOnly": false
+        },
+        "RegistryPrefixes": {
+          "type": "array",
+          "description": "The list of the prefixes of the message registries that can be used for the `Reg",
+          "readOnly": true
+        },
+        "ResourceTypes": {
+          "type": "array",
+          "description": "The list of `@odata.type` values, or schema names, that can be specified in the ",
+          "readOnly": true
+        },
+        "SMTP": {
+          "type": "EventService_v1_10_2_SMTP",
+          "description": "Settings for SMTP event delivery.",
+          "readOnly": false
+        },
+        "SSEFilterPropertiesSupported": {
+          "type": "EventService_v1_10_2_SSEFilterPropertiesSupported",
+          "description": "The set of properties that are supported in the `$filter` query parameter for th",
+          "readOnly": false
+        },
+        "ServerSentEventUri": {
+          "type": "string",
+          "description": "The link to a URI for receiving Server-Sent Event representations for the events",
+          "readOnly": true
+        },
+        "ServiceEnabled": {
+          "type": "boolean",
+          "description": "An indication of whether this service is enabled.  If `false`, events are no lon",
+          "readOnly": false
+        },
+        "Severities": {
+          "type": "array",
+          "description": "The list of severities that can be specified in the `Severities` array in a subs",
+          "readOnly": true
+        },
+        "Status": {
+          "type": "Resource_Status",
+          "description": "The status and health of the resource and its subordinate or dependent resources",
+          "readOnly": false
+        },
+        "SubordinateResourcesSupported": {
+          "type": "boolean",
+          "description": "An indication of whether the service supports the `SubordinateResources` propert",
+          "readOnly": true
+        },
+        "Subscriptions": {
+          "type": "odata-v4_idRef",
+          "description": "The link to a collection of event destinations.",
+          "readOnly": true
+        }
+      }
+    },
+    "LogEntry": {
+      "description": "The `LogEntry` schema defines the record format for a log. It is designed for Redfish event logs, OEM-specific log formats, and the IPMI System Eve...",
+      "properties": {
+        "Actions": {
+          "type": "LogEntry_v1_16_2_Actions",
+          "description": "The available actions for this resource.",
+          "readOnly": false
+        },
+        "AdditionalDataSizeBytes": {
+          "type": "integer",
+          "description": "The size of the additional data for this log entry.",
+          "readOnly": true
+        },
+        "AdditionalDataURI": {
+          "type": "string",
+          "description": "The URI at which to access the additional data for this log entry, such as diagn",
+          "readOnly": true
+        },
+        "CPER": {
+          "type": "LogEntry_v1_16_2_CPER",
+          "description": "Details for a CPER section or record associated with this log entry.",
+          "readOnly": false
+        },
+        "CXLEntryType": {
+          "type": "LogEntry_v1_16_2_CXLEntryType",
+          "description": "The specific CXL entry type.",
+          "readOnly": true
+        },
+        "Created": {
+          "type": "string",
+          "description": "The date and time when the log entry was created.",
+          "readOnly": true
+        },
+        "Description": {
+          "type": "",
+          "description": "",
+          "readOnly": true
+        },
+        "DiagnosticData": {
+          "type": "string",
+          "description": "A Base64-encoded set of diagnostic data associated with this log entry.",
+          "readOnly": true
+        },
+        "DiagnosticDataType": {
+          "type": "",
+          "description": "The type of data available in the `DiagnosticData` property or retrieved from th",
+          "readOnly": true
+        },
+        "EntryCode": {
+          "type": "",
+          "description": "The entry code for the log entry if the entry type is `SEL`.",
+          "readOnly": true
+        },
+        "EntryType": {
+          "type": "LogEntry_v1_16_2_LogEntryType",
+          "description": "The type of log entry.",
+          "readOnly": true
+        },
+        "EventGroupId": {
+          "type": "integer",
+          "description": "An identifier that correlates events with the same cause.",
+          "readOnly": true
+        },
+        "EventId": {
+          "type": "string",
+          "description": "The unique instance identifier for an event.",
+          "readOnly": true
+        },
+        "EventTimestamp": {
+          "type": "string",
+          "description": "The date and time when the event occurred.",
+          "readOnly": true
+        },
+        "EventType": {
+          "type": "Event_EventType",
+          "description": "The type of event recorded in this log.",
+          "readOnly": true
+        },
+        "FirstOverflowTimestamp": {
+          "type": "string",
+          "description": "The timestamp of the first overflow captured after this log entry.",
+          "readOnly": true
+        },
+        "GeneratorId": {
+          "type": "string",
+          "description": "An identifier of the device that has generated the IPMI SEL Event Record.",
+          "readOnly": true
+        },
+        "Id": {
+          "type": "Resource_Id",
+          "description": "",
+          "readOnly": true
+        },
+        "LastOverflowTimestamp": {
+          "type": "string",
+          "description": "The timestamp of the last overflow captured after this log entry.",
+          "readOnly": true
+        },
+        "Links": {
+          "type": "LogEntry_v1_16_2_Links",
+          "description": "The links to other resources that are related to this resource.",
+          "readOnly": false
+        },
+        "Message": {
+          "type": "string",
+          "description": "The message of the log entry.  This property decodes from the entry type.  If th",
+          "readOnly": true
+        },
+        "MessageArgs": {
+          "type": "array",
+          "description": "An array of message arguments that are substituted for the arguments in the mess",
+          "readOnly": true
+        },
+        "MessageId": {
+          "type": "string",
+          "description": "The `MessageId`, event data, or OEM-specific information.  This property decodes",
+          "readOnly": true
+        },
+        "Modified": {
+          "type": "string",
+          "description": "The date and time when the log entry was last modified.",
+          "readOnly": true
+        },
+        "Name": {
+          "type": "Resource_Name",
+          "description": "",
+          "readOnly": true
+        },
+        "OEMDiagnosticDataType": {
+          "type": "string",
+          "description": "The OEM-defined type of data available in the `DiagnosticData` property or retri",
+          "readOnly": true
+        },
+        "Oem": {
+          "type": "Resource_Oem",
+          "description": "The OEM extension property.",
+          "readOnly": false
+        },
+        "OemLogEntryCode": {
+          "type": "string",
+          "description": "The OEM-specific entry code, if the `LogEntryCode` type is `OEM`.",
+          "readOnly": true
+        },
+        "OemRecordFormat": {
+          "type": "string",
+          "description": "The OEM-specific format of the entry.  If the entry type is `Oem`, this property",
+          "readOnly": true
+        },
+        "OemSensorType": {
+          "type": "string",
+          "description": "The OEM-specific sensor type if the sensor type is `OEM`.",
+          "readOnly": true
+        },
+        "Originator": {
+          "type": "string",
+          "description": "The source of the log entry.",
+          "readOnly": true
+        },
+        "OriginatorType": {
+          "type": "LogEntry_v1_16_2_OriginatorTypes",
+          "description": "The type of originator data.",
+          "readOnly": true
+        },
+        "OverflowErrorCount": {
+          "type": "integer",
+          "description": "The count of overflow errors that occurred after this log entry.",
+          "readOnly": true
+        },
+        "Persistency": {
+          "type": "boolean",
+          "description": "Indicates whether the log entry is persistent across a cold reset of the device.",
+          "readOnly": true
+        },
+        "Resolution": {
+          "type": "string",
+          "description": "Used to provide suggestions on how to resolve the situation that caused the log ",
+          "readOnly": true
+        },
+        "ResolutionSteps": {
+          "type": "array",
+          "description": "The list of recommended steps to resolve the cause of the log entry.",
+          "readOnly": false
+        },
+        "Resolved": {
+          "type": "boolean",
+          "description": "Indicates if the cause of the log entry has been resolved or repaired.",
+          "readOnly": false
+        },
+        "SensorNumber": {
+          "type": "integer",
+          "description": "The IPMI-defined sensor number.",
+          "readOnly": true
+        },
+        "SensorType": {
+          "type": "",
+          "description": "The sensor type to which the log entry pertains if the entry type is `SEL`.",
+          "readOnly": true
+        },
+        "ServiceProviderNotified": {
+          "type": "boolean",
+          "description": "Indicates if the log entry has been sent to the service provider.",
+          "readOnly": true
+        },
+        "Severity": {
+          "type": "",
+          "description": "The severity of the log entry.",
+          "readOnly": true
+        },
+        "SpecificEventExistsInGroup": {
+          "type": "boolean",
+          "description": "Indicates this log entry is equivalent to a more specific log entry within the s",
+          "readOnly": true
+        }
+      }
+    },
+    "ManagerAccount": {
+      "description": "The `ManagerAccount` schema defines the user accounts that are owned by a manager. Changes to a manager account might affect the current Redfish se...",
+      "properties": {
+        "AccountExpiration": {
+          "type": "string",
+          "description": "Indicates the date and time when this account expires.  If `null`, the account n",
+          "readOnly": false
+        },
+        "AccountTypes": {
+          "type": "array",
+          "description": "The list of services in the manager that the account is allowed to access.",
+          "readOnly": false
+        },
+        "Actions": {
+          "type": "ManagerAccount_v1_12_1_Actions",
+          "description": "The available actions for this resource.",
+          "readOnly": false
+        },
+        "Certificates": {
+          "type": "odata-v4_idRef",
+          "description": "The link to a collection of user identity certificates for this account.",
+          "readOnly": true
+        },
+        "Description": {
+          "type": "",
+          "description": "",
+          "readOnly": true
+        },
+        "EmailAddress": {
+          "type": "string",
+          "description": "The email address associated with this account.",
+          "readOnly": false
+        },
+        "Enabled": {
+          "type": "boolean",
+          "description": "An indication of whether an account is enabled.  An administrator can disable it",
+          "readOnly": false
+        },
+        "HostBootstrapAccount": {
+          "type": "boolean",
+          "description": "An indication of whether this account is a bootstrap account for the host interf",
+          "readOnly": true
+        },
+        "Id": {
+          "type": "Resource_Id",
+          "description": "",
+          "readOnly": true
+        },
+        "Keys": {
+          "type": "odata-v4_idRef",
+          "description": "The link to the collection of keys that can be used to authenticate this account",
+          "readOnly": true
+        },
+        "Links": {
+          "type": "ManagerAccount_v1_12_1_Links",
+          "description": "The links to other resources that are related to this resource.",
+          "readOnly": false
+        },
+        "Locked": {
+          "type": "boolean",
+          "description": "An indication of whether the account service automatically locked the account be",
+          "readOnly": false
+        },
+        "MFABypass": {
+          "type": "",
+          "description": "The multi-factor authentication bypass settings for this account.",
+          "readOnly": false
+        },
+        "Name": {
+          "type": "Resource_Name",
+          "description": "",
+          "readOnly": true
+        },
+        "OEMAccountTypes": {
+          "type": "array",
+          "description": "The OEM account types.",
+          "readOnly": false
+        },
+        "Oem": {
+          "type": "Resource_Oem",
+          "description": "The OEM extension property.",
+          "readOnly": false
+        },
+        "OneTimePasscodeDeliveryAddress": {
+          "type": "string",
+          "description": "The address used to receive one-time passcode messages for multi-factor authenti",
+          "readOnly": false
+        },
+        "Password": {
+          "type": "string",
+          "description": "The password.  Use this property with a `PATCH` or `PUT` to write the password f",
+          "readOnly": false
+        },
+        "PasswordChangeRequired": {
+          "type": "boolean",
+          "description": "An indication of whether the service requires that the password for this account",
+          "readOnly": false
+        },
+        "PasswordExpiration": {
+          "type": "string",
+          "description": "Indicates the date and time when this account password expires.  If `null`, the ",
+          "readOnly": false
+        },
+        "PhoneNumber": {
+          "type": "string",
+          "description": "The contact phone number associated with this account.",
+          "readOnly": false
+        },
+        "RoleId": {
+          "type": "string",
+          "description": "The role for this account.",
+          "readOnly": false
+        },
+        "SNMP": {
+          "type": "",
+          "description": "The SNMP settings for this account.",
+          "readOnly": false
+        },
+        "StrictAccountTypes": {
+          "type": "boolean",
+          "description": "Indicates if the service needs to use the account types exactly as specified whe",
+          "readOnly": false
+        },
+        "UserName": {
+          "type": "string",
+          "description": "The username for the account.",
+          "readOnly": false
+        }
+      }
+    },
+    "Session": {
+      "description": "The Session resource describes a single connection (session) between a client and a Redfish service instance.",
+      "properties": {
+        "Actions": {
+          "type": "Session_v1_7_1_Actions",
+          "description": "The available actions for this resource.",
+          "readOnly": false
+        },
+        "ClientOriginIPAddress": {
+          "type": "string",
+          "description": "The IP address of the client that created the session.",
+          "readOnly": true
+        },
+        "Context": {
+          "type": "string",
+          "description": "A client-supplied string that is stored with the session.",
+          "readOnly": true
+        },
+        "CreatedTime": {
+          "type": "string",
+          "description": "The date and time when the session was created.",
+          "readOnly": true
+        },
+        "Description": {
+          "type": "Resource_Description",
+          "description": "",
+          "readOnly": true
+        },
+        "Id": {
+          "type": "Resource_Id",
+          "description": "",
+          "readOnly": true
+        },
+        "Links": {
+          "type": "Session_v1_7_1_Links",
+          "description": "The links to other resources that are related to this resource.",
+          "readOnly": false
+        },
+        "Name": {
+          "type": "Resource_Name",
+          "description": "",
+          "readOnly": true
+        },
+        "Oem": {
+          "type": "Resource_Oem",
+          "description": "The OEM extension property.",
+          "readOnly": false
+        },
+        "OemSessionType": {
+          "type": "string",
+          "description": "The active OEM-defined session type.",
+          "readOnly": true
+        },
+        "Password": {
+          "type": "string",
+          "description": "The password for this session.  The value is `null` in responses.",
+          "readOnly": true
+        },
+        "Roles": {
+          "type": "array",
+          "description": "The Redfish roles that contain the privileges of this session.",
+          "readOnly": true
+        },
+        "SessionType": {
+          "type": "Session_v1_7_1_SessionTypes",
+          "description": "The active session type.",
+          "readOnly": true
+        },
+        "Token": {
+          "type": "string",
+          "description": "The multi-factor authentication token for this session.  The value is `null` in ",
+          "readOnly": true
+        },
+        "UserName": {
+          "type": "string",
+          "description": "The username for the account for this session.",
+          "readOnly": true
+        }
+      }
+    },
+    "Task": {
+      "description": "The `Task` schema contains information about a task that the Redfish task service schedules or executes. Tasks represent operations that take more ...",
+      "properties": {
+        "Actions": {
+          "type": "Task_v1_7_4_Actions",
+          "description": "The available actions for this resource.",
+          "readOnly": false
+        },
+        "Description": {
+          "type": "",
+          "description": "",
+          "readOnly": true
+        },
+        "EndTime": {
+          "type": "string",
+          "description": "The date and time when the task was completed.  This property will only appear w",
+          "readOnly": true
+        },
+        "EstimatedDuration": {
+          "type": "string",
+          "description": "The estimated total time required to complete the task.",
+          "readOnly": true
+        },
+        "HidePayload": {
+          "type": "boolean",
+          "description": "An indication of whether the contents of the payload are hidden from view after ",
+          "readOnly": true
+        },
+        "Id": {
+          "type": "Resource_Id",
+          "description": "",
+          "readOnly": true
+        },
+        "Links": {
+          "type": "Task_v1_7_4_Links",
+          "description": "Contains references to other resources that are related to this resource.",
+          "readOnly": false
+        },
+        "Messages": {
+          "type": "array",
+          "description": "An array of messages associated with the task.",
+          "readOnly": false
+        },
+        "Name": {
+          "type": "Resource_Name",
+          "description": "",
+          "readOnly": true
+        },
+        "Oem": {
+          "type": "Resource_Oem",
+          "description": "The OEM extension property.",
+          "readOnly": false
+        },
+        "Payload": {
+          "type": "Task_v1_7_4_Payload",
+          "description": "The HTTP and JSON request payload details for this task, unless they are hidden ",
+          "readOnly": false
+        },
+        "PercentComplete": {
+          "type": "integer",
+          "description": "The completion percentage of this task.",
+          "readOnly": true
+        },
+        "StartTime": {
+          "type": "string",
+          "description": "The date and time when the task was started.",
+          "readOnly": true
+        },
+        "SubTasks": {
+          "type": "odata-v4_idRef",
+          "description": "The link to a collection of sub-tasks for this task.",
+          "readOnly": true
+        },
+        "TaskMonitor": {
+          "type": "string",
+          "description": "The URI of the task monitor for this task.",
+          "readOnly": true
+        },
+        "TaskState": {
+          "type": "Task_v1_7_4_TaskState",
+          "description": "The state of the task.",
+          "readOnly": true
+        },
+        "TaskStatus": {
+          "type": "Resource_Health",
+          "description": "The completion status of the task.",
+          "readOnly": true
+        }
+      }
+    },
+    "Bios": {
+      "description": "The Bios schema contains properties related to the BIOS attribute registry. The attribute registry describes the system-specific BIOS attributes an...",
+      "properties": {
+        "Actions": {
+          "type": "Bios_v1_2_1_Actions",
+          "description": "The available actions for this resource.",
+          "readOnly": false
+        },
+        "AttributeRegistry": {
+          "type": "string",
+          "description": "The resource ID of the attribute registry that has the system-specific informati",
+          "readOnly": true
+        },
+        "Attributes": {
+          "type": "Bios_v1_2_1_Attributes",
+          "description": "The list of BIOS attributes specific to the manufacturer or provider.",
+          "readOnly": false
+        },
+        "Description": {
+          "type": "Resource_Description",
+          "description": "",
+          "readOnly": true
+        },
+        "Id": {
+          "type": "Resource_Id",
+          "description": "",
+          "readOnly": true
+        },
+        "Links": {
+          "type": "Bios_v1_2_1_Links",
+          "description": "The links to other resources that are related to this resource.",
+          "readOnly": false
+        },
+        "Name": {
+          "type": "Resource_Name",
+          "description": "",
+          "readOnly": true
+        },
+        "Oem": {
+          "type": "Resource_Oem",
+          "description": "The OEM extension property.",
+          "readOnly": false
+        },
+        "ResetBiosToDefaultsPending": {
+          "type": "boolean",
+          "description": "An indication of whether there is a pending request to reset the BIOS attributes",
+          "readOnly": true
+        }
+      }
+    },
+    "SecureBoot": {
+      "description": "The SecureBoot schema contains UEFI Secure Boot information and represents properties for managing the UEFI Secure Boot functionality of a system.",
+      "properties": {
+        "Actions": {
+          "type": "SecureBoot_v1_1_1_Actions",
+          "description": "The available actions for this resource.",
+          "readOnly": false
+        },
+        "Description": {
+          "type": "Resource_Description",
+          "description": "",
+          "readOnly": true
+        },
+        "Id": {
+          "type": "Resource_Id",
+          "description": "",
+          "readOnly": true
+        },
+        "Name": {
+          "type": "Resource_Name",
+          "description": "",
+          "readOnly": true
+        },
+        "Oem": {
+          "type": "Resource_Oem",
+          "description": "The OEM extension property.",
+          "readOnly": false
+        },
+        "SecureBootCurrentBoot": {
+          "type": "SecureBoot_v1_1_1_SecureBootCurrentBootType",
+          "description": "The UEFI Secure Boot state during the current boot cycle.",
+          "readOnly": true
+        },
+        "SecureBootDatabases": {
+          "type": "odata-v4_idRef",
+          "description": "A link to the collection of UEFI Secure Boot databases.",
+          "readOnly": true
+        },
+        "SecureBootEnable": {
+          "type": "boolean",
+          "description": "An indication of whether UEFI Secure Boot is enabled.",
+          "readOnly": false
+        },
+        "SecureBootMode": {
+          "type": "SecureBoot_v1_1_1_SecureBootModeType",
+          "description": "The current UEFI Secure Boot Mode.",
+          "readOnly": true
+        }
+      }
+    },
+    "SoftwareInventory": {
+      "description": "The `SoftwareInventory` schema contains an inventory of software components. This can include software components such as BIOS, BMC firmware, firmw...",
+      "properties": {
+        "Actions": {
+          "type": "SoftwareInventory_v1_10_2_Actions",
+          "description": "The available actions for this resource.",
+          "readOnly": false
+        },
+        "AdditionalVersions": {
+          "type": "SoftwareInventory_v1_10_2_AdditionalVersions",
+          "description": "The additional versions of this software.",
+          "readOnly": false
+        },
+        "AssociatedPhysicalContext": {
+          "type": "PhysicalContext_PhysicalContext",
+          "description": "The area or device to which the software applies.  Used to distinguish when diff",
+          "readOnly": true
+        },
+        "Description": {
+          "type": "",
+          "description": "",
+          "readOnly": true
+        },
+        "Id": {
+          "type": "Resource_Id",
+          "description": "",
+          "readOnly": true
+        },
+        "LowestSupportedVersion": {
+          "type": "string",
+          "description": "The lowest supported version of this software.",
+          "readOnly": true
+        },
+        "Manufacturer": {
+          "type": "string",
+          "description": "The manufacturer or producer of this software.",
+          "readOnly": true
+        },
+        "Measurement": {
+          "type": "SoftwareInventory_MeasurementBlock",
+          "description": "A DSP0274-defined measurement block.",
+          "readOnly": false
+        },
+        "Name": {
+          "type": "Resource_Name",
+          "description": "",
+          "readOnly": true
+        },
+        "Oem": {
+          "type": "Resource_Oem",
+          "description": "The OEM extension property.",
+          "readOnly": false
+        },
+        "RelatedItem": {
+          "type": "array",
+          "description": "An array of links to resources or objects that represent devices to which this s",
+          "readOnly": true
+        },
+        "RelatedItem@odata.count": {
+          "type": "odata-v4_count",
+          "description": "",
+          "readOnly": false
+        },
+        "ReleaseDate": {
+          "type": "string",
+          "description": "The release date of this software.",
+          "readOnly": true
+        },
+        "ReleaseType": {
+          "type": "",
+          "description": "The type of release.",
+          "readOnly": true
+        },
+        "SoftwareId": {
+          "type": "string",
+          "description": "The implementation-specific label that identifies this software.",
+          "readOnly": true
+        },
+        "Status": {
+          "type": "Resource_Status",
+          "description": "The status and health of the resource and its subordinate or dependent resources",
+          "readOnly": false
+        },
+        "UefiDevicePaths": {
+          "type": "array",
+          "description": "The list of UEFI device paths of the components associated with this software in",
+          "readOnly": true
+        },
+        "Updateable": {
+          "type": "boolean",
+          "description": "An indication of whether the update service can update this software.",
+          "readOnly": true
+        },
+        "Version": {
+          "type": "string",
+          "description": "The version of this software.",
+          "readOnly": true
+        },
+        "VersionScheme": {
+          "type": "",
+          "description": "The format of the version.",
+          "readOnly": true
+        },
+        "WriteProtected": {
+          "type": "boolean",
+          "description": "Indicates if the software is write-protected.",
+          "readOnly": false
+        }
+      }
+    },
+    "Certificate": {
+      "description": "The Certificate schema describes a certificate that proves the identity of a component, account, or service.",
+      "properties": {
+        "Actions": {
+          "type": "Certificate_v1_8_1_Actions",
+          "description": "The available actions for this resource.",
+          "readOnly": false
+        },
+        "CertificateString": {
+          "type": "string",
+          "description": "The string for the certificate.",
+          "readOnly": true
+        },
+        "CertificateType": {
+          "type": "Certificate_CertificateType",
+          "description": "The format of the certificate.",
+          "readOnly": true
+        },
+        "CertificateUsageTypes": {
+          "type": "array",
+          "description": "The types or purposes for this certificate.",
+          "readOnly": true
+        },
+        "Description": {
+          "type": "Resource_Description",
+          "description": "",
+          "readOnly": true
+        },
+        "Fingerprint": {
+          "type": "string",
+          "description": "The fingerprint of the certificate.",
+          "readOnly": true
+        },
+        "FingerprintHashAlgorithm": {
+          "type": "string",
+          "description": "The hash algorithm for the fingerprint of the certificate.",
+          "readOnly": true
+        },
+        "Id": {
+          "type": "Resource_Id",
+          "description": "",
+          "readOnly": true
+        },
+        "Issuer": {
+          "type": "Certificate_v1_8_1_Identifier",
+          "description": "The issuer of the certificate.",
+          "readOnly": false
+        },
+        "KeyUsage": {
+          "type": "array",
+          "description": "The key usage extension, which defines the purpose of the public keys in this ce",
+          "readOnly": true
+        },
+        "Links": {
+          "type": "Certificate_v1_8_1_Links",
+          "description": "The links to other resources that are related to this resource.",
+          "readOnly": false
+        },
+        "Name": {
+          "type": "Resource_Name",
+          "description": "",
+          "readOnly": true
+        },
+        "Oem": {
+          "type": "Resource_Oem",
+          "description": "The OEM extension property.",
+          "readOnly": false
+        },
+        "SPDM": {
+          "type": "Certificate_v1_8_1_SPDM",
+          "description": "SPDM-related information for the certificate.",
+          "readOnly": false
+        },
+        "SerialNumber": {
+          "type": "string",
+          "description": "The serial number of the certificate.",
+          "readOnly": true
+        },
+        "SignatureAlgorithm": {
+          "type": "string",
+          "description": "The algorithm used for creating the signature of the certificate.",
+          "readOnly": true
+        },
+        "Subject": {
+          "type": "Certificate_v1_8_1_Identifier",
+          "description": "The subject of the certificate.",
+          "readOnly": false
+        },
+        "UefiSignatureOwner": {
+          "type": "string",
+          "description": "The UEFI signature owner for this certificate.",
+          "readOnly": true
+        },
+        "ValidNotAfter": {
+          "type": "string",
+          "description": "The date when the certificate is no longer valid.",
+          "readOnly": true
+        },
+        "ValidNotBefore": {
+          "type": "string",
+          "description": "The date when the certificate becomes valid.",
+          "readOnly": true
+        }
+      }
+    },
+    "Fan": {
+      "description": "The Fan schema describes a cooling fan unit for a computer system or similar devices contained within a chassis. It also describes the location, su...",
+      "properties": {
+        "Actions": {
+          "type": "Fan_v1_5_1_Actions",
+          "description": "The available actions for this resource.",
+          "readOnly": false
+        },
+        "Assembly": {
+          "type": "odata-v4_idRef",
+          "description": "The link to the assembly associated with this fan.",
+          "readOnly": true
+        },
+        "Description": {
+          "type": "Resource_Description",
+          "description": "",
+          "readOnly": true
+        },
+        "FanDiameterMm": {
+          "type": "integer",
+          "description": "The diameter of the fan assembly in millimeter units.",
+          "readOnly": true
+        },
+        "HotPluggable": {
+          "type": "boolean",
+          "description": "An indication of whether this device can be inserted or removed while the equipm",
+          "readOnly": true
+        },
+        "Id": {
+          "type": "Resource_Id",
+          "description": "",
+          "readOnly": true
+        },
+        "Links": {
+          "type": "Fan_v1_5_1_Links",
+          "description": "The links to other resources that are related to this resource.",
+          "readOnly": false
+        },
+        "Location": {
+          "type": "Resource_Location",
+          "description": "The location of the fan.",
+          "readOnly": false
+        },
+        "LocationIndicatorActive": {
+          "type": "boolean",
+          "description": "An indicator allowing an operator to physically locate this resource.",
+          "readOnly": false
+        },
+        "Manufacturer": {
+          "type": "string",
+          "description": "The manufacturer of this fan.",
+          "readOnly": true
+        },
+        "Model": {
+          "type": "string",
+          "description": "The model number for this fan.",
+          "readOnly": true
+        },
+        "Name": {
+          "type": "Resource_Name",
+          "description": "",
+          "readOnly": true
+        },
+        "Oem": {
+          "type": "Resource_Oem",
+          "description": "The OEM extension property.",
+          "readOnly": false
+        },
+        "PartNumber": {
+          "type": "string",
+          "description": "The part number for this fan.",
+          "readOnly": true
+        },
+        "PhysicalContext": {
+          "type": "PhysicalContext_PhysicalContext",
+          "description": "The area or device associated with this fan.",
+          "readOnly": true
+        },
+        "PowerWatts": {
+          "type": "Sensor_SensorPowerExcerpt",
+          "description": "Power consumption (W).",
+          "readOnly": false
+        },
+        "Replaceable": {
+          "type": "boolean",
+          "description": "An indication of whether this component can be independently replaced as allowed",
+          "readOnly": true
+        },
+        "SecondarySpeedPercent": {
+          "type": "Sensor_SensorFanExcerpt",
+          "description": "The fan speed (percent) of the second rotor in a multi-rotor fan.",
+          "readOnly": false
+        },
+        "SerialNumber": {
+          "type": "string",
+          "description": "The serial number for this fan.",
+          "readOnly": true
+        },
+        "SparePartNumber": {
+          "type": "string",
+          "description": "The spare part number for this fan.",
+          "readOnly": true
+        },
+        "SpeedPercent": {
+          "type": "Sensor_SensorFanExcerpt",
+          "description": "The fan speed (percent).",
+          "readOnly": false
+        },
+        "Status": {
+          "type": "Resource_Status",
+          "description": "The status and health of the resource and its subordinate or dependent resources",
+          "readOnly": false
+        }
+      }
+    },
+    "PowerSupply": {
+      "description": "Details of a power supplies associated with this system or device.",
+      "properties": {
+        "Actions": {
+          "type": "Power_v1_7_2_PowerSupplyActions",
+          "description": "The available actions for this resource.",
+          "readOnly": false
+        },
+        "Assembly": {
+          "type": "odata-v4_idRef",
+          "description": "The link to the assembly resource associated with this power supply.",
+          "readOnly": true
+        },
+        "EfficiencyPercent": {
+          "type": "number",
+          "description": "The measured efficiency of this power supply as a percentage.",
+          "readOnly": true
+        },
+        "FirmwareVersion": {
+          "type": "string",
+          "description": "The firmware version for this power supply.",
+          "readOnly": true
+        },
+        "HotPluggable": {
+          "type": "boolean",
+          "description": "An indication of whether this device can be inserted or removed while the equipm",
+          "readOnly": true
+        },
+        "IndicatorLED": {
+          "type": "Resource_IndicatorLED",
+          "description": "The state of The indicator LED, which identifies the power supply.",
+          "readOnly": false
+        },
+        "InputRanges": {
+          "type": "array",
+          "description": "The input ranges that the power supply can use.",
+          "readOnly": false
+        },
+        "LastPowerOutputWatts": {
+          "type": "number",
+          "description": "The average power output of this power supply.",
+          "readOnly": true
+        },
+        "LineInputVoltage": {
+          "type": "number",
+          "description": "The line input voltage at which the power supply is operating.",
+          "readOnly": true
+        },
+        "LineInputVoltageType": {
+          "type": "Power_v1_7_2_LineInputVoltageType",
+          "description": "The line voltage type supported as an input to this power supply.",
+          "readOnly": true
+        },
+        "Location": {
+          "type": "Resource_Location",
+          "description": "The location of the power supply.",
+          "readOnly": false
+        },
+        "Manufacturer": {
+          "type": "string",
+          "description": "The manufacturer of this power supply.",
+          "readOnly": true
+        },
+        "MemberId": {
+          "type": "string",
+          "description": "The unique identifier for the member within an array.",
+          "readOnly": true
+        },
+        "Model": {
+          "type": "string",
+          "description": "The model number for this power supply.",
+          "readOnly": true
+        },
+        "Name": {
+          "type": "string",
+          "description": "The name of the power supply.",
+          "readOnly": true
+        },
+        "Oem": {
+          "type": "Resource_Oem",
+          "description": "The OEM extension property.",
+          "readOnly": false
+        },
+        "PartNumber": {
+          "type": "string",
+          "description": "The part number for this power supply.",
+          "readOnly": true
+        },
+        "PowerCapacityWatts": {
+          "type": "number",
+          "description": "The maximum capacity of this power supply.",
+          "readOnly": true
+        },
+        "PowerInputWatts": {
+          "type": "number",
+          "description": "The measured input power of this power supply.",
+          "readOnly": true
+        },
+        "PowerOutputWatts": {
+          "type": "number",
+          "description": "The measured output power of this power supply.",
+          "readOnly": true
+        },
+        "PowerSupplyType": {
+          "type": "Power_v1_7_2_PowerSupplyType",
+          "description": "The power supply type (AC or DC).",
+          "readOnly": true
+        },
+        "Redundancy": {
+          "type": "array",
+          "description": "The set of redundancy groups for this power supply.",
+          "readOnly": false
+        },
+        "Redundancy@odata.count": {
+          "type": "odata-v4_count",
+          "description": "",
+          "readOnly": false
+        },
+        "RelatedItem": {
+          "type": "array",
+          "description": "An array of links to resources or objects associated with this power supply.",
+          "readOnly": false
+        },
+        "RelatedItem@odata.count": {
+          "type": "odata-v4_count",
+          "description": "",
+          "readOnly": false
+        },
+        "SerialNumber": {
+          "type": "string",
+          "description": "The serial number for this power supply.",
+          "readOnly": true
+        },
+        "SparePartNumber": {
+          "type": "string",
+          "description": "The spare part number for this power supply.",
+          "readOnly": true
+        },
+        "Status": {
+          "type": "Resource_Status",
+          "description": "The status and health of the resource and its subordinate or dependent resources",
+          "readOnly": false
+        }
+      }
+    },
+    "VirtualMedia": {
+      "description": "The VirtualMedia schema contains properties related to the monitor and control of an instance of virtual media, such as a remote CD, DVD, or USB de...",
+      "properties": {
+        "Actions": {
+          "type": "VirtualMedia_v1_6_1_Actions",
+          "description": "The available actions for this resource.",
+          "readOnly": false
+        },
+        "Certificates": {
+          "type": "odata-v4_idRef",
+          "description": "The link to a collection of server certificates for the server referenced by the",
+          "readOnly": true
+        },
+        "ClientCertificates": {
+          "type": "odata-v4_idRef",
+          "description": "The link to a collection of client identity certificates provided to the server ",
+          "readOnly": true
+        },
+        "ConnectedVia": {
+          "type": "VirtualMedia_v1_6_1_ConnectedVia",
+          "description": "The current virtual media connection method.",
+          "readOnly": true
+        },
+        "Description": {
+          "type": "Resource_Description",
+          "description": "",
+          "readOnly": true
+        },
+        "EjectPolicy": {
+          "type": "VirtualMedia_v1_6_1_EjectPolicy",
+          "description": "The ejection policy for the virtual media.",
+          "readOnly": false
+        },
+        "EjectTimeout": {
+          "type": "string",
+          "description": "Timeout value before the virtual media is automatically ejected.",
+          "readOnly": false
+        },
+        "Id": {
+          "type": "Resource_Id",
+          "description": "",
+          "readOnly": true
+        },
+        "Image": {
+          "type": "string",
+          "description": "The URI of the location of the selected image.",
+          "readOnly": false
+        },
+        "ImageName": {
+          "type": "string",
+          "description": "The current image name.",
+          "readOnly": true
+        },
+        "Inserted": {
+          "type": "boolean",
+          "description": "An indication of whether virtual media is inserted into the virtual device.",
+          "readOnly": false
+        },
+        "MediaTypes": {
+          "type": "array",
+          "description": "The media types supported as virtual media.",
+          "readOnly": true
+        },
+        "Name": {
+          "type": "Resource_Name",
+          "description": "",
+          "readOnly": true
+        },
+        "Oem": {
+          "type": "Resource_Oem",
+          "description": "The OEM extension property.",
+          "readOnly": false
+        },
+        "Password": {
+          "type": "string",
+          "description": "The password to access the Image parameter-specified URI.  This property is null",
+          "readOnly": false
+        },
+        "Status": {
+          "type": "Resource_Status",
+          "description": "The status and health of the resource and its subordinate or dependent resources",
+          "readOnly": false
+        },
+        "TransferMethod": {
+          "type": "VirtualMedia_v1_6_1_TransferMethod",
+          "description": "The transfer method to use with the Image.",
+          "readOnly": false
+        },
+        "TransferProtocolType": {
+          "type": "VirtualMedia_v1_6_1_TransferProtocolType",
+          "description": "The network protocol to use with the image.",
+          "readOnly": false
+        },
+        "UserName": {
+          "type": "string",
+          "description": "The user name to access the Image parameter-specified URI.",
+          "readOnly": false
+        },
+        "VerifyCertificate": {
+          "type": "boolean",
+          "description": "An indication of whether the service will verify the certificate of the server r",
+          "readOnly": false
+        },
+        "WriteProtected": {
+          "type": "boolean",
+          "description": "An indication of whether the media is write-protected.",
+          "readOnly": false
+        }
+      }
+    },
+    "NetworkAdapter": {
+      "description": "The NetworkAdapter schema represents a physical network adapter capable of connecting to a computer network. Examples include but are not limited t...",
+      "properties": {
+        "Actions": {
+          "type": "NetworkAdapter_v1_10_0_Actions",
+          "description": "The available actions for this resource.",
+          "readOnly": false
+        },
+        "Assembly": {
+          "type": "odata-v4_idRef",
+          "description": "The link to the assembly resource associated with this adapter.",
+          "readOnly": true
+        },
+        "Certificates": {
+          "type": "odata-v4_idRef",
+          "description": "The link to a collection of certificates for device identity and attestation.",
+          "readOnly": true
+        },
+        "Controllers": {
+          "type": "array",
+          "description": "The set of network controllers ASICs that make up this NetworkAdapter.",
+          "readOnly": false
+        },
+        "Description": {
+          "type": "Resource_Description",
+          "description": "",
+          "readOnly": true
+        },
+        "EnvironmentMetrics": {
+          "type": "odata-v4_idRef",
+          "description": "The link to the environment metrics for this network adapter.",
+          "readOnly": true
+        },
+        "Id": {
+          "type": "Resource_Id",
+          "description": "",
+          "readOnly": true
+        },
+        "Identifiers": {
+          "type": "array",
+          "description": "The durable names for the network adapter.",
+          "readOnly": false
+        },
+        "LLDPEnabled": {
+          "type": "boolean",
+          "description": "Enable or disable LLDP globally for an adapter.",
+          "readOnly": false
+        },
+        "Location": {
+          "type": "Resource_Location",
+          "description": "The location of the network adapter.",
+          "readOnly": false
+        },
+        "Manufacturer": {
+          "type": "string",
+          "description": "The manufacturer or OEM of this network adapter.",
+          "readOnly": true
+        },
+        "Measurements": {
+          "type": "array",
+          "description": "An array of DSP0274-defined measurement blocks.",
+          "readOnly": false
+        },
+        "Metrics": {
+          "type": "odata-v4_idRef",
+          "description": "The link to the metrics associated with this adapter.",
+          "readOnly": true
+        },
+        "Model": {
+          "type": "string",
+          "description": "The model string for this network adapter.",
+          "readOnly": true
+        },
+        "Name": {
+          "type": "Resource_Name",
+          "description": "",
+          "readOnly": true
+        },
+        "NetworkDeviceFunctions": {
+          "type": "odata-v4_idRef",
+          "description": "The link to the collection of network device functions associated with this netw",
+          "readOnly": true
+        },
+        "NetworkPorts": {
+          "type": "odata-v4_idRef",
+          "description": "The link to the collection of network ports associated with this network adapter",
+          "readOnly": true
+        },
+        "Oem": {
+          "type": "Resource_Oem",
+          "description": "The OEM extension property.",
+          "readOnly": false
+        },
+        "PartNumber": {
+          "type": "string",
+          "description": "Part number for this network adapter.",
+          "readOnly": true
+        },
+        "Ports": {
+          "type": "odata-v4_idRef",
+          "description": "The link to the collection of ports associated with this network adapter.",
+          "readOnly": true
+        },
+        "Processors": {
+          "type": "odata-v4_idRef",
+          "description": "The link to the collection of offload processors contained in this network adapt",
+          "readOnly": true
+        },
+        "SKU": {
+          "type": "string",
+          "description": "The manufacturer SKU for this network adapter.",
+          "readOnly": true
+        },
+        "SerialNumber": {
+          "type": "string",
+          "description": "The serial number for this network adapter.",
+          "readOnly": true
+        },
+        "Status": {
+          "type": "Resource_Status",
+          "description": "The status and health of the resource and its subordinate or dependent resources",
+          "readOnly": false
+        }
+      }
+    },
+    "Battery": {
+      "description": "The `Battery` schema describes a battery unit, such as those used to provide systems with power during a power-loss event. It also describes the lo...",
+      "properties": {
+        "Actions": {
+          "type": "Battery_v1_3_0_Actions",
+          "description": "The available actions for this resource.",
+          "readOnly": false
+        },
+        "Assembly": {
+          "type": "odata-v4_idRef",
+          "description": "The link to the assembly associated with this battery.",
+          "readOnly": true
+        },
+        "CapacityActualAmpHours": {
+          "type": "number",
+          "description": "The actual maximum capacity of this battery in amp-hour units.",
+          "readOnly": true
+        },
+        "CapacityActualWattHours": {
+          "type": "number",
+          "description": "The actual maximum capacity of this battery in watt-hour units.",
+          "readOnly": true
+        },
+        "CapacityRatedAmpHours": {
+          "type": "number",
+          "description": "The rated maximum capacity of this battery in amp-hour units.",
+          "readOnly": true
+        },
+        "CapacityRatedWattHours": {
+          "type": "number",
+          "description": "The rated maximum capacity of this battery in watt-hour units.",
+          "readOnly": true
+        },
+        "ChargeState": {
+          "type": "",
+          "description": "The charge state of this battery.",
+          "readOnly": true
+        },
+        "Description": {
+          "type": "",
+          "description": "",
+          "readOnly": true
+        },
+        "FirmwareVersion": {
+          "type": "string",
+          "description": "The firmware version for this battery.",
+          "readOnly": true
+        },
+        "HotPluggable": {
+          "type": "boolean",
+          "description": "An indication of whether this device can be inserted or removed while the equipm",
+          "readOnly": true
+        },
+        "Id": {
+          "type": "Resource_Id",
+          "description": "",
+          "readOnly": true
+        },
+        "Links": {
+          "type": "Battery_v1_3_0_Links",
+          "description": "The links to other resources that are related to this resource.",
+          "readOnly": false
+        },
+        "Location": {
+          "type": "Resource_Location",
+          "description": "The location of the battery.",
+          "readOnly": false
+        },
+        "LocationIndicatorActive": {
+          "type": "boolean",
+          "description": "An indicator allowing an operator to physically locate this resource.",
+          "readOnly": false
+        },
+        "Manufacturer": {
+          "type": "string",
+          "description": "The manufacturer of this battery.",
+          "readOnly": true
+        },
+        "MaxChargeRateAmps": {
+          "type": "number",
+          "description": "The maximum charge rate at the input of this battery in amp units.",
+          "readOnly": true
+        },
+        "MaxChargeVoltage": {
+          "type": "number",
+          "description": "The maximum charge voltage across the cell pack of this battery when it is fully",
+          "readOnly": true
+        },
+        "MaxDischargeRateAmps": {
+          "type": "number",
+          "description": "The maximum discharge rate at the output of this battery in amp units.",
+          "readOnly": true
+        },
+        "Metrics": {
+          "type": "odata-v4_idRef",
+          "description": "The link to the battery metrics resource associated with this battery.",
+          "readOnly": true
+        },
+        "Model": {
+          "type": "string",
+          "description": "The model number for this battery.",
+          "readOnly": true
+        },
+        "Name": {
+          "type": "Resource_Name",
+          "description": "",
+          "readOnly": true
+        },
+        "NominalOutputVoltage": {
+          "type": "number",
+          "description": "The nominal output voltage of this battery.",
+          "readOnly": true
+        },
+        "Oem": {
+          "type": "Resource_Oem",
+          "description": "The OEM extension property.",
+          "readOnly": false
+        },
+        "PartNumber": {
+          "type": "string",
+          "description": "The part number for this battery.",
+          "readOnly": true
+        },
+        "ProductionDate": {
+          "type": "string",
+          "description": "The production or manufacturing date of this battery.",
+          "readOnly": true
+        },
+        "Replaceable": {
+          "type": "boolean",
+          "description": "An indication of whether this component can be independently replaced as allowed",
+          "readOnly": true
+        },
+        "SerialNumber": {
+          "type": "string",
+          "description": "The serial number for this battery.",
+          "readOnly": true
+        },
+        "SparePartNumber": {
+          "type": "string",
+          "description": "The spare part number for this battery.",
+          "readOnly": true
+        },
+        "StateOfHealthPercent": {
+          "type": "Sensor_SensorExcerpt",
+          "description": "The state of health (percent) of this battery.",
+          "readOnly": false
+        },
+        "Status": {
+          "type": "Resource_Status",
+          "description": "The status and health of the resource and its subordinate or dependent resources",
+          "readOnly": false
+        },
+        "Version": {
+          "type": "string",
+          "description": "The hardware version of this battery.",
+          "readOnly": true
+        }
+      }
+    },
+    "EnvironmentMetrics": {
+      "description": "The EnvironmentMetrics schema represents the environmental metrics of a device.",
+      "properties": {
+        "AbsoluteHumidity": {
+          "type": "Sensor_SensorExcerpt",
+          "description": "Absolute humidity (g/m^3).",
+          "readOnly": false
+        },
+        "Actions": {
+          "type": "EnvironmentMetrics_v1_3_1_Actions",
+          "description": "The available actions for this resource.",
+          "readOnly": false
+        },
+        "Description": {
+          "type": "Resource_Description",
+          "description": "",
+          "readOnly": true
+        },
+        "DewPointCelsius": {
+          "type": "Sensor_SensorExcerpt",
+          "description": "The dew point temperature (C).",
+          "readOnly": false
+        },
+        "EnergyJoules": {
+          "type": "Sensor_SensorExcerpt",
+          "description": "Energy consumption (J).",
+          "readOnly": false
+        },
+        "EnergykWh": {
+          "type": "Sensor_SensorEnergykWhExcerpt",
+          "description": "Energy consumption (kWh).",
+          "readOnly": false
+        },
+        "FanSpeedsPercent": {
+          "type": "array",
+          "description": "Fan speeds (percent).",
+          "readOnly": false
+        },
+        "FanSpeedsPercent@odata.count": {
+          "type": "odata-v4_count",
+          "description": "",
+          "readOnly": false
+        },
+        "HumidityPercent": {
+          "type": "Sensor_SensorExcerpt",
+          "description": "Humidity (percent).",
+          "readOnly": false
+        },
+        "Id": {
+          "type": "Resource_Id",
+          "description": "",
+          "readOnly": true
+        },
+        "Name": {
+          "type": "Resource_Name",
+          "description": "",
+          "readOnly": true
+        },
+        "Oem": {
+          "type": "Resource_Oem",
+          "description": "The OEM extension property.",
+          "readOnly": false
+        },
+        "PowerLimitWatts": {
+          "type": "Control_ControlSingleExcerpt",
+          "description": "Power limit (W).",
+          "readOnly": false
+        },
+        "PowerLoadPercent": {
+          "type": "Sensor_SensorExcerpt",
+          "description": "The power load (percent) for this device.",
+          "readOnly": false
+        },
+        "PowerWatts": {
+          "type": "Sensor_SensorPowerExcerpt",
+          "description": "Power consumption (W).",
+          "readOnly": false
+        },
+        "TemperatureCelsius": {
+          "type": "Sensor_SensorExcerpt",
+          "description": "Temperature (Celsius).",
+          "readOnly": false
+        }
+      }
+    }
+  },
+  "known_actions": [
+    {
+      "name": "ComputerSystem.Reset",
+      "method": "POST",
+      "path": "/redfish/v1/Systems/{SystemId}/Actions/ComputerSystem.Reset",
+      "description": "Reset (reboot/power off/on) a computer system"
+    },
+    {
+      "name": "Bios.ResetBios",
+      "method": "POST",
+      "path": "/redfish/v1/Systems/{SystemId}/Bios/Actions/Bios.ResetBios",
+      "description": "Reset BIOS settings to default"
+    },
+    {
+      "name": "Bios.ChangePassword",
+      "method": "POST",
+      "path": "/redfish/v1/Systems/{SystemId}/Bios/Actions/Bios.ChangePassword",
+      "description": "Change the BIOS password"
+    },
+    {
+      "name": "SecureBoot.ResetKeys",
+      "method": "POST",
+      "path": "/redfish/v1/Systems/{SystemId}/SecureBoot/Actions/SecureBoot.ResetKeys",
+      "description": "Reset Secure Boot keys"
+    },
+    {
+      "name": "LogService.ClearLog",
+      "method": "POST",
+      "path": "/redfish/v1/Systems/{SystemId}/LogServices/{LogServiceId}/Actions/LogService.ClearLog",
+      "description": "Clear all log entries"
+    },
+    {
+      "name": "VirtualMedia.InsertMedia",
+      "method": "POST",
+      "path": "/redfish/v1/Systems/{SystemId}/VirtualMedia/{VirtualMediaId}/Actions/VirtualMedia.InsertMedia",
+      "description": "Insert (mount) virtual media"
+    },
+    {
+      "name": "VirtualMedia.EjectMedia",
+      "method": "POST",
+      "path": "/redfish/v1/Systems/{SystemId}/VirtualMedia/{VirtualMediaId}/Actions/VirtualMedia.EjectMedia",
+      "description": "Eject (unmount) virtual media"
+    },
+    {
+      "name": "Manager.Reset",
+      "method": "POST",
+      "path": "/redfish/v1/Managers/{ManagerId}/Actions/Manager.Reset",
+      "description": "Reset the management controller (BMC reboot)"
+    },
+    {
+      "name": "Manager.ResetToDefaults",
+      "method": "POST",
+      "path": "/redfish/v1/Managers/{ManagerId}/Actions/Manager.ResetToDefaults",
+      "description": "Reset manager to factory defaults"
+    },
+    {
+      "name": "VirtualMedia.InsertMedia",
+      "method": "POST",
+      "path": "/redfish/v1/Managers/{ManagerId}/VirtualMedia/{VirtualMediaId}/Actions/VirtualMedia.InsertMedia",
+      "description": "Insert virtual media on manager"
+    },
+    {
+      "name": "VirtualMedia.EjectMedia",
+      "method": "POST",
+      "path": "/redfish/v1/Managers/{ManagerId}/VirtualMedia/{VirtualMediaId}/Actions/VirtualMedia.EjectMedia",
+      "description": "Eject virtual media on manager"
+    },
+    {
+      "name": "EventService.SubmitTestEvent",
+      "method": "POST",
+      "path": "/redfish/v1/EventService/Actions/EventService.SubmitTestEvent",
+      "description": "Submit a test event"
+    },
+    {
+      "name": "UpdateService.SimpleUpdate",
+      "method": "POST",
+      "path": "/redfish/v1/UpdateService/Actions/UpdateService.SimpleUpdate",
+      "description": "Trigger a simple firmware update from a URI"
+    },
+    {
+      "name": "CertificateService.GenerateCSR",
+      "method": "POST",
+      "path": "/redfish/v1/CertificateService/Actions/CertificateService.GenerateCSR",
+      "description": "Generate a Certificate Signing Request"
+    },
+    {
+      "name": "CertificateService.ReplaceCertificate",
+      "method": "POST",
+      "path": "/redfish/v1/CertificateService/Actions/CertificateService.ReplaceCertificate",
+      "description": "Replace an existing certificate"
+    }
+  ]
+}

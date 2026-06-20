@@ -1,0 +1,382 @@
+{
+  "source": "DMTF/Redfish-Publications",
+  "download_timestamp": "2026-06-19T17:44:58Z",
+  "total_resource_types": 75,
+  "downloaded": 75,
+  "failed": 0,
+  "failed_resources": [],
+  "resources": {
+    "ServiceRoot": {
+      "filename": "ServiceRoot.v1_17_0.yaml",
+      "version": "v1.17.0",
+      "size_bytes": 28386
+    },
+    "ComputerSystem": {
+      "filename": "ComputerSystem.v1_22_2.yaml",
+      "version": "v1.22.2",
+      "size_bytes": 118744
+    },
+    "ComputerSystemCollection": {
+      "filename": "ComputerSystemCollection.yaml",
+      "version": "collection",
+      "size_bytes": 2800
+    },
+    "Processor": {
+      "filename": "Processor.v1_20_1.yaml",
+      "version": "v1.20.1",
+      "size_bytes": 66456
+    },
+    "ProcessorCollection": {
+      "filename": "ProcessorCollection.yaml",
+      "version": "collection",
+      "size_bytes": 2770
+    },
+    "Memory": {
+      "filename": "Memory.v1_19_1.yaml",
+      "version": "v1.19.1",
+      "size_bytes": 78804
+    },
+    "MemoryCollection": {
+      "filename": "MemoryCollection.yaml",
+      "version": "collection",
+      "size_bytes": 2752
+    },
+    "Chassis": {
+      "filename": "Chassis.v1_25_1.yaml",
+      "version": "v1.25.1",
+      "size_bytes": 62072
+    },
+    "ChassisCollection": {
+      "filename": "ChassisCollection.yaml",
+      "version": "collection",
+      "size_bytes": 2758
+    },
+    "Power": {
+      "filename": "Power.v1_7_2.yaml",
+      "version": "v1.7.2",
+      "size_bytes": 47700
+    },
+    "Thermal": {
+      "filename": "Thermal.v1_7_2.yaml",
+      "version": "v1.7.2",
+      "size_bytes": 33977
+    },
+    "Sensor": {
+      "filename": "Sensor.v1_9_1.yaml",
+      "version": "v1.9.1",
+      "size_bytes": 86704
+    },
+    "SensorCollection": {
+      "filename": "SensorCollection.yaml",
+      "version": "collection",
+      "size_bytes": 2752
+    },
+    "Manager": {
+      "filename": "Manager.v1_19_1.yaml",
+      "version": "v1.19.1",
+      "size_bytes": 50832
+    },
+    "ManagerCollection": {
+      "filename": "ManagerCollection.yaml",
+      "version": "collection",
+      "size_bytes": 2758
+    },
+    "ManagerAccount": {
+      "filename": "ManagerAccount.v1_12_1.yaml",
+      "version": "v1.12.1",
+      "size_bytes": 27166
+    },
+    "ManagerAccountCollection": {
+      "filename": "ManagerAccountCollection.yaml",
+      "version": "collection",
+      "size_bytes": 2800
+    },
+    "AccountService": {
+      "filename": "AccountService.v1_16_0.yaml",
+      "version": "v1.16.0",
+      "size_bytes": 76760
+    },
+    "EthernetInterface": {
+      "filename": "EthernetInterface.v1_12_2.yaml",
+      "version": "v1.12.2",
+      "size_bytes": 41563
+    },
+    "EthernetInterfaceCollection": {
+      "filename": "EthernetInterfaceCollection.yaml",
+      "version": "collection",
+      "size_bytes": 2818
+    },
+    "NetworkAdapter": {
+      "filename": "NetworkAdapter.v1_10_0.yaml",
+      "version": "v1.10.0",
+      "size_bytes": 30976
+    },
+    "NetworkAdapterCollection": {
+      "filename": "NetworkAdapterCollection.yaml",
+      "version": "collection",
+      "size_bytes": 2800
+    },
+    "Storage": {
+      "filename": "Storage.v1_17_0.yaml",
+      "version": "v1.17.0",
+      "size_bytes": 56852
+    },
+    "StorageCollection": {
+      "filename": "StorageCollection.yaml",
+      "version": "collection",
+      "size_bytes": 2758
+    },
+    "Drive": {
+      "filename": "Drive.v1_18_0.yaml",
+      "version": "v1.18.0",
+      "size_bytes": 44535
+    },
+    "DriveCollection": {
+      "filename": "DriveCollection.yaml",
+      "version": "collection",
+      "size_bytes": 2746
+    },
+    "Volume": {
+      "filename": "Volume.v1_10_1.yaml",
+      "version": "v1.10.1",
+      "size_bytes": 74772
+    },
+    "VolumeCollection": {
+      "filename": "VolumeCollection.yaml",
+      "version": "collection",
+      "size_bytes": 2746
+    },
+    "UpdateService": {
+      "filename": "UpdateService.v1_14_0.yaml",
+      "version": "v1.14.0",
+      "size_bytes": 42469
+    },
+    "SoftwareInventory": {
+      "filename": "SoftwareInventory.v1_10_2.yaml",
+      "version": "v1.10.2",
+      "size_bytes": 17199
+    },
+    "SoftwareInventoryCollection": {
+      "filename": "SoftwareInventoryCollection.yaml",
+      "version": "collection",
+      "size_bytes": 2818
+    },
+    "EventService": {
+      "filename": "EventService.v1_10_2.yaml",
+      "version": "v1.10.2",
+      "size_bytes": 30941
+    },
+    "EventDestination": {
+      "filename": "EventDestination.v1_14_1.yaml",
+      "version": "v1.14.1",
+      "size_bytes": 51998
+    },
+    "EventDestinationCollection": {
+      "filename": "EventDestinationCollection.yaml",
+      "version": "collection",
+      "size_bytes": 2812
+    },
+    "LogService": {
+      "filename": "LogService.v1_7_0.yaml",
+      "version": "v1.7.0",
+      "size_bytes": 33563
+    },
+    "LogServiceCollection": {
+      "filename": "LogServiceCollection.yaml",
+      "version": "collection",
+      "size_bytes": 2776
+    },
+    "LogEntry": {
+      "filename": "LogEntry.v1_16_2.yaml",
+      "version": "v1.16.2",
+      "size_bytes": 45907
+    },
+    "LogEntryCollection": {
+      "filename": "LogEntryCollection.yaml",
+      "version": "collection",
+      "size_bytes": 2797
+    },
+    "SessionService": {
+      "filename": "SessionService.v1_1_9.yaml",
+      "version": "v1.1.9",
+      "size_bytes": 6012
+    },
+    "Session": {
+      "filename": "Session.v1_7_1.yaml",
+      "version": "v1.7.1",
+      "size_bytes": 13060
+    },
+    "SessionCollection": {
+      "filename": "SessionCollection.yaml",
+      "version": "collection",
+      "size_bytes": 2758
+    },
+    "Certificate": {
+      "filename": "Certificate.v1_8_1.yaml",
+      "version": "v1.8.1",
+      "size_bytes": 29660
+    },
+    "CertificateCollection": {
+      "filename": "CertificateCollection.yaml",
+      "version": "collection",
+      "size_bytes": 2782
+    },
+    "CertificateService": {
+      "filename": "CertificateService.v1_0_5.yaml",
+      "version": "v1.0.5",
+      "size_bytes": 17329
+    },
+    "SecureBoot": {
+      "filename": "SecureBoot.v1_1_1.yaml",
+      "version": "v1.1.1",
+      "size_bytes": 8705
+    },
+    "TaskService": {
+      "filename": "TaskService.v1_2_1.yaml",
+      "version": "v1.2.1",
+      "size_bytes": 7047
+    },
+    "Task": {
+      "filename": "Task.v1_7_4.yaml",
+      "version": "v1.7.4",
+      "size_bytes": 16674
+    },
+    "TaskCollection": {
+      "filename": "TaskCollection.yaml",
+      "version": "collection",
+      "size_bytes": 2740
+    },
+    "Bios": {
+      "filename": "Bios.v1_2_1.yaml",
+      "version": "v1.2.1",
+      "size_bytes": 12450
+    },
+    "BootOption": {
+      "filename": "BootOption.v1_0_6.yaml",
+      "version": "v1.0.6",
+      "size_bytes": 6937
+    },
+    "BootOptionCollection": {
+      "filename": "BootOptionCollection.yaml",
+      "version": "collection",
+      "size_bytes": 2776
+    },
+    "PowerSupply": {
+      "filename": "PowerSupply.v1_6_0.yaml",
+      "version": "v1.6.0",
+      "size_bytes": 27244
+    },
+    "PowerSupplyCollection": {
+      "filename": "PowerSupplyCollection.yaml",
+      "version": "collection",
+      "size_bytes": 2782
+    },
+    "Battery": {
+      "filename": "Battery.v1_3_0.yaml",
+      "version": "v1.3.0",
+      "size_bytes": 21730
+    },
+    "BatteryCollection": {
+      "filename": "BatteryCollection.yaml",
+      "version": "collection",
+      "size_bytes": 2758
+    },
+    "Fan": {
+      "filename": "Fan.v1_5_1.yaml",
+      "version": "v1.5.1",
+      "size_bytes": 13251
+    },
+    "FanCollection": {
+      "filename": "FanCollection.yaml",
+      "version": "collection",
+      "size_bytes": 2734
+    },
+    "EnvironmentMetrics": {
+      "filename": "EnvironmentMetrics.v1_3_1.yaml",
+      "version": "v1.3.1",
+      "size_bytes": 12667
+    },
+    "TelemetryService": {
+      "filename": "TelemetryService.v1_3_3.yaml",
+      "version": "v1.3.3",
+      "size_bytes": 17799
+    },
+    "MetricReportCollection": {
+      "filename": "MetricReportCollection.yaml",
+      "version": "collection",
+      "size_bytes": 2788
+    },
+    "MetricDefinition": {
+      "filename": "MetricDefinition.v1_3_4.yaml",
+      "version": "v1.3.4",
+      "size_bytes": 23179
+    },
+    "MetricDefinitionCollection": {
+      "filename": "MetricDefinitionCollection.yaml",
+      "version": "collection",
+      "size_bytes": 2812
+    },
+    "VirtualMedia": {
+      "filename": "VirtualMedia.v1_6_1.yaml",
+      "version": "v1.6.1",
+      "size_bytes": 19442
+    },
+    "VirtualMediaCollection": {
+      "filename": "VirtualMediaCollection.yaml",
+      "version": "collection",
+      "size_bytes": 2788
+    },
+    "Role": {
+      "filename": "Role.v1_3_2.yaml",
+      "version": "v1.3.2",
+      "size_bytes": 6370
+    },
+    "RoleCollection": {
+      "filename": "RoleCollection.yaml",
+      "version": "collection",
+      "size_bytes": 2740
+    },
+    "Assembly": {
+      "filename": "Assembly.v1_5_0.yaml",
+      "version": "v1.5.0",
+      "size_bytes": 14688
+    },
+    "PCIeDevice": {
+      "filename": "PCIeDevice.v1_14_0.yaml",
+      "version": "v1.14.0",
+      "size_bytes": 40541
+    },
+    "PCIeDeviceCollection": {
+      "filename": "PCIeDeviceCollection.yaml",
+      "version": "collection",
+      "size_bytes": 2776
+    },
+    "PCIeFunction": {
+      "filename": "PCIeFunction.v1_6_0.yaml",
+      "version": "v1.6.0",
+      "size_bytes": 18683
+    },
+    "PCIeFunctionCollection": {
+      "filename": "PCIeFunctionCollection.yaml",
+      "version": "collection",
+      "size_bytes": 2788
+    },
+    "ActionInfo": {
+      "filename": "ActionInfo.v1_4_1.yaml",
+      "version": "v1.4.1",
+      "size_bytes": 10205
+    },
+    "SimpleStorage": {
+      "filename": "SimpleStorage.v1_3_1.yaml",
+      "version": "v1.3.1",
+      "size_bytes": 9714
+    },
+    "SimpleStorageCollection": {
+      "filename": "SimpleStorageCollection.yaml",
+      "version": "collection",
+      "size_bytes": 2794
+    }
+  },
+  "total_size_bytes": 1585040,
+  "total_size_mb": 1.51
+}
