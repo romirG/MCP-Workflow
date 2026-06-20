@@ -1,0 +1,10 @@
+{
+  "raw_endpoints": 133,
+  "target_workflows": 13,
+  "projected_tool_reduction_pct": 90.2,
+  "full_spec_tokens": 410562,
+  "full_spec_chars": 1642248,
+  "cleaned_summary_tokens": 38445,
+  "cleaned_summary_chars": 153783,
+  "token_reduction_pct": 90.6
+}
