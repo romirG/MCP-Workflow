@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MCP Workflow Proxy — Observability Dashboard</title>
+  <meta name="description" content="Real-time observability dashboard for the MCP Workflow Proxy — visualize workflow-to-API mappings, execution traces, and system metrics." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <link rel="stylesheet" href="/static/styles.css" />
+</head>
+<body>
+<div class="app">
+
+  <!-- ═══════════════════════ SIDEBAR ═══════════════════════ -->
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <h1>MCP Workflow Proxy</h1>
+      <p>Observability Dashboard</p>
+    </div>
+
+    <nav class="sidebar-nav">
+      <div class="nav-section-label">Views</div>
+
+      <a class="nav-item active" data-view="overview" onclick="switchView('overview')">
+        <span class="nav-icon">📊</span>
+        Overview
+      </a>
+      <a class="nav-item" data-view="mapping" onclick="switchView('mapping')">
+        <span class="nav-icon">🗺️</span>
+        Workflow Map
+      </a>
+      <a class="nav-item" data-view="traces" onclick="switchView('traces')">
+        <span class="nav-icon">⚡</span>
+        Execution Traces
+      </a>
+      <a class="nav-item" data-view="catalog" onclick="switchView('catalog')">
+        <span class="nav-icon">📋</span>
+        Workflow Catalog
+      </a>
+
+      <div class="nav-section-label">Actions</div>
+
+      <a class="nav-item" onclick="switchView('traces'); document.getElementById('exec-panel').scrollIntoView({behavior:'smooth'})">
+        <span class="nav-icon">▶️</span>
+        Execute Workflow
+      </a>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="live-indicator">
+        <span class="live-dot" id="liveDot"></span>
+        <span id="liveStatus">Connecting...</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ═══════════════════════ MAIN CONTENT ═══════════════════════ -->
+  <main class="main-content">
+
+    <!-- ─────────────── VIEW: OVERVIEW ─────────────── -->
+    <div class="view active" id="view-overview">
+      <div class="page-header">
+        <h2>Dashboard Overview</h2>
+        <p>Real-time system metrics and workflow performance insights</p>
+      </div>
+
+      <!-- Stat Cards -->
+      <div class="stats-grid" id="statsGrid">
+        <div class="stat-card green">
+          <div class="stat-value green" id="statToolReduction">—</div>
+          <div class="stat-label">Tool Reduction</div>
+        </div>
+        <div class="stat-card accent">
+          <div class="stat-value accent" id="statTokenSavings">—</div>
+          <div class="stat-label">Token Savings</div>
+        </div>
+        <div class="stat-card primary">
+          <div class="stat-value primary" id="statWorkflows">—</div>
+          <div class="stat-label">Workflow Tools</div>
+        </div>
+        <div class="stat-card yellow">
+          <div class="stat-value yellow" id="statEndpoints">—</div>
+          <div class="stat-label">Endpoints Covered</div>
+        </div>
+        <div class="stat-card primary">
+          <div class="stat-value primary" id="statExecutions">0</div>
+          <div class="stat-label">Total Executions</div>
+        </div>
+        <div class="stat-card green">
+          <div class="stat-value green" id="statSuccessRate">—</div>
+          <div class="stat-label">Success Rate</div>
+        </div>
+      </div>
+
+      <!-- Charts -->
+      <div class="charts-grid">
+        <div class="chart-card">
+          <h3>Tool Count: Before vs After</h3>
+          <p class="chart-sub">133 raw endpoints → 22 semantic MCP tools (83.5% reduction)</p>
+          <canvas id="chartTools" height="220"></canvas>
+        </div>
+        <div class="chart-card">
+          <h3>Token Usage Comparison</h3>
+          <p class="chart-sub">Full spec tokens vs MCP tool description tokens</p>
+          <canvas id="chartTokens" height="220"></canvas>
+        </div>
+        <div class="chart-card">
+          <h3>Workflow Categories</h3>
+          <p class="chart-sub">19 workflows distributed across 6 operational domains</p>
+          <canvas id="chartCategories" height="220"></canvas>
+        </div>
+        <div class="chart-card">
+          <h3>Endpoints Covered Per Workflow</h3>
+          <p class="chart-sub">Each workflow abstracts multiple raw Redfish API calls</p>
+          <canvas id="chartCoverage" height="220"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <!-- ─────────────── VIEW: MAPPING ─────────────── -->
+    <div class="view" id="view-mapping">
+      <div class="page-header">
+        <h2>Workflow → API Mapping</h2>
+        <p>Explore how each workflow maps to underlying Redfish API endpoints</p>
+      </div>
+
+      <div class="mapping-container">
+        <div class="mapping-sidebar" id="mappingSidebar">
+          <h3>Workflows (19)</h3>
+          <div id="mappingWorkflowList"></div>
+        </div>
+        <div class="mapping-canvas" id="mappingCanvas">
+          <div class="empty-state">
+            <div class="icon">🗺️</div>
+            <h3>Select a Workflow</h3>
+            <p>Click a workflow on the left to see its API endpoint mapping and step flow</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ─────────────── VIEW: TRACES ─────────────── -->
+    <div class="view" id="view-traces">
+      <div class="page-header">
+        <h2>Execution Traces</h2>
+        <p>Execute workflows and visualize step-by-step execution traces in real-time</p>
+      </div>
+
+      <!-- Execution Panel -->
+      <div class="exec-panel" id="exec-panel">
+        <h3>▶ Execute a Workflow</h3>
+        <div class="exec-form">
+          <div class="form-group">
+            <label for="execWorkflow">Workflow</label>
+            <select id="execWorkflow"></select>
+          </div>
+          <div class="form-group">
+            <label for="execParams">Parameters (JSON)</label>
+            <textarea id="execParams" placeholder='{"SystemId": "Server1"}'>{}</textarea>
+          </div>
+          <button class="exec-btn" id="execBtn" onclick="executeWorkflow()">
+            <span class="spinner"></span>
+            <span class="btn-text">▶ Execute</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Active Trace Result -->
+      <div id="traceResult"></div>
+
+      <!-- Trace History -->
+      <div class="exec-panel" style="margin-top: 24px;">
+        <h3>📜 Execution History</h3>
+        <div id="traceHistory">
+          <div class="empty-state">
+            <div class="icon">📜</div>
+            <h3>No Traces Yet</h3>
+            <p>Execute a workflow above to see traces appear here</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ─────────────── VIEW: CATALOG ─────────────── -->
+    <div class="view" id="view-catalog">
+      <div class="page-header">
+        <h2>Workflow Catalog</h2>
+        <p>Browse all 19 workflow tools with parameters, steps, and endpoint coverage</p>
+      </div>
+
+      <div class="workflow-grid" id="catalogGrid"></div>
+
+      <!-- Detail Panel (shown on card click) -->
+      <div id="catalogDetail"></div>
+    </div>
+
+  </main>
+</div>
+
+<script src="/static/app.js"></script>
+</body>
+</html>
