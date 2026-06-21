@@ -38,11 +38,11 @@ These are the numbers you will present to the hackathon judges:
 
 | Metric | Before | After | Reduction |
 |---|---|---|---|
-| **Tool count** | 133 raw endpoints | 22 MCP tools | **83.5% ✅** |
-| **Token count** | 410,562 tokens | 3,374 tokens | **99.2%** |
+| **Tool count** | 133 raw endpoints | 24 MCP tools | **82.0% ✅** |
+| **Token count** | 410,562 tokens | 3,621 tokens | **99.1%** |
 | **LLM calls needed** | 1 per API call | 0 at runtime | Design-time only |
 
-> The ≥80% tool reduction threshold is **met and exceeded** at **83.5%**.
+> The ≥80% tool reduction threshold is **met and exceeded** at **82.0%**.
 
 ---
 
@@ -74,15 +74,15 @@ Expected output:
 ...
   TOOL COUNT REDUCTION
   Before (133 raw endpoints as tools):     133
-  After  (22 MCP workflow tools):          22
-  Reduction:                               111 tools
-  Reduction %:                             83.5%
+  After  (24 MCP workflow tools):          24
+  Reduction:                               109 tools
+  Reduction %:                             82.0%
   >=80% threshold:                         PASSES
 
   TOKEN REDUCTION
   Full spec tokens (baseline):             410,562
-  MCP tool descriptions tokens:            3,374
-  Reduction vs full spec:                  99.2%
+  MCP tool descriptions tokens:            3,621
+  Reduction vs full spec:                  99.1%
 ```
 
 This generates `specs/after_metrics.json` with the full breakdown.
@@ -118,14 +118,14 @@ If Claude Desktop already has other MCP servers configured, merge the `"redfish-
 
 ### 3c. Restart Claude Desktop
 
-Fully quit and reopen Claude Desktop. After restart, you should see **22 tools** listed when Claude is asked about available tools.
+Fully quit and reopen Claude Desktop. After restart, you should see **24 tools** listed when Claude is asked about available tools.
 
 ### 3d. Start Prism (optional — for live execution)
 
 Without Prism, tools appear in Claude but workflow execution returns HTTP 503. For a full demo:
 
 ```bash
-npx @stoplight/prism-cli mock specs/merged/full_spec.yaml --port 4010
+npx @stoplight/prism-cli mock specs/merged/full_spec_local.yaml --port 4010
 ```
 
 ---
@@ -167,7 +167,7 @@ open pitch_dashboard/index.html
 ```
 
 The dashboard includes:
-- ✅ Animated hero counters (83.5%, 99.2%, etc.)
+- ✅ Animated hero counters (82.0%, 99.1%, etc.)
 - ✅ Before/After tool count comparison
 - ✅ Four Chart.js charts (tools, tokens, categories, coverage)
 - ✅ Full 5-person pipeline diagram
@@ -204,7 +204,7 @@ User prompt (Claude Desktop)
   Prism Mock Server :4010  ← Person 1
 ```
 
-**133 raw HTTP calls → 22 semantic tool invocations → 83.5% reduction ✅**
+**133 raw HTTP calls → 24 semantic tool invocations → 82.0% reduction ✅**
 
 ---
 

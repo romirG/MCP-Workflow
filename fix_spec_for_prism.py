@@ -21,4 +21,4 @@ with open(output_file, "w", encoding="utf-8") as f:
     f.write(content)
 
 print(f"Saved cleaned spec to: {output_file}")
-print(f"Now run: npx @stoplight/prism-cli@4.10.5 mock {output_file} -p 4000")
+print(f"Now run: npx @stoplight/prism-cli@4.10.5 mock {output_file} -p 4010")

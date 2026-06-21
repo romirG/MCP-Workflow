@@ -1,8 +1,8 @@
 # MCP Workflow Proxy — Redfish Edition
 
-> **83.5% tool reduction · 73.2% token savings · 133 endpoints → 22 intelligent MCP tools**
+> **82.0% tool reduction · 71.3% token savings · 133 endpoints → 24 intelligent MCP tools**
 
-A Model Context Protocol (MCP) server that transforms a raw 133-endpoint Redfish/OpenAPI spec into 19 semantic workflow tools — letting an AI agent manage entire server infrastructure with plain English, instead of wrestling with hundreds of low-level API calls.
+A Model Context Protocol (MCP) server that transforms a raw 133-endpoint Redfish/OpenAPI spec into 21 semantic workflow tools — letting an AI agent manage entire server infrastructure with plain English, instead of wrestling with hundreds of low-level API calls.
 
 ---
 
@@ -20,12 +20,12 @@ The MCP Workflow Proxy sits between the AI agent and the raw API. It:
 
 1. **Ingests** the OpenAPI spec and extracts all endpoints
 2. **Clusters** them into semantic workflow groups using an LLM (once, at design time)
-3. **Exposes** 19 high-level workflow tools via a standard MCP server
+3. **Exposes** 21 high-level workflow tools via a standard MCP server
 4. **Executes** multi-step workflows — with conditions, loops, and variable chaining — so the agent just calls `firmware_update` and gets back a result
 
 ```
 Before:  Claude sees 133 tools  →  confused, high token cost, error-prone
-After:   Claude sees 22 tools   →  clear, cheap, reliable
+After:   Claude sees 24 tools   →  clear, cheap, reliable
 ```
 
 ---
@@ -34,9 +34,9 @@ After:   Claude sees 22 tools   →  clear, cheap, reliable
 
 | Metric | Before | After | Reduction |
 |--------|--------|-------|-----------|
-| MCP tools exposed | 133 | 22 | **83.5% ✅** |
-| Token cost (tool definitions) | 12,595 | 3,374 | **73.2% ✅** |
-| Token cost (vs full spec) | 410,562 | 3,374 | **99.2%** |
+| MCP tools exposed | 133 | 24 | **82.0% ✅** |
+| Token cost (tool definitions) | 12,595 | 3,621 | **71.3% ✅** |
+| Token cost (vs full spec) | 410,562 | 3,621 | **99.1%** |
 | Threshold required | — | — | ≥ 80% tools, ≥ 70% tokens |
 
 ---
@@ -48,9 +48,9 @@ MCP-Workflow/
 ├── download_spec.py          # Person 1: Downloads DMTF Redfish schema YAML files
 ├── parse_spec.py             # Person 1: Merges + cleans 133 endpoints for LLM input
 ├── fix_spec_for_prism.py     # Person 1: Patches merged spec for Prism mock server
-├── workflows.yaml            # Person 2: 19 workflow blueprints (AI-generated clustering)
+├── workflows.yaml            # Person 2: 21 workflow blueprints (AI-generated clustering)
 ├── workflow_engine.py        # Person 3: Runtime executor — runs HTTP chains from YAML
-├── mcp_server.py             # Person 4: FastMCP server exposing 22 tools
+├── mcp_server.py             # Person 4: FastMCP server exposing 24 tools
 ├── calculate_metrics.py      # Person 5: Computes before/after token & tool metrics
 ├── claude_desktop_config.json # Person 5: Drop-in Claude Desktop config
 ├── pitch_dashboard/
@@ -62,7 +62,7 @@ MCP-Workflow/
 │   ├── merged/full_spec.yaml # Consolidated OpenAPI 3.0 spec (for Prism)
 │   ├── cleaned/              # Token-efficient endpoint summaries for LLM input
 │   ├── baseline_metrics.json # Before: 133 endpoints, 410,562 tokens
-│   └── after_metrics.json    # After:  22 tools, 3,374 tokens
+│   └── after_metrics.json    # After:  24 tools, 3,621 tokens
 ├── PERSON4_README.md         # MCP server implementation guide
 ├── PERSON5_README.md         # Integration + Claude Desktop setup guide
 └── ARCHITECTURE.md           # System design, diagrams, trade-offs
@@ -89,7 +89,7 @@ pip install "mcp[cli]"
 ### 2. Start the Prism mock server (simulates real Redfish hardware)
 
 ```bash
-npx @stoplight/prism-cli mock specs/merged/full_spec.yaml --port 4010
+npx @stoplight/prism-cli mock specs/merged/full_spec_local.yaml --port 4010
 ```
 
 ### 3. Run the MCP server
@@ -98,7 +98,7 @@ npx @stoplight/prism-cli mock specs/merged/full_spec.yaml --port 4010
 python mcp_server.py
 ```
 
-The server starts on stdio and exposes **22 tools** to any MCP client.
+The server starts on stdio and exposes **24 tools** to any MCP client.
 
 ### 4. Test with the MCP inspector
 
@@ -110,9 +110,9 @@ Opens a browser UI — click any tool, fill in parameters, and hit **Run**.
 
 ---
 
-## The 22 MCP Tools
+## The 24 MCP Tools
 
-### 19 Workflow Tools
+### 21 Workflow Tools
 
 | Tool | Category | Steps | Endpoints Covered |
 |------|----------|-------|-------------------|
@@ -140,7 +140,7 @@ Opens a browser UI — click any tool, fill in parameters, and hit **Run**.
 
 | Tool | Purpose |
 |------|---------|
-| `list_workflows_meta` | Discovery — lists all 19 workflow tools with descriptions |
+| `list_workflows_meta` | Discovery — lists all 21 workflow tools with descriptions |
 | `list_raw_endpoints` | Tier Toggle — reveals the underlying Redfish endpoints for any workflow |
 | `run_raw_endpoint` | Escape Hatch — calls a single raw Redfish endpoint directly |
 
@@ -162,7 +162,7 @@ Add this to your `claude_desktop_config.json` (find it at `%APPDATA%\Claude\` on
 }
 ```
 
-Then restart Claude Desktop. You'll see all 22 tools available. Try:
+Then restart Claude Desktop. You'll see all 24 tools available. Try:
 
 - *"Check the health of server Server1"* → invokes `server_health_check`
 - *"Update firmware on my rack"* → invokes `firmware_update`
@@ -191,17 +191,17 @@ python calculate_metrics.py
 Output:
 ```
   TOOL COUNT REDUCTION
-  Before (133 raw endpoints as tools):   133
-  After  (22 MCP workflow tools):         22
-  Reduction:                             111 tools
-  Reduction %:                           83.5%
-  >=80% threshold:                       PASSES
+  Before (133 raw endpoints as tools):       133
+  After  (24 MCP workflow tools):            24
+  Reduction:                                 109 tools
+  Reduction %:                               82.0%
+  >=80% threshold:                           PASSES
 
   TOKEN REDUCTION
-  Full spec tokens (baseline):           410,562
-  MCP tool descriptions tokens:            3,374
-  Reduction vs full spec:                 99.2%
-  Reduction vs raw-as-tools:              73.2%
+  Full spec tokens (baseline):               410,562
+  MCP tool descriptions tokens:              3,621
+  Reduction vs full spec:                    99.1%
+  Reduction vs raw-as-tools:                 71.3%
 ```
 
 ---
@@ -225,7 +225,7 @@ Built by 5 engineers as a modular pipeline — each person's output feeds direct
 | Person | Role | Deliverable |
 |--------|------|-------------|
 | Person 1 | Data & Mock Engineer | `download_spec.py`, `parse_spec.py`, Prism setup, baseline metrics |
-| Person 2 | AI Clustering Architect | `workflows.yaml` — 19 workflow blueprints |
+| Person 2 | AI Clustering Architect | `workflows.yaml` — 21 workflow blueprints |
 | Person 3 | Runtime Engine Builder | `workflow_engine.py` — HTTP execution engine |
-| Person 4 | MCP Server Developer | `mcp_server.py` — 22 FastMCP tools |
+| Person 4 | MCP Server Developer | `mcp_server.py` — 24 FastMCP tools |
 | Person 5 | Integrator & Pitch Master | Metrics, dashboard, Claude Desktop config |
