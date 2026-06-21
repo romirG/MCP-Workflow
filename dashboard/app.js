@@ -876,3 +876,63 @@ document.addEventListener('DOMContentLoaded', () => {
     loadTraces();
   }, 30000);
 });
+
+// =====================================================================
+//  Natural Language Workflow Generator
+// =====================================================================
+
+async function generateWorkflow() {
+  const promptInput = document.getElementById('nlPrompt');
+  const prompt = promptInput.value.trim();
+  
+  if (!prompt) {
+    alert("Please enter a description for the new workflow.");
+    return;
+  }
+
+  const btn = document.getElementById('nlGenerateBtn');
+  const spinner = document.getElementById('nlSpinner');
+  const btnText = document.getElementById('nlBtnText');
+  const resultPanel = document.getElementById('nlResult');
+  const yamlCode = document.getElementById('nlYamlCode');
+  const msgEl = document.getElementById('nlMessage');
+
+  // Loading state
+  btn.classList.add('loading');
+  btn.disabled = true;
+  spinner.style.display = 'inline-block';
+  btnText.textContent = 'Generating... (Takes 5-15s)';
+  resultPanel.style.display = 'none';
+
+  try {
+    const res = await fetch(`${API_BASE}/api/generate_workflow`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ prompt }),
+    });
+
+    const data = await res.json();
+    
+    if (res.ok) {
+      msgEl.textContent = data.message;
+      yamlCode.textContent = data.yaml;
+      resultPanel.style.display = 'block';
+      
+      // Clear the prompt input
+      promptInput.value = '';
+      
+      // Reload the workflows so the catalog and dropdown update
+      loadWorkflows();
+    } else {
+      throw new Error(data.detail || 'Unknown error occurred');
+    }
+  } catch (err) {
+    console.error('Generation failed:', err);
+    alert('Failed to generate workflow: ' + err.message);
+  } finally {
+    btn.classList.remove('loading');
+    btn.disabled = false;
+    spinner.style.display = 'none';
+    btnText.textContent = '✨ Generate & Load';
+  }
+}
