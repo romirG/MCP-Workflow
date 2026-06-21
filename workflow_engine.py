@@ -36,6 +36,7 @@ import json
 import yaml
 import logging
 import requests
+from cachetools import TTLCache
 from typing import Any, Dict, List, Optional, Tuple
 from datetime import datetime, timezone
 
@@ -78,6 +79,7 @@ class WorkflowEngine:
         self._workflow_map: Dict[str, dict] = {
             wf["name"]: wf for wf in self._raw.get("workflows", [])
         }
+        self._response_cache = TTLCache(maxsize=256, ttl=30)
 
         logger.info(
             "Loaded %d workflows from %s", len(self._workflow_map), workflows_file
@@ -172,6 +174,7 @@ class WorkflowEngine:
             }
         """
         started = datetime.now(timezone.utc).isoformat()
+        self._response_cache.clear()
 
         wf = self._workflow_map.get(name)
         if wf is None:
@@ -584,6 +587,11 @@ class WorkflowEngine:
 
         Connection/timeout errors return a synthetic 503/504 with empty body.
         """
+        cache_key = (method, url)
+        if method == "GET" and cache_key in self._response_cache:
+            logger.info("  [Cache Hit] GET %s", url)
+            return self._response_cache[cache_key]
+
         hdrs = {"Content-Type": "application/json", "Accept": "application/json"}
 
         dispatch = {
@@ -600,7 +608,14 @@ class WorkflowEngine:
                 data = resp.json()
             except (json.JSONDecodeError, ValueError):
                 data = {}
-            return data, resp.status_code, dict(resp.headers)
+            
+            result = (data, resp.status_code, dict(resp.headers))
+            if method == "GET" and 200 <= resp.status_code < 300:
+                self._response_cache[cache_key] = result
+            elif method != "GET":
+                self._response_cache.pop(("GET", url), None)
+
+            return result
 
         except requests.exceptions.ConnectionError:
             logger.error("Connection refused: %s", url)
