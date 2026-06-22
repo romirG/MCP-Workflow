@@ -55,18 +55,20 @@ The MCP Workflow Proxy operates in a hybrid **two-phase workflow**:
 
 ```
 MCP-Workflow/
+├── setup.bat                     # One-click setup for Windows
+├── setup.sh                      # One-click setup for Mac/Linux
+├── generate_config.py            # Auto-generates Claude Desktop config snippet
+├── mcp_server.py                 # Wraps the engine as a FastMCP stdio/SSE server (Person 4)
+├── workflow_engine.py            # Core runtime engine with variable chaining, loops, and conditions (Person 3)
+├── workflows.yaml                # Declarative workflow blueprints (21 YAML profiles) (Person 2)
+├── requirements.txt              # Python project dependencies
 ├── download_spec.py              # Downloads DMTF Redfish schema files (Person 1)
 ├── parse_spec.py                 # Merges and cleans schemas into summary format (Person 1)
 ├── fix_spec_for_prism.py         # Patches merged OpenAPI spec for compatibility with Prism (Person 1)
-├── workflows.yaml                # Declarative workflow blueprints (21 YAML profiles) (Person 2)
-├── workflow_engine.py            # Core runtime engine with variable chaining, loops, and conditions (Person 3)
-├── mcp_server.py                 # Wraps the engine as a FastMCP stdio/SSE server (Person 4)
 ├── calculate_metrics.py          # Computes before/after tool/token metrics (Person 5)
-├── claude_desktop_config.json    # Drop-in configuration for Claude Desktop Integration (Person 5)
 ├── nl_workflow_generator.py      # Natural language workflow synthesizer (Gemini Pro / Local Offline)
 ├── observability_engine.py       # Instrumented executor with timing and HTTP request tracing
 ├── observability_server.py       # FastAPI server serving live SSE stream and HTML dashboard
-├── requirements.txt              # Python project dependencies (includes FastMCP, cachetools, FastAPI)
 ├── ARCHITECTURE.md               # Architecture diagram, clustering strategy, and trade-off analysis
 ├── WORKFLOW_DEFINITIONS.md       # Full mapping from raw API endpoints to workflow-level tools
 ├── specs/
@@ -88,53 +90,96 @@ MCP-Workflow/
 
 ## 🛠️ Quick Start
 
-Follow these simple steps to set up a mock Redfish hardware environment, start the MCP server, and launch the observability dashboard.
-
 ### Prerequisites
 
-* **Python 3.10+** (runtime)
-* **Node.js 18+** (for running the Prism mock server)
+* **Python 3.10+**
+* **Node.js 18+** (for the Prism mock server)
 
-### 1. Install Dependencies
+---
 
-Install the Python libraries and the MCP CLI tool:
+### Step 1 — Run Setup (one time only)
 
-```bash
-pip install -r requirements.txt
-pip install "mcp[cli]"
+**Windows:**
+```
+setup.bat
 ```
 
-### 2. Start the Mock Server
+**Mac/Linux:**
+```bash
+chmod +x setup.sh && ./setup.sh
+```
 
-Use Prism to spin up a mock server that simulates real server hardware using the local OpenAPI spec:
+This creates a virtual environment, installs all dependencies, and prints your ready-to-paste Claude Desktop config snippet. It also saves the snippet to `claude_desktop_config_snippet.json`.
+
+---
+
+### Step 2 — Add to Claude Desktop
+
+Open your Claude Desktop config file:
+
+| Platform | Path |
+|---|---|
+| Windows (standard) | `%APPDATA%\Claude\claude_desktop_config.json` |
+| Windows (Store/MSIX) | `%LOCALAPPDATA%\Packages\Claude_pzs8sxrjxfjjc\LocalCache\Roaming\Claude\claude_desktop_config.json` |
+| Mac/Linux | `~/Library/Application Support/Claude/claude_desktop_config.json` |
+
+Paste in the `mcpServers` block printed by setup. It will look like:
+
+```json
+{
+  "mcpServers": {
+    "redfish-workflow-proxy": {
+      "command": "/absolute/path/to/venv/bin/python",
+      "args": ["/absolute/path/to/mcp_server.py"],
+      "env": {}
+    }
+  }
+}
+```
+
+> **Note:** The setup script fills in the exact paths for your machine automatically — no manual editing required.
+
+Save the file and **fully restart Claude Desktop**.
+
+---
+
+### Step 3 — Start the Mock Redfish Server
+
+In a terminal, run:
 
 ```bash
 npx @stoplight/prism-cli mock specs/merged/full_spec_local.yaml --port 4010
 ```
 
-### 3. Run the MCP Server
+> Use `full_spec_local.yaml` (not `full_spec.yaml`) — it has all external schema refs resolved locally so Prism doesn't need internet access.
 
-Start the stdio-based MCP server:
+Keep this terminal open while testing.
+
+---
+
+### Step 4 — Test in Claude Desktop
+
+Start a new chat and try:
+
+* *"What tools are available?"*
+* *"Run a health check on Server1."*
+* *"Show me the thermal status of the chassis."*
+* *"Update firmware on Server1 using image URI http://mock-server/firmware/bios-2.1.0.bin"*
+
+---
+
+### Step 5 — Launch the Observability Dashboard (optional)
 
 ```bash
-python mcp_server.py
+venv/Scripts/python observability_server.py   # Windows
+venv/bin/python observability_server.py       # Mac/Linux
 ```
-*The server will start listening on standard input/output (`stdio`) and will register **24 tools** (21 workflow + 3 meta) with any client.*
 
-### 4. Launch the Observability Dashboard & NL Builder
-
-In a separate terminal, launch the FastAPI observability server:
-
-```bash
-python observability_server.py
-```
-*This will automatically launch your default browser to `http://localhost:8765`. If it doesn't open, navigate there manually.*
+Opens at `http://localhost:8765` — shows live execution traces, workflow maps, and metrics.
 
 ---
 
 ## 📊 Live Metrics & Verification
-
-To verify that the implementation satisfies the hackathon thresholds (tool reduction ≥80%, token reduction ≥70%), run the verification tool:
 
 ```bash
 python calculate_metrics.py
@@ -149,39 +194,11 @@ python calculate_metrics.py
 
 ---
 
-## 🔌 Integrating with Claude Desktop
-
-To let Claude Desktop control your mock server using these high-level workflow tools, follow these instructions:
-
-1. Locate your Claude Desktop configuration file:
-   * **Windows:** `%APPDATA%\Claude\claude_desktop_config.json`
-   * **macOS/Linux:** `~/Library/Application Support/Claude/claude_desktop_config.json`
-2. Add the `redfish-workflow-proxy` config (make sure to replace `C:\path\to\MCP-Workflow` with your actual repository path):
-
-```json
-{
-  "mcpServers": {
-    "redfish-workflow-proxy": {
-      "command": "python",
-      "args": ["C:\\path\\to\\MCP-Workflow\\mcp_server.py"],
-      "env": {}
-    }
-  }
-}
-```
-
-3. Save the file and **restart Claude Desktop**.
-4. Ask Claude to discover the tools:
-   * *"What tools are available?"*
-   * *"Perform a health check on server S1."*
-
----
-
 ## 💡 How to Use the MCP Tools
 
 ### 1. High-Level Workflows (21 Tools)
 These tools perform multi-step, conditional operations over the Redfish API.
-* **`server_health_check`**: Runs an 8-step diagnostics pipeline across systems, processors, memory, chassis, and thermal logs. Features conditional logic: if status is healthy, it returns immediately; if degraded, it dives into sub-resource checks.
+* **`server_health_check`**: Runs an 8-step diagnostics pipeline across systems, processors, memory, chassis, and thermal logs.
 * **`firmware_update`**: Inspects existing inventory versions, compares against targeted image URIs, triggers a simple update task, and polls the progress state.
 * **`hardware_inventory_report`**: Gathers comprehensive inventory data including network cards, PCI devices, and storage arrays in a single execution.
 
@@ -191,56 +208,45 @@ These tools perform multi-step, conditional operations over the Redfish API.
 * *"Get the thermal levels and power stats for the chassis."*
 
 ### 2. Tier Toggle & Escape Hatch (3 Meta-Tools)
-If a high-level workflow fails or the agent encounters an edge case that requires direct API access, it uses the Tier Toggle:
-1. **`list_workflows_meta`**: Ingests all workflows to let the LLM search available catalog definitions.
-2. **`list_raw_endpoints`**: Takes a workflow name and returns its constituent API endpoints (e.g. `GET /redfish/v1/Systems/{SystemId}`).
-3. **`run_raw_endpoint`**: The ultimate escape hatch. Executes a direct, raw HTTP call with a JSON payload to the mock server, bypassing the high-level workflow abstraction.
+If a high-level workflow fails or the agent encounters an edge case requiring direct API access:
+1. **`list_workflows_meta`**: Lists all available workflow definitions.
+2. **`list_raw_endpoints`**: Returns the raw API endpoints used by a specific workflow.
+3. **`run_raw_endpoint`**: Executes a direct HTTP call to the mock server, bypassing workflow abstraction.
 
-*Example prompt sequence for Claude:*
-> **User:** *"Configure a custom bios setting that isn't in the bios workflow."*
-> **Claude:** *"I will search the bios workflows first. Let me see its raw endpoints."* (calls `list_raw_endpoints("bios_configuration")`)
-> **Claude:** *"I see the bios endpoints. I will now perform a surgical raw endpoint write."* (calls `run_raw_endpoint(method="PATCH", path="/redfish/v1/Systems/Server1/Bios/Settings", body_json="{\"Attributes\": {\"BootMode\": \"Uefi\"}}")`)
+*Example prompt sequence:*
+> **User:** *"Configure a BIOS setting that isn't in the bios workflow."*
+> **Claude:** calls `list_raw_endpoints("bios_configuration")`, then `run_raw_endpoint(method="PATCH", path="/redfish/v1/Systems/Server1/Bios/Settings", body_json="{\"Attributes\": {\"BootMode\": \"Uefi\"}}")`
 
 ---
 
 ## 🔍 Features in Detail
 
 ### 1. In-Memory Request Caching
-Within a single workflow execution, `GET` responses are stored in a local cache using `cachetools.TTLCache`.
-* **Deduplication:** Repeated reads to `/redfish/v1/Systems/Server1` within the same flow hit the cache, saving network latency.
-* **Auto-Invalidation:** Any state-changing method (`POST`, `PATCH`, `PUT`, `DELETE`) immediately purges cached entries for that URL to prevent stale read hazards.
+Within a single workflow execution, `GET` responses are cached using `cachetools.TTLCache`. Any state-changing request (`POST`, `PATCH`, `PUT`, `DELETE`) immediately purges cached entries for that URL.
 
 ### 2. Real-Time Observability Dashboard
-Run `python observability_server.py` to open the web console.
-* **Overview Tab:** Live statistics displaying tool and token metrics, execution history counts, and success rates.
-* **Workflow Map:** Visualizes the dynamic relationships and mappings showing how workflow nodes hook into raw endpoints.
-* **Execution Traces:** A live tracing timeline driven by Server-Sent Events (SSE). Click **Execute**, pass parameters, and watch step-by-step timings, response sizes, status codes, and context variables update as the engine executes.
-* **Workflow Catalog:** A searchable library of all 21 blueprints.
+Run `observability_server.py` to open the web console at `http://localhost:8765`:
+* **Overview Tab:** Live tool/token metrics and execution history.
+* **Workflow Map:** Visualizes how workflow nodes map to raw endpoints.
+* **Execution Traces:** Live SSE-driven step-by-step timing and status updates.
+* **Workflow Catalog:** Searchable library of all 21 blueprints.
 
 ### 3. Natural Language Workflow Builder
-Located in the **NL Builder** tab of the dashboard, or triggered via the API:
-* Write a requirement in plain English (e.g. *"Create a workflow that checks system memory, then checks storage, and restarts the chassis if degraded"*).
-* The backend sends the prompt to Gemini Pro (or a local heuristics engine if no key is provided).
-* The builder compiles a clean YAML workflow blueprint matching the execution engine's syntax.
-* The file is automatically appended to `workflows.yaml` and the server **hot-reloads** the configuration on the fly. The newly generated workflow immediately becomes an active MCP tool!
+In the **NL Builder** tab, write a requirement in plain English. The backend compiles a YAML workflow blueprint, appends it to `workflows.yaml`, and the server **hot-reloads** it — the new workflow instantly becomes an active MCP tool.
 
 ---
 
 ## ⚡ Extension Guide: Onboarding a New Spec in 5 Minutes
 
-To adapt this MCP Workflow Proxy to a completely different API (e.g., Kubernetes, GitHub, or AWS):
-
-1. **Place the Spec:** Drop your raw OpenAPI schema YAML/JSON files into `specs/raw/`.
-2. **Consolidate & Clean:** Run `python parse_spec.py` to merge them and generate `specs/cleaned/endpoints_summary.yaml` (a token-efficient path list).
-3. **Cluster with AI:** Run the design-time LLM prompt in `prompts/workflow_generation_prompt.md`, feeding it the cleaned summary.
-4. **Deploy workflows.yaml:** Save the LLM's output array as `workflows.yaml` in the root.
-5. **Start Servers:** Run `python mcp_server.py` and `python observability_server.py`. The new workflows will auto-register as MCP tools!
+1. **Place the Spec:** Drop your raw OpenAPI YAML/JSON files into `specs/raw/`.
+2. **Consolidate & Clean:** Run `python parse_spec.py` to generate `specs/cleaned/endpoints_summary.yaml`.
+3. **Cluster with AI:** Use the prompt in `prompts/workflow_generation_prompt.md` with the cleaned summary.
+4. **Deploy workflows.yaml:** Save the LLM output as `workflows.yaml` in the root.
+5. **Start Servers:** Run `python mcp_server.py`. New workflows auto-register as MCP tools.
 
 ---
 
 ## 👥 Hackathon Team Credits
-
-Built as a modular development pipeline:
 
 | Team Member | Role | Key Contributions |
 | :--- | :--- | :--- |
