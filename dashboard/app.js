@@ -235,12 +235,12 @@ function renderCharts() {
 
   // -- Category Doughnut --
   const categoryColors = {
-    monitoring:    '#06b6d4',
+    monitoring: '#06b6d4',
     configuration: '#3b82f6',
-    lifecycle:     '#f59e0b',
-    security:      '#ef4444',
-    maintenance:   '#8b5cf6',
-    diagnostics:   '#22c55e',
+    lifecycle: '#f59e0b',
+    security: '#ef4444',
+    maintenance: '#8b5cf6',
+    diagnostics: '#22c55e',
   };
 
   const ctxCats = document.getElementById('chartCategories');
@@ -389,55 +389,55 @@ function showCatalogDetail(name) {
       <h4 style="font-size:0.8rem; font-weight:700; margin-bottom:10px; color:var(--accent);">Execution Steps (${steps.length})</h4>
       <div class="steps-timeline">
         ${steps.map((s, i) => {
-          const method = (s.action || 'GET').toUpperCase();
-          const flags = [];
-          if (s.condition) flags.push('cond');
-          if (s.loop_over) flags.push(`loop:${s.loop_over}`);
-          if (s.break_if) flags.push('break');
-          if (s.on_error && s.on_error !== 'continue') flags.push(`err:${s.on_error}`);
+    const method = (s.action || 'GET').toUpperCase();
+    const flags = [];
+    if (s.condition) flags.push('cond');
+    if (s.loop_over) flags.push(`loop:${s.loop_over}`);
+    if (s.break_if) flags.push('break');
+    if (s.on_error && s.on_error !== 'continue') flags.push(`err:${s.on_error}`);
 
-          const cls = s.condition ? 'condition' : (s.loop_over ? 'loop' : 'success');
+    const cls = s.condition ? 'condition' : (s.loop_over ? 'loop' : 'success');
 
-          return `
+    return `
             <div class="step-item ${cls}">
               <div class="step-header">
                 <span class="step-id">${s.step_id}</span>
                 <span class="method-badge method-${method}">${method}</span>
                 ${flags.map(f => {
-                  const fCls = f.startsWith('loop') ? 'flag-loop' :
-                              f === 'cond' ? 'flag-cond' :
-                              f === 'break' ? 'flag-break' : 'flag-err';
-                  return `<span class="flow-flag ${fCls}">${f}</span>`;
-                }).join('')}
+      const fCls = f.startsWith('loop') ? 'flag-loop' :
+        f === 'cond' ? 'flag-cond' :
+          f === 'break' ? 'flag-break' : 'flag-err';
+      return `<span class="flow-flag ${fCls}">${f}</span>`;
+    }).join('')}
               </div>
               <div class="step-endpoint">${s.endpoint || ''}</div>
               <div class="step-desc">${s.description || ''}</div>
               ${s.extract ? `
                 <div class="step-vars">
-                  ${Object.entries(s.extract).map(([k,v]) => `
+                  ${Object.entries(s.extract).map(([k, v]) => `
                     <span class="var-name">${k}</span>: <span class="var-value">${v}</span><br/>
                   `).join('')}
                 </div>
               ` : ''}
             </div>
           `;
-        }).join('')}
+  }).join('')}
       </div>
 
       ${rawEps.length > 0 ? `
         <h4 style="font-size:0.8rem; font-weight:700; margin:20px 0 10px; color:var(--accent);">Raw Endpoints Covered (${rawEps.length})</h4>
         <div class="endpoint-list">
           ${rawEps.map((ep, i) => {
-            const parts = ep.split(' ');
-            const method = parts[0];
-            const path = parts.slice(1).join(' ');
-            return `
+    const parts = ep.split(' ');
+    const method = parts[0];
+    const path = parts.slice(1).join(' ');
+    return `
               <div class="endpoint-item" style="animation-delay:${i * 30}ms">
                 <span class="method-badge method-${method}">${method}</span>
                 <span class="ep-path">${path}</span>
               </div>
             `;
-          }).join('')}
+  }).join('')}
         </div>
       ` : ''}
 
@@ -498,14 +498,14 @@ function showMapping(name) {
         </h4>
         <div class="flow-diagram">
           ${steps.map((s, i) => {
-            const method = (s.action || 'GET').toUpperCase();
-            const methodCls = method.toLowerCase();
-            const flags = [];
-            if (s.condition) flags.push({ text: 'cond', cls: 'flag-cond' });
-            if (s.loop_over) flags.push({ text: `loop`, cls: 'flag-loop' });
-            if (s.break_if) flags.push({ text: 'break', cls: 'flag-break' });
+    const method = (s.action || 'GET').toUpperCase();
+    const methodCls = method.toLowerCase();
+    const flags = [];
+    if (s.condition) flags.push({ text: 'cond', cls: 'flag-cond' });
+    if (s.loop_over) flags.push({ text: `loop`, cls: 'flag-loop' });
+    if (s.break_if) flags.push({ text: 'break', cls: 'flag-break' });
 
-            return `
+    return `
               <div class="flow-node" style="animation-delay:${i * 50}ms">
                 <div class="flow-node-icon ${methodCls}">${method.slice(0, 3)}</div>
                 <div class="flow-node-content">
@@ -517,7 +517,7 @@ function showMapping(name) {
                 </div>
               </div>
             `;
-          }).join('')}
+  }).join('')}
         </div>
       </div>
 
@@ -528,24 +528,24 @@ function showMapping(name) {
         </h4>
         <div class="endpoint-list">
           ${rawEps.map((ep, i) => {
-            const parts = ep.split(' ');
-            const method = parts[0];
-            const path = parts.slice(1).join(' ');
+    const parts = ep.split(' ');
+    const method = parts[0];
+    const path = parts.slice(1).join(' ');
 
-            // Find which step uses this endpoint
-            const matchStep = steps.find(s =>
-              ep.toLowerCase().includes((s.action || 'GET').toLowerCase()) &&
-              ep.includes(s.endpoint || '___none___')
-            );
+    // Find which step uses this endpoint
+    const matchStep = steps.find(s =>
+      ep.toLowerCase().includes((s.action || 'GET').toLowerCase()) &&
+      ep.includes(s.endpoint || '___none___')
+    );
 
-            return `
+    return `
               <div class="endpoint-item" style="animation-delay:${i * 40}ms">
                 <span class="method-badge method-${method}">${method}</span>
                 <span class="ep-path">${path}</span>
                 ${matchStep ? `<span class="ep-step">→ ${matchStep.step_id}</span>` : ''}
               </div>
             `;
-          }).join('')}
+  }).join('')}
         </div>
       </div>
     </div>
@@ -653,22 +653,22 @@ function renderTraceResult(trace) {
 
       <div class="steps-timeline">
         ${steps.map((s, i) => {
-          const http = s.http || {};
-          const method = http.method || 'GET';
-          const statusCode = http.status_code;
-          const duration = s.duration_ms || 0;
-          const condition = s.condition;
-          const loop = s.loop;
-          const vars = s.extracted_variables || {};
+    const http = s.http || {};
+    const method = http.method || 'GET';
+    const statusCode = http.status_code;
+    const duration = s.duration_ms || 0;
+    const condition = s.condition;
+    const loop = s.loop;
+    const vars = s.extracted_variables || {};
 
-          const stepClass = s.status === 'success' ? 'success' :
-                           s.status === 'skipped' ? 'skipped' :
-                           s.status === 'error' ? 'error' : '';
+    const stepClass = s.status === 'success' ? 'success' :
+      s.status === 'skipped' ? 'skipped' :
+        s.status === 'error' ? 'error' : '';
 
-          // Calculate width for duration bar (relative to total)
-          const durationPct = totalDuration > 0 ? Math.max((duration / totalDuration) * 100, 2) : 0;
+    // Calculate width for duration bar (relative to total)
+    const durationPct = totalDuration > 0 ? Math.max((duration / totalDuration) * 100, 2) : 0;
 
-          return `
+    return `
             <div class="step-item ${stepClass}${loop ? ' loop' : ''}${condition ? ' condition' : ''}">
               <div class="step-header">
                 <span class="step-id">${s.step_id}</span>
@@ -701,7 +701,7 @@ function renderTraceResult(trace) {
               ` : ''}
             </div>
           `;
-        }).join('')}
+  }).join('')}
       </div>
 
       ${trace.output ? `
@@ -887,7 +887,7 @@ document.addEventListener('DOMContentLoaded', () => {
 async function generateWorkflow() {
   const promptInput = document.getElementById('nlPrompt');
   const prompt = promptInput.value.trim();
-  
+
   if (!prompt) {
     alert("Please enter a description for the new workflow.");
     return;
@@ -915,15 +915,15 @@ async function generateWorkflow() {
     });
 
     const data = await res.json();
-    
+
     if (res.ok) {
       msgEl.textContent = data.message;
       yamlCode.textContent = data.yaml;
       resultPanel.style.display = 'block';
-      
+
       // Clear the prompt input
       promptInput.value = '';
-      
+
       // Reload the workflows so the catalog and dropdown update
       loadWorkflows();
     } else {

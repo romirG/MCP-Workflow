@@ -68,7 +68,7 @@ def _make_workflow_tool(workflow_name: str, description: str, parameters: list):
         f"Pass '{{}}' if the workflow has no required parameters.\n\n"
         f"Returns:\n"
         f"    JSON object with: workflow_name, success, steps_executed, "
-        f"variables, output, next_workflows, error, started_at, finished_at"
+        f"variables, output, next_workflows, error, started_at, finished_at, tokens_used"
     )
 
     def tool_fn(params_json: str = "{}") -> str:
@@ -78,6 +78,16 @@ def _make_workflow_tool(workflow_name: str, description: str, parameters: list):
             return json.dumps({"error": f"Invalid JSON params: {e}"})
 
         result = engine.run_workflow(workflow_name, params)
+        
+        # Calculate token size of the result payload
+        try:
+            import tiktoken
+            enc = tiktoken.get_encoding("cl100k_base")
+            tokens = len(enc.encode(json.dumps(result, default=str)))
+        except ImportError:
+            tokens = len(json.dumps(result, default=str)) // 4
+            
+        result["tokens_used"] = tokens
         return json.dumps(result, indent=2, default=str)
 
     # Rename so MCP registers the tool under the workflow name
