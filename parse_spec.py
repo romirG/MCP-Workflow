@@ -437,7 +437,7 @@ def build_full_spec(raw_dir: Path) -> tuple:
         },
         "servers": [
             {
-                "url": "http://localhost:4000",
+                "url": "http://localhost:4010",
                 "description": "Prism Mock Server (local)"
             },
             {

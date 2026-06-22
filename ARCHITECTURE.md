@@ -4,47 +4,70 @@
 
 The MCP Workflow Proxy is a **two-phase system** that transforms a raw OpenAPI spec into a lean set of semantic MCP workflow tools. The key insight is separating the expensive AI clustering work (done once, offline) from the lightweight runtime execution (done on every agent request, with zero LLM calls).
 
+**Key numbers:** 133 raw Redfish API endpoints → **21 workflow tools + 3 meta-tools = 24 MCP tools** — an **82.0% tool reduction** and **74.7% token savings**.
+
 ---
 
-## System Architecture
+## System Architecture Diagram
 
-```
-┌─────────────────────────────────────────────────────────────────────┐
-│                         DESIGN TIME (once)                          │
-│                                                                     │
-│  OpenAPI Spec ──► parse_spec.py ──► endpoints_summary.yaml         │
-│  (133 endpoints)    (Person 1)       (cleaned, token-efficient)     │
-│                                              │                      │
-│                                              ▼                      │
-│                                       Claude LLM                    │
-│                                    (clustering prompt)              │
-│                                              │                      │
-│                                              ▼                      │
-│                                       workflows.yaml                │
-│                                    (19 workflow blueprints)         │
-└─────────────────────────────────────────────────────────────────────┘
-                                              │
-                                              │ (read at startup)
-                                              ▼
-┌─────────────────────────────────────────────────────────────────────┐
-│                         RUNTIME (every request)                     │
-│                                                                     │
-│  AI Agent ──► MCP Client ──► mcp_server.py ──► workflow_engine.py  │
-│  (Claude,      (stdio/SSE)    (Person 4)         (Person 3)        │
-│   Cursor)                     FastMCP              Reads YAML,      │
-│                               22 tools             runs HTTP steps  │
-│                                                          │          │
-│                                                          ▼          │
-│                                              Prism Mock / Real BMC  │
-│                                              (localhost:4010)        │
-└─────────────────────────────────────────────────────────────────────┘
+```mermaid
+flowchart TB
+    subgraph DESIGN["<b>Phase 1 — Design Time (Offline, One-Shot)</b>"]
+        direction TB
+        SPEC["📄 OpenAPI Spec<br/><i>133 Redfish Endpoints</i>"]
+        PARSE["⚙️ parse_spec.py<br/><i>Merge + Clean</i>"]
+        SUMMARY["📋 endpoints_summary.yaml<br/><i>Token-efficient (90.6% reduction)</i>"]
+        LLM["🤖 Claude LLM<br/><i>Design-time clustering prompt</i>"]
+        YAML["📝 workflows.yaml<br/><i>21 Workflow Blueprints</i>"]
+
+        SPEC --> PARSE --> SUMMARY --> LLM --> YAML
+    end
+
+    subgraph RUNTIME["<b>Phase 2 — Runtime (Every Request, Zero LLM Cost)</b>"]
+        direction TB
+        AGENT["🧑‍💻 AI Agent<br/><i>Claude / Cursor / Custom</i>"]
+        MCP["🔌 mcp_server.py<br/><i>FastMCP — 24 Tools</i><br/><i>(stdio / SSE transport)</i>"]
+        ENGINE["⚡ workflow_engine.py<br/><i>Step executor with conditions,<br/>loops, variable chaining</i>"]
+        CACHE["💾 In-Memory TTL Cache<br/><i>GET deduplication +<br/>auto-invalidation on writes</i>"]
+        API["🖥️ Prism Mock / Real BMC<br/><i>localhost:4010</i>"]
+
+        AGENT -->|"MCP Protocol"| MCP
+        MCP -->|"run_workflow(name, params)"| ENGINE
+        ENGINE --> CACHE
+        CACHE -->|"HTTP requests"| API
+    end
+
+    subgraph OBSERVE["<b>Observability Layer</b>"]
+        direction LR
+        OBSENG["📊 observability_engine.py<br/><i>Instrumented executor</i>"]
+        OBSSRV["🌐 observability_server.py<br/><i>FastAPI + SSE</i>"]
+        DASH["📈 Dashboard UI<br/><i>Traces / Metrics / Mapping</i>"]
+
+        OBSENG --> OBSSRV --> DASH
+    end
+
+    subgraph NLBUILDER["<b>Dynamic Workflow Generator</b>"]
+        direction LR
+        NL["✨ nl_workflow_generator.py<br/><i>Plain English → YAML</i>"]
+        HOTLOAD["🔄 Hot-Reload<br/><i>Appends to workflows.yaml</i>"]
+        NL --> HOTLOAD
+    end
+
+    YAML -->|"Loaded at startup"| MCP
+    ENGINE -->|"Trace data"| OBSENG
+    HOTLOAD -->|"Engine reloads"| ENGINE
+
+    style DESIGN fill:#1a1a2e,stroke:#4ade80,stroke-width:2px,color:#e2e8f0
+    style RUNTIME fill:#1a1a2e,stroke:#60a5fa,stroke-width:2px,color:#e2e8f0
+    style OBSERVE fill:#1a1a2e,stroke:#f59e0b,stroke-width:2px,color:#e2e8f0
+    style NLBUILDER fill:#1a1a2e,stroke:#a78bfa,stroke-width:2px,color:#e2e8f0
 ```
 
 ---
 
 ## Component Breakdown
 
-### Phase 1 — Spec Ingestion (Person 1)
+### Phase 1 — Spec Ingestion & Cleaning
 
 **Files:** `download_spec.py`, `parse_spec.py`, `fix_spec_for_prism.py`
 
@@ -58,7 +81,7 @@ The cleaning step reduces 410,562 tokens to 38,445 — a **90.6% reduction** —
 
 ---
 
-### Phase 2 — AI Clustering (Person 2)
+### Phase 2 — AI Clustering (Design-Time)
 
 **Files:** `workflows.yaml`, `prompts/workflow_generation_prompt.md`
 
@@ -74,6 +97,7 @@ This is the only point where a large LLM is called. The prompt instructs Claude 
 - **By call sequence** — endpoints that always appear together in real tasks are grouped (e.g., list → get → act)
 
 **Output schema per workflow:**
+
 ```yaml
 - name: server_health_check
   description: "..."
@@ -95,38 +119,38 @@ This is the only point where a large LLM is called. The prompt instructs Claude 
 
 ---
 
-### Phase 3 — Runtime Engine (Person 3)
+### Phase 3 — Runtime Engine
 
 **File:** `workflow_engine.py`
 
 A pure-Python execution engine. **Zero LLM calls at runtime.** It reads `workflows.yaml` and executes workflows step-by-step:
 
-```
-run_workflow("server_health_check", {"SystemId": "Server1"})
-    │
-    ├─ Step 1: GET /redfish/v1/Systems          → extract system_members
-    ├─ Step 2: GET /redfish/v1/Systems/Server1  → extract health_status, power_state
-    ├─ Step 3: [condition] health_status != OK?
-    │           YES → continue to Step 4
-    │           NO  → goto:summary (skip 4, 5, 6, 7)
-    ├─ Step 4: GET /Systems/Server1/Processors  → extract processor_members
-    ├─ Step 5: [loop] GET each processor        → extract processor_health
-    ├─ Step 6: GET /Systems/Server1/Memory      → extract memory_members
-    ├─ Step 7: [loop] GET each memory module    → extract memory_health
-    └─ Step 8: summary (render output_template)
+```mermaid
+flowchart LR
+    A["run_workflow<br/>(server_health_check,<br/>{SystemId: Server1})"] --> B["Step 1: GET /Systems<br/>→ extract system_members"]
+    B --> C["Step 2: GET /Systems/Server1<br/>→ extract health_status"]
+    C --> D{"health_status<br/>!= OK?"}
+    D -->|YES| E["Step 3-7: Deep dive<br/>Processors, Memory,<br/>Thermal"]
+    D -->|NO| F["goto:summary<br/>(fast exit)"]
+    E --> G["Step 8: summary<br/>→ render output"]
+    F --> G
+
+    style D fill:#f59e0b,stroke:#f59e0b,color:#000
+    style F fill:#4ade80,stroke:#4ade80,color:#000
 ```
 
 **Engine capabilities:**
-- Template resolution — `{SystemId}` → `"Server1"` in every URL
-- JSONPath extraction — `$.Status.Health` pulls values from JSON responses
-- Condition evaluation — `if/then/else` and `goto:step_id` branching
-- Loop execution — `loop_over: members` iterates a collection, `break_if` stops early
-- Error handling — per-step `on_error: continue | stop | goto:step_id`
-- Variable chaining — extracted values from Step N are available in Step N+1
+- **Template resolution** — `{SystemId}` → `"Server1"` in every URL
+- **JSONPath extraction** — `$.Status.Health` pulls values from JSON responses (custom zero-dependency implementation)
+- **Condition evaluation** — `if/then/else` and `goto:step_id` branching
+- **Loop execution** — `loop_over: members` iterates a collection, `break_if` stops early
+- **Error handling** — per-step `on_error: continue | stop | goto:step_id`
+- **Variable chaining** — extracted values from Step N are available in Step N+1
+- **In-memory caching** — TTLCache for GET requests, auto-invalidated on writes
 
 ---
 
-### Phase 4 — MCP Server (Person 4)
+### Phase 4 — MCP Server
 
 **File:** `mcp_server.py`
 
@@ -147,69 +171,103 @@ for wf in engine.list_workflows():
 
 **Hierarchical Exposure — the Tier Toggle:**
 
-```
-Normal path:    Agent calls server_health_check(params)
-                └─ Engine executes 8 steps → returns aggregated result
+```mermaid
+flowchart TB
+    AGENT["AI Agent"] --> HIGH["server_health_check(params)<br/><i>High-level workflow tool</i>"]
+    HIGH --> ENGINE["Engine executes 8 steps<br/>→ returns aggregated result"]
 
-Fallback path:  Agent calls list_raw_endpoints("server_health_check")
-                └─ Returns: ["GET /redfish/v1/Systems", "GET /redfish/v1/Systems/{SystemId}", ...]
-                Agent calls run_raw_endpoint("GET", "/redfish/v1/Systems/Server1")
-                └─ Returns: raw HTTP response
+    AGENT --> FALLBACK["list_raw_endpoints(name)<br/><i>Tier Toggle meta-tool</i>"]
+    FALLBACK --> REVEAL["Returns: [GET /Systems,<br/>GET /Systems/{id}, ...]"]
+    REVEAL --> RAW["run_raw_endpoint(GET, path)<br/><i>Escape hatch meta-tool</i>"]
+    RAW --> HTTP["Direct HTTP response"]
+
+    style HIGH fill:#4ade80,stroke:#4ade80,color:#000
+    style FALLBACK fill:#f59e0b,stroke:#f59e0b,color:#000
+    style RAW fill:#ef4444,stroke:#ef4444,color:#000
 ```
 
 This lets the agent handle edge cases without breaking the abstraction entirely.
 
 ---
 
-### Phase 5 — Integration Layer (Person 5)
+### Phase 5 — Integration & Metrics
 
-**Files:** `calculate_metrics.py`, `pitch_dashboard/index.html`, `claude_desktop_config.json`
+**Files:** `calculate_metrics.py`, `claude_desktop_config.json`
 
 Validates and proves the system meets acceptance criteria:
 
 - **`calculate_metrics.py`** — computes before/after token and tool counts from the actual artifacts
-- **`specs/after_metrics.json`** — serialized proof: 83.5% tool reduction, 73.2% token reduction
-- **`pitch_dashboard/index.html`** — standalone HTML pitch deck with Chart.js visualizations
+- **`specs/after_metrics.json`** — serialized proof: 82.0% tool reduction, 74.7% token reduction
+
+---
+
+### Bonus: Observability Dashboard
+
+**Files:** `observability_engine.py`, `observability_server.py`, `dashboard/`
+
+A FastAPI-powered real-time dashboard providing:
+
+- **Overview** — live statistics with Chart.js visualizations
+- **Workflow Map** — interactive mapping from workflows to raw endpoints
+- **Execution Traces** — step-by-step timings via Server-Sent Events (SSE)
+- **Workflow Catalog** — searchable library of all 21 blueprints
+- **NL Builder** — generate new workflows from plain English prompts
+
+### Bonus: Natural Language Workflow Builder
+
+**File:** `nl_workflow_generator.py`
+
+Generates new workflow YAML from plain English prompts. Uses Gemini Pro via RapidAPI when available, falls back to a local heuristic engine. Generated workflows are automatically appended to `workflows.yaml` and hot-reloaded into the running MCP server.
 
 ---
 
 ## Data Flow Diagram
 
-```
-                    DESIGN TIME
-                    ───────────
-DMTF Schema YAMLs
-       │
-       ▼
-  parse_spec.py ──────────────────────────────► specs/merged/full_spec.yaml
-       │                                               │
-       ▼                                               ▼
-specs/cleaned/                                   npx prism mock
-endpoints_summary.yaml                           (mock server :4010)
-       │
-       ▼
- Claude LLM (1 call)
-       │
-       ▼
-  workflows.yaml
-       │
-       ├──────────────────────────────────────────────┐
-       │                                              │
-       ▼                RUNTIME                       │
-  workflow_engine.py ◄──────────────── mcp_server.py │
-  (reads YAML,         registered as   (FastMCP,      │
-   runs steps)         22 tools)        stdio/SSE)    │
-       │                                              │
-       ▼                                              │
-  HTTP requests                                       │
-  to :4010 (Prism)                                   │
-  or real BMC                                         │
-       │                                              │
-       ▼                                              │
-  JSON responses                                      │
-  → extracted variables                               │
-  → rendered output                                   │
-  → returned to agent ◄─────────────────────────────-┘
+```mermaid
+flowchart TB
+    subgraph INPUTS["Inputs"]
+        DMTF["DMTF Schema YAMLs<br/>(85 files)"]
+        PROMPT["Clustering Prompt<br/>(prompts/workflow_generation_prompt.md)"]
+    end
+
+    subgraph PROCESSING["Design-Time Processing"]
+        P1["parse_spec.py"]
+        MERGED["specs/merged/full_spec.yaml"]
+        CLEANED["specs/cleaned/endpoints_summary.yaml"]
+        CLAUDE["Claude LLM<br/>(single call)"]
+        WF["workflows.yaml<br/>(21 blueprints)"]
+    end
+
+    subgraph SERVERS["Runtime Servers"]
+        PRISM["Prism Mock<br/>:4010"]
+        MCPS["mcp_server.py<br/>(FastMCP, stdio/SSE)"]
+        WFENG["workflow_engine.py<br/>(reads YAML, runs steps)"]
+        OBSS["observability_server.py<br/>:8765"]
+    end
+
+    subgraph OUTPUTS["Outputs"]
+        RESULT["JSON workflow results<br/>→ returned to AI agent"]
+        TRACES["Execution traces<br/>→ Dashboard UI"]
+    end
+
+    DMTF --> P1
+    P1 --> MERGED
+    P1 --> CLEANED
+    MERGED --> PRISM
+    CLEANED --> CLAUDE
+    PROMPT --> CLAUDE
+    CLAUDE --> WF
+    WF --> MCPS
+    MCPS --> WFENG
+    WFENG -->|"HTTP"| PRISM
+    WFENG --> RESULT
+    WFENG -->|"Trace data"| OBSS
+    OBSS --> TRACES
+
+    style INPUTS fill:#1e293b,stroke:#60a5fa,color:#e2e8f0
+    style PROCESSING fill:#1e293b,stroke:#4ade80,color:#e2e8f0
+    style SERVERS fill:#1e293b,stroke:#f59e0b,color:#e2e8f0
+    style OUTPUTS fill:#1e293b,stroke:#a78bfa,color:#e2e8f0
 ```
 
 ---
@@ -248,6 +306,18 @@ condition:
   else: goto:summary   # fast exit when healthy
 ```
 
+### 5. Category Coverage
+All 21 workflows are distributed across 6 operational domains to ensure comprehensive coverage:
+
+| Category | Count | Examples |
+|----------|-------|---------|
+| **monitoring** | 5 | `server_health_check`, `thermal_and_power_monitoring`, `telemetry_metrics_collection` |
+| **configuration** | 4 | `bios_configuration`, `storage_management`, `network_configuration` |
+| **security** | 4 | `user_account_management`, `session_management`, `certificate_management` |
+| **maintenance** | 3 | `firmware_update`, `bmc_manager_operations` |
+| **diagnostics** | 3 | `log_collection`, `task_management` |
+| **lifecycle** | 2 | `server_power_operations`, `virtual_media_operations` |
+
 ---
 
 ## Key Trade-offs
@@ -258,12 +328,12 @@ condition:
 **Why:** Static clustering means zero LLM overhead at runtime, fully deterministic execution, and auditable workflows. Dynamic approaches add latency, cost, and non-determinism on every request.
 
 ### Trade-off 2: Granularity of Workflows
-**Chosen:** 19 workflows (average 7 endpoints each)
+**Chosen:** 21 workflows (average 7 endpoints each)
 **Alternative:** Fewer, coarser workflows (e.g., 5) or more fine-grained (e.g., 40)
-**Why:** 19 is the sweet spot — enough detail for the agent to pick the right tool, few enough to stay well within context limits. The 3 meta-tools provide a drill-down escape hatch for edge cases.
+**Why:** ~20 is the sweet spot — enough detail for the agent to pick the right tool, few enough to stay well within context limits. The 3 meta-tools provide a drill-down escape hatch for edge cases.
 
 ### Trade-off 3: Hierarchical Exposure vs Flat Tool Set
-**Chosen:** Two-tier model — 19 high-level tools + 3 meta-tools for raw access
+**Chosen:** Two-tier model — 21 high-level tools + 3 meta-tools for raw access
 **Alternative:** Pure high-level only (no escape hatch)
 **Why:** Production systems always have edge cases. The tier-toggle lets the AI handle novel situations without requiring a new workflow to be defined.
 

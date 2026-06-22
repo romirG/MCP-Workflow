@@ -55,30 +55,31 @@ The MCP Workflow Proxy operates in a hybrid **two-phase workflow**:
 
 ```
 MCP-Workflow/
-├── download_spec.py             # Downloads DMTF Redfish schema files (Person 1)
-├── parse_spec.py                # Merges and cleans schemas into summary format (Person 1)
-├── fix_spec_for_prism.py        # Patches merged OpenAPI spec for compatibility with Prism (Person 1)
-├── workflows.yaml               # Declarative workflow blueprints (21 YAML profiles) (Person 2)
-├── workflow_engine.py           # Core runtime engine with variable chaining, loops, and conditions (Person 3)
-├── mcp_server.py                # Wraps the engine as a FastMCP stdio/SSE server (Person 4)
-├── calculate_metrics.py         # Computes before/after tool/token metrics (Person 5)
+├── download_spec.py              # Downloads DMTF Redfish schema files (Person 1)
+├── parse_spec.py                 # Merges and cleans schemas into summary format (Person 1)
+├── fix_spec_for_prism.py         # Patches merged OpenAPI spec for compatibility with Prism (Person 1)
+├── workflows.yaml                # Declarative workflow blueprints (21 YAML profiles) (Person 2)
+├── workflow_engine.py            # Core runtime engine with variable chaining, loops, and conditions (Person 3)
+├── mcp_server.py                 # Wraps the engine as a FastMCP stdio/SSE server (Person 4)
+├── calculate_metrics.py          # Computes before/after tool/token metrics (Person 5)
 ├── claude_desktop_config.json    # Drop-in configuration for Claude Desktop Integration (Person 5)
-├── nl_workflow_generator.py     # Custom dynamic workflow synthesizer (Gemini Pro / Local Offline)
-├── observability_engine.py      # Instrumented executor with timing and HTTP request tracing
-├── observability_server.py      # FastAPI server serving live SSE stream and HTML dashboard
-├── requirements.txt             # Python project dependencies (includes FastMCP, cachetools, FastAPI)
+├── nl_workflow_generator.py      # Natural language workflow synthesizer (Gemini Pro / Local Offline)
+├── observability_engine.py       # Instrumented executor with timing and HTTP request tracing
+├── observability_server.py       # FastAPI server serving live SSE stream and HTML dashboard
+├── requirements.txt              # Python project dependencies (includes FastMCP, cachetools, FastAPI)
+├── ARCHITECTURE.md               # Architecture diagram, clustering strategy, and trade-off analysis
+├── WORKFLOW_DEFINITIONS.md       # Full mapping from raw API endpoints to workflow-level tools
 ├── specs/
-│   ├── raw/                     # Original OpenAPI schema components (85 files)
+│   ├── raw/                      # Original OpenAPI schema components (85 files)
 │   ├── merged/
-│   │   ├── full_spec.yaml       # Merged Redfish spec (OpenAPI 3.0 format)
-│   │   └── full_spec_local.yaml # Merged spec patched with local mock server details
+│   │   ├── full_spec.yaml        # Merged Redfish spec (OpenAPI 3.0 format)
+│   │   └── full_spec_local.yaml  # Merged spec patched with local mock server details
 │   ├── cleaned/
-│   │   ├── all_endpoints.json   # Processed endpoint lists
+│   │   ├── all_endpoints.json    # Processed endpoint lists
 │   │   └── endpoints_summary.yaml # Token-efficient summary for LLM design-time input
-│   ├── baseline_metrics.json    # Original metrics (133 tools, 410,562 full spec tokens)
-│   └── after_metrics.json       # Live metrics verification output
-├── dashboard/                   # Main Observability Dashboard UI (HTML, CSS, JS)
-├── pitch_dashboard/             # Standalone presentation deck highlighting key hackathon deliverables
+│   ├── baseline_metrics.json     # Original metrics (133 tools, 410,562 full spec tokens)
+│   └── after_metrics.json        # Live metrics verification output
+├── dashboard/                    # Main Observability Dashboard UI (HTML, CSS, JS)
 └── prompts/
     └── workflow_generation_prompt.md # The exact Claude prompt used to group endpoints
 ```
@@ -98,7 +99,7 @@ Follow these simple steps to set up a mock Redfish hardware environment, start t
 
 Install the Python libraries and the MCP CLI tool:
 
-```powershell
+```bash
 pip install -r requirements.txt
 pip install "mcp[cli]"
 ```
@@ -107,7 +108,7 @@ pip install "mcp[cli]"
 
 Use Prism to spin up a mock server that simulates real server hardware using the local OpenAPI spec:
 
-```powershell
+```bash
 npx @stoplight/prism-cli mock specs/merged/full_spec_local.yaml --port 4010
 ```
 
@@ -115,16 +116,16 @@ npx @stoplight/prism-cli mock specs/merged/full_spec_local.yaml --port 4010
 
 Start the stdio-based MCP server:
 
-```powershell
+```bash
 python mcp_server.py
 ```
-*The server will start listening on standard input/output (`stdio`) and will register **24 tools** with any client.*
+*The server will start listening on standard input/output (`stdio`) and will register **24 tools** (21 workflow + 3 meta) with any client.*
 
 ### 4. Launch the Observability Dashboard & NL Builder
 
 In a separate terminal, launch the FastAPI observability server:
 
-```powershell
+```bash
 python observability_server.py
 ```
 *This will automatically launch your default browser to `http://localhost:8765`. If it doesn't open, navigate there manually.*
@@ -135,7 +136,7 @@ python observability_server.py
 
 To verify that the implementation satisfies the hackathon thresholds (tool reduction ≥80%, token reduction ≥70%), run the verification tool:
 
-```powershell
+```bash
 python calculate_metrics.py
 ```
 

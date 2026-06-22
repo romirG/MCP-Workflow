@@ -4,10 +4,12 @@ mcp_server.py — Person 4: The MCP Server Wrapper
 Wraps Person 3's WorkflowEngine as a formal MCP server.
 
 Exposes:
-  • 19 workflow tools  (one per workflow in workflows.yaml)
+  • 21 workflow tools  (one per workflow in workflows.yaml)
   • 1 meta-tool: list_raw_endpoints — the Tier Toggle for Hierarchical Exposure
   • 1 meta-tool: run_raw_endpoint   — escape hatch to call individual Redfish endpoints
   • 1 meta-tool: list_workflows_meta — discovery catalogue
+
+Total: 24 MCP tools (21 workflow + 3 meta)
 
 Usage:
     python mcp_server.py                  # stdio transport (for Claude Desktop / Cursor)

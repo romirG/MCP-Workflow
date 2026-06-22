@@ -2,7 +2,7 @@
 calculate_metrics.py - Person 5: After-Metrics Calculator
 ==========================================================
 Reads workflows.yaml and calculates the "After" token counts for the
-22 MCP tool descriptions (19 workflows + 3 meta-tools).
+24 MCP tool descriptions (21 workflows + 3 meta-tools).
 
 Compares against Person 1's baseline (specs/baseline_metrics.json) to
 prove >=80% tool reduction and quantify the token savings.
@@ -35,7 +35,7 @@ def count_tokens(text: str) -> int:
 
 
 # ---------------------------------------------------------------------------
-# Build the text that the AI model would see for all 22 MCP tools
+# Build the text that the AI model would see for all 24 MCP tools
 # ---------------------------------------------------------------------------
 def build_mcp_tool_text(workflows: list) -> str:
     """
@@ -45,7 +45,7 @@ def build_mcp_tool_text(workflows: list) -> str:
     """
     lines = []
 
-    # 19 workflow tools
+    # 21 workflow tools
     for wf in workflows:
         name = wf["name"]
         desc = wf.get("description", "")
@@ -192,7 +192,7 @@ def main():
 
     # Compute metrics
     before_tools       = baseline["raw_endpoints"]
-    after_tools        = total_workflows + 3   # 19 + 3 meta = 22
+    after_tools        = total_workflows + 3   # 21 + 3 meta = 24
     tool_reduction_pct = round(100 - (after_tools / before_tools * 100), 1)
     token_vs_raw_pct   = round(100 - (after_tokens / max(raw_tool_tokens, 1) * 100), 1)
     token_vs_full_pct  = round(100 - (after_tokens / max(baseline["full_spec_tokens"], 1) * 100), 1)
@@ -238,7 +238,7 @@ def main():
     print("=" * 65)
     print(f"\n  TOOL COUNT REDUCTION")
     print(f"  {'Before (133 raw endpoints as tools):':<42} {before_tools}")
-    print(f"  {'After  (22 MCP workflow tools):':<42} {after_tools}")
+    print(f"  {'After  (24 MCP workflow tools):':<42} {after_tools}")
     print(f"  {'Reduction:':<42} {before_tools - after_tools} tools")
     print(f"  {'Reduction %:':<42} {tool_reduction_pct}%")
     print(f"  {'>=80% threshold:':<42} {'PASSES' if tool_reduction_pct >= 80 else 'FAILS'}")
