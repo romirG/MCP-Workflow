@@ -4,17 +4,17 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>MCP Workflow Proxy — Observability Dashboard</title>
-  <meta name="description" content="Real-time observability dashboard for the MCP Workflow Proxy — visualize workflow-to-API mappings, execution traces, and system metrics." />
+  <meta name="description" content="Observability dashboard for the MCP Workflow Proxy — visualize workflow-to-API mappings, execution traces, and system metrics." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300..900;1,14..32,300..900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
   <link rel="stylesheet" href="/static/styles.css" />
 </head>
 <body>
 <div class="app">
 
-  <!-- ═══════════════════════ SIDEBAR ═══════════════════════ -->
+  <!-- ═══ SIDEBAR ═══ -->
   <aside class="sidebar">
     <div class="sidebar-logo">
       <h1>MCP Workflow Proxy</h1>
@@ -25,30 +25,29 @@
       <div class="nav-section-label">Views</div>
 
       <a class="nav-item active" data-view="overview" onclick="switchView('overview')">
-        <span class="nav-icon">📊</span>
+        <span class="nav-icon">◈</span>
         Overview
       </a>
       <a class="nav-item" data-view="mapping" onclick="switchView('mapping')">
-        <span class="nav-icon">🗺️</span>
+        <span class="nav-icon">⊞</span>
         Workflow Map
       </a>
       <a class="nav-item" data-view="traces" onclick="switchView('traces')">
-        <span class="nav-icon">⚡</span>
+        <span class="nav-icon">▷</span>
         Execution Traces
       </a>
       <a class="nav-item" data-view="catalog" onclick="switchView('catalog')">
-        <span class="nav-icon">📋</span>
+        <span class="nav-icon">☰</span>
         Workflow Catalog
       </a>
       <a class="nav-item" data-view="nlbuilder" onclick="switchView('nlbuilder')">
-        <span class="nav-icon">✨</span>
+        <span class="nav-icon">✦</span>
         NL Builder
       </a>
 
       <div class="nav-section-label">Actions</div>
-
-      <a class="nav-item" onclick="switchView('traces'); document.getElementById('exec-panel').scrollIntoView({behavior:'smooth'})">
-        <span class="nav-icon">▶️</span>
+      <a class="nav-item" onclick="switchView('traces'); setTimeout(()=>document.getElementById('exec-panel').scrollIntoView({behavior:'smooth'}),100)">
+        <span class="nav-icon">▶</span>
         Execute Workflow
       </a>
     </nav>
@@ -61,14 +60,14 @@
     </div>
   </aside>
 
-  <!-- ═══════════════════════ MAIN CONTENT ═══════════════════════ -->
+  <!-- ═══ MAIN ═══ -->
   <main class="main-content">
 
-    <!-- ─────────────── VIEW: OVERVIEW ─────────────── -->
+    <!-- ── VIEW: OVERVIEW ── -->
     <div class="view active" id="view-overview">
       <div class="page-header">
         <h2>Dashboard Overview</h2>
-        <p>Real-time system metrics and workflow performance insights</p>
+        <p>System metrics and workflow performance insights</p>
       </div>
 
       <!-- Stat Cards -->
@@ -77,20 +76,20 @@
           <div class="stat-value green" id="statToolReduction">—</div>
           <div class="stat-label">Tool Reduction</div>
         </div>
-        <div class="stat-card accent">
-          <div class="stat-value accent" id="statTokenSavings">—</div>
+        <div class="stat-card cyan">
+          <div class="stat-value cyan" id="statTokenSavings">—</div>
           <div class="stat-label">Token Savings</div>
         </div>
-        <div class="stat-card primary">
-          <div class="stat-value primary" id="statWorkflows">—</div>
+        <div class="stat-card blue">
+          <div class="stat-value blue" id="statWorkflows">—</div>
           <div class="stat-label">Workflow Tools</div>
         </div>
-        <div class="stat-card yellow">
-          <div class="stat-value yellow" id="statEndpoints">—</div>
+        <div class="stat-card amber">
+          <div class="stat-value amber" id="statEndpoints">—</div>
           <div class="stat-label">Endpoints Covered</div>
         </div>
-        <div class="stat-card primary">
-          <div class="stat-value primary" id="statExecutions">0</div>
+        <div class="stat-card blue">
+          <div class="stat-value blue" id="statExecutions">0</div>
           <div class="stat-label">Total Executions</div>
         </div>
         <div class="stat-card green">
@@ -104,27 +103,27 @@
         <div class="chart-card">
           <h3>Tool Count: Before vs After</h3>
           <p class="chart-sub">133 raw endpoints → 24 semantic MCP tools (82.0% reduction)</p>
-          <canvas id="chartTools" height="220"></canvas>
+          <canvas id="chartTools" height="200"></canvas>
         </div>
         <div class="chart-card">
           <h3>Token Usage Comparison</h3>
           <p class="chart-sub">Full spec tokens vs MCP tool description tokens</p>
-          <canvas id="chartTokens" height="220"></canvas>
+          <canvas id="chartTokens" height="200"></canvas>
         </div>
         <div class="chart-card">
           <h3>Workflow Categories</h3>
           <p class="chart-sub">21 workflows distributed across 6 operational domains</p>
-          <canvas id="chartCategories" height="220"></canvas>
+          <canvas id="chartCategories" height="200"></canvas>
         </div>
         <div class="chart-card">
           <h3>Endpoints Covered Per Workflow</h3>
           <p class="chart-sub">Each workflow abstracts multiple raw Redfish API calls</p>
-          <canvas id="chartCoverage" height="220"></canvas>
+          <canvas id="chartCoverage" height="200"></canvas>
         </div>
       </div>
     </div>
 
-    <!-- ─────────────── VIEW: MAPPING ─────────────── -->
+    <!-- ── VIEW: MAPPING ── -->
     <div class="view" id="view-mapping">
       <div class="page-header">
         <h2>Workflow → API Mapping</h2>
@@ -138,7 +137,7 @@
         </div>
         <div class="mapping-canvas" id="mappingCanvas">
           <div class="empty-state">
-            <div class="icon">🗺️</div>
+            <div class="icon">⊞</div>
             <h3>Select a Workflow</h3>
             <p>Click a workflow on the left to see its API endpoint mapping and step flow</p>
           </div>
@@ -146,16 +145,16 @@
       </div>
     </div>
 
-    <!-- ─────────────── VIEW: TRACES ─────────────── -->
+    <!-- ── VIEW: TRACES ── -->
     <div class="view" id="view-traces">
       <div class="page-header">
         <h2>Execution Traces</h2>
-        <p>Execute workflows and visualize step-by-step execution traces in real-time</p>
+        <p>Run workflows and inspect step-by-step execution traces</p>
       </div>
 
       <!-- Execution Panel -->
       <div class="exec-panel" id="exec-panel">
-        <h3>▶ Execute a Workflow</h3>
+        <h3>Execute a Workflow</h3>
         <div class="exec-form">
           <div class="form-group">
             <label for="execWorkflow">Workflow</label>
@@ -167,7 +166,7 @@
           </div>
           <button class="exec-btn" id="execBtn" onclick="executeWorkflow()">
             <span class="spinner"></span>
-            <span class="btn-text">▶ Execute</span>
+            <span class="btn-text">Run</span>
           </button>
         </div>
       </div>
@@ -176,11 +175,11 @@
       <div id="traceResult"></div>
 
       <!-- Trace History -->
-      <div class="exec-panel" style="margin-top: 24px;">
-        <h3>📜 Execution History</h3>
+      <div class="exec-panel" style="margin-top: 16px;">
+        <h3>Execution History</h3>
         <div id="traceHistory">
           <div class="empty-state">
-            <div class="icon">📜</div>
+            <div class="icon">◳</div>
             <h3>No Traces Yet</h3>
             <p>Execute a workflow above to see traces appear here</p>
           </div>
@@ -188,47 +187,45 @@
       </div>
     </div>
 
-    <!-- ─────────────── VIEW: CATALOG ─────────────── -->
+    <!-- ── VIEW: CATALOG ── -->
     <div class="view" id="view-catalog">
       <div class="page-header">
         <h2>Workflow Catalog</h2>
-        <p>Browse all 21 workflow tools with parameters, steps, and endpoint coverage</p>
+        <p>All 21 workflow tools with parameters, steps, and endpoint coverage</p>
       </div>
 
       <div class="workflow-grid" id="catalogGrid"></div>
-
-      <!-- Detail Panel (shown on card click) -->
       <div id="catalogDetail"></div>
     </div>
 
-    <!-- ─────────────── VIEW: NL BUILDER ─────────────── -->
+    <!-- ── VIEW: NL BUILDER ── -->
     <div class="view" id="view-nlbuilder">
       <div class="page-header">
         <h2>Natural Language Workflow Builder</h2>
-        <p>Dynamically generate new workflows using plain English prompts.</p>
+        <p>Generate new workflows from a plain English description</p>
       </div>
 
       <div class="exec-panel">
-        <h3>✨ Describe your new workflow</h3>
+        <h3>Describe your workflow</h3>
         <div class="exec-form">
-          <div class="form-group">
+          <div class="form-group" style="flex:1;">
             <label for="nlPrompt">Prompt</label>
-            <textarea id="nlPrompt" rows="3" placeholder="e.g. Create a workflow that resets the manager and then checks the task service"></textarea>
+            <textarea id="nlPrompt" rows="2" placeholder="e.g. Create a workflow that resets the manager and then checks the task service" style="width:100%;"></textarea>
           </div>
           <button class="exec-btn" id="nlGenerateBtn" onclick="generateWorkflow()">
             <span class="spinner" id="nlSpinner" style="display:none;"></span>
-            <span class="btn-text" id="nlBtnText">✨ Generate & Load</span>
+            <span class="btn-text" id="nlBtnText">Generate</span>
           </button>
         </div>
       </div>
 
       <!-- Result Panel -->
-      <div id="nlResult" style="display:none; margin-top:24px;">
-        <div class="card" style="padding: 24px;">
-          <h3 style="color: #4ade80; margin-bottom: 12px;">✅ Success</h3>
-          <p id="nlMessage" style="margin-bottom: 16px; color: #94a3b8;"></p>
-          <h4>Generated YAML:</h4>
-          <pre><code id="nlYamlCode" style="color: #e2e8f0; font-family: monospace; font-size: 13px; line-height: 1.5; background: var(--bg-surface); padding: 16px; border-radius: 8px; border: 1px solid var(--border-color); overflow-x: auto;"></code></pre>
+      <div id="nlResult" style="display:none; margin-top:16px;">
+        <div class="card" style="padding: 20px; background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg);">
+          <p style="font-size:0.78rem; color: var(--green); font-weight:600; margin-bottom:10px;">Workflow generated and loaded successfully.</p>
+          <p id="nlMessage" style="margin-bottom: 14px; color: var(--text-secondary); font-size:0.8rem;"></p>
+          <p style="font-size:0.72rem; font-weight:600; color:var(--text-tertiary); text-transform:uppercase; letter-spacing:0.5px; margin-bottom:8px;">Generated YAML</p>
+          <pre style="background: var(--bg-overlay); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); padding: 14px 16px; overflow-x: auto;"><code id="nlYamlCode" style="color: var(--text-secondary); font-family: var(--font-mono); font-size: 0.72rem; line-height: 1.6;"></code></pre>
         </div>
       </div>
     </div>

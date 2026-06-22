@@ -28,11 +28,11 @@ let chartCategories = null;
 let chartCoverage = null;
 
 // Chart.js global defaults
-Chart.defaults.color = '#94a3b8';
+Chart.defaults.color = '#71717a';
 Chart.defaults.font.family = "'Inter', sans-serif";
 Chart.defaults.font.size = 11;
-Chart.defaults.plugins.legend.labels.boxWidth = 12;
-Chart.defaults.plugins.legend.labels.padding = 16;
+Chart.defaults.plugins.legend.labels.boxWidth = 10;
+Chart.defaults.plugins.legend.labels.padding = 14;
 
 // =====================================================================
 //  View Switching
@@ -99,9 +99,9 @@ function renderMetrics() {
   const tk = metricsData.token_counts || {};
   const live = metricsData.live_stats || {};
 
-  animateCounter('statToolReduction', tc.tool_reduction_pct || 83.5, '%');
+  animateCounter('statToolReduction', tc.tool_reduction_pct || 82.0, '%');
   animateCounter('statTokenSavings', tk.vs_full_spec_reduction_pct || 99.2, '%');
-  animateCounter('statWorkflows', tc.workflow_tools || 19, '');
+  animateCounter('statWorkflows', tc.workflow_tools || 21, '');
   animateCounter('statEndpoints', tc.before_tools || 133, '');
   animateCounter('statExecutions', live.total_executions || 0, '');
 
@@ -156,14 +156,14 @@ function renderCharts() {
         labels: ['Before (Raw)', 'After (MCP)'],
         datasets: [{
           label: 'Tool Count',
-          data: [tc.before_tools || 133, tc.after_tools || 22],
+          data: [tc.before_tools || 133, tc.after_tools || 24],
           backgroundColor: [
-            'rgba(248,113,113,0.7)',
-            'rgba(52,211,153,0.7)',
+            'rgba(239,68,68,0.3)',
+            'rgba(34,197,94,0.3)',
           ],
           borderColor: [
-            'rgba(248,113,113,1)',
-            'rgba(52,211,153,1)',
+            'rgba(239,68,68,0.8)',
+            'rgba(34,197,94,0.8)',
           ],
           borderWidth: 2,
           borderRadius: 8,
@@ -175,8 +175,8 @@ function renderCharts() {
         plugins: {
           legend: { display: false },
           tooltip: {
-            backgroundColor: '#111827',
-            borderColor: 'rgba(99,102,241,0.3)',
+            backgroundColor: '#18181b',
+            borderColor: 'rgba(255,255,255,0.08)',
             borderWidth: 1,
           },
         },
@@ -184,9 +184,11 @@ function renderCharts() {
           y: {
             beginAtZero: true,
             grid: { color: 'rgba(255,255,255,0.04)' },
+            ticks: { color: '#71717a' },
           },
           x: {
             grid: { display: false },
+            ticks: { color: '#71717a' },
           },
         },
       },
@@ -206,11 +208,11 @@ function renderCharts() {
             (tk.full_spec_before_tokens || 410562) - (tk.mcp_tool_descriptions_tokens || 3374),
           ],
           backgroundColor: [
-            'rgba(99,102,241,0.8)',
-            'rgba(52,211,153,0.3)',
+            'rgba(59,130,246,0.7)',
+            'rgba(34,197,94,0.2)',
           ],
-          borderColor: ['rgba(99,102,241,1)', 'rgba(52,211,153,0.5)'],
-          borderWidth: 2,
+          borderColor: ['rgba(59,130,246,0.9)', 'rgba(34,197,94,0.4)'],
+          borderWidth: 1,
         }],
       },
       options: {
@@ -219,8 +221,8 @@ function renderCharts() {
         plugins: {
           legend: { position: 'bottom' },
           tooltip: {
-            backgroundColor: '#111827',
-            borderColor: 'rgba(99,102,241,0.3)',
+            backgroundColor: '#18181b',
+            borderColor: 'rgba(255,255,255,0.08)',
             borderWidth: 1,
             callbacks: {
               label: ctx => `${ctx.label}: ${ctx.raw.toLocaleString()} tokens`,
@@ -233,12 +235,12 @@ function renderCharts() {
 
   // -- Category Doughnut --
   const categoryColors = {
-    monitoring: '#22d3ee',
-    configuration: '#818cf8',
-    lifecycle: '#fbbf24',
-    security: '#f87171',
-    maintenance: '#a78bfa',
-    diagnostics: '#34d399',
+    monitoring:    '#06b6d4',
+    configuration: '#3b82f6',
+    lifecycle:     '#f59e0b',
+    security:      '#ef4444',
+    maintenance:   '#8b5cf6',
+    diagnostics:   '#22c55e',
   };
 
   const ctxCats = document.getElementById('chartCategories');
@@ -253,9 +255,9 @@ function renderCharts() {
         labels: labels.map(l => l.charAt(0).toUpperCase() + l.slice(1)),
         datasets: [{
           data: data,
-          backgroundColor: colors.map(c => c + 'cc'),
-          borderColor: colors,
-          borderWidth: 2,
+          backgroundColor: colors.map(c => c + 'aa'),
+          borderColor: colors.map(c => c + 'dd'),
+          borderWidth: 1,
         }],
       },
       options: {
@@ -264,8 +266,8 @@ function renderCharts() {
         plugins: {
           legend: { position: 'bottom' },
           tooltip: {
-            backgroundColor: '#111827',
-            borderColor: 'rgba(99,102,241,0.3)',
+            backgroundColor: '#18181b',
+            borderColor: 'rgba(255,255,255,0.08)',
             borderWidth: 1,
           },
         },
@@ -300,8 +302,8 @@ function renderCharts() {
         plugins: {
           legend: { display: false },
           tooltip: {
-            backgroundColor: '#111827',
-            borderColor: 'rgba(99,102,241,0.3)',
+            backgroundColor: '#18181b',
+            borderColor: 'rgba(255,255,255,0.08)',
             borderWidth: 1,
           },
         },
@@ -309,10 +311,11 @@ function renderCharts() {
           x: {
             beginAtZero: true,
             grid: { color: 'rgba(255,255,255,0.04)' },
+            ticks: { color: '#71717a' },
           },
           y: {
             grid: { display: false },
-            ticks: { font: { family: "'JetBrains Mono', monospace", size: 10 } },
+            ticks: { font: { family: "'JetBrains Mono', monospace", size: 10 }, color: '#71717a' },
           },
         },
       },
